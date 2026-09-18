@@ -1,0 +1,553 @@
+/* ==========================================================================
+   KROLL INTERIORS, COMPONENTS
+   Nothing here is a card. Structure comes from type, hairlines and space.
+   ========================================================================== */
+
+/* ---- buttons ---------------------------------------------------------------
+   One label per intent across the whole site: "Get a Quote". The fill wipes
+   up from the baseline on hover, the way a surface is laid from the bottom. */
+.k-btn {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.85rem;
+  min-height: 3.35rem; padding: 0 1.65rem;
+  font-family: var(--sc-font-text); font-size: 0.9375rem; font-weight: 400; letter-spacing: 0.05em;
+  color: var(--sc-ink); text-decoration: none; white-space: nowrap;
+  border: 1px solid var(--k-line-strong);
+  transition: color 480ms var(--k-ease), border-color 480ms var(--k-ease), transform 140ms var(--k-ease);
+}
+.k-btn::before {
+  content: ""; position: absolute; inset: -1px; z-index: -1;
+  background: var(--sc-ink); transform: translateY(102%);
+  transition: transform 560ms var(--k-ease-io);
+}
+.k-btn--solid { background: var(--sc-ink); color: var(--sc-canvas); border-color: var(--sc-ink); }
+.k-btn--solid::before { background: var(--sc-accent); }
+@media (hover: hover) and (pointer: fine) {
+  .k-btn:hover { color: var(--sc-canvas); border-color: var(--sc-ink); }
+  .k-btn:hover::before { transform: none; }
+  .k-btn--solid:hover { color: var(--sc-accent-ink); border-color: var(--sc-accent); }
+}
+.k-btn:focus-visible { outline-offset: 5px; }
+.k-btn:active { transform: translateY(1px); }
+.k-btn--sm { min-height: 2.75rem; padding: 0 1.2rem; font-size: 0.875rem; }
+.k-btn[disabled] { opacity: 0.45; pointer-events: none; }
+
+.k-arrow { width: 1.1rem; height: 0.7rem; flex: none; transition: transform 480ms var(--k-ease); }
+@media (hover: hover) and (pointer: fine) {
+  a:hover > .k-arrow, button:hover > .k-arrow { transform: translateX(0.3rem); }
+}
+
+.k-link {
+  position: relative; display: inline-flex; align-items: center; gap: 0.7rem;
+  color: var(--sc-ink); text-decoration: none; font-size: 0.9375rem; letter-spacing: 0.04em;
+  padding-block: 0.35rem;
+}
+.k-link::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: currentColor; transform-origin: left; transition: transform 560ms var(--k-ease-io);
+}
+@media (hover: hover) and (pointer: fine) {
+  .k-link:hover::after { transform: scaleX(0); transform-origin: right; }
+}
+.k-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
+
+/* ---- filter links (projects) ---------------------------------------------------- */
+.k-filter { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; margin-top: 1rem; }
+.k-filter a { position: relative; font-size: 0.9375rem; letter-spacing: 0.03em; color: var(--sc-ink-soft); text-decoration: none; padding-block: 0.3rem; }
+.k-filter a[aria-current="page"], .k-filter a:hover { color: var(--sc-ink); }
+.k-filter a[aria-current="page"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; }
+
+/* ---- breadcrumbs ------------------------------------------------------------- */
+.k-crumbs ol { display: flex; flex-wrap: wrap; gap: 0.35rem 0.6rem; font-size: 0.8125rem; letter-spacing: 0.04em; color: var(--sc-ink-soft); list-style: none; margin: 0; padding: 0; }
+.k-crumbs li + li::before { content: "/"; margin-right: 0.6rem; opacity: 0.5; }
+.k-crumbs a { text-decoration: none; }
+.k-crumbs a:hover { color: var(--sc-ink); }
+
+/* ---- line reveal ----------------------------------------------------------------
+   kroll.js splits [data-k-lines] into measured lines once the face has
+   loaded, then each line rises out of its own mask. Hidden only while JS is
+   about to split, so a no-JS visitor and a slow font both still get text. */
+html.js [data-k-lines]:not(.is-split) { opacity: 0; }
+/* The mask is padded on every side: display type is set tighter than its own
+   glyphs, so an unpadded mask shears the top off a capital T and the tails
+   off g, y and p. */
+.k-line { display: block; overflow: clip; padding: 0.16em 0.08em 0.14em; margin: -0.16em -0.08em -0.14em; }
+.k-line__i { display: inline-block; transform: translateY(106%); }
+[data-k-lines].is-in .k-line__i {
+  transform: none;
+  transition: transform 1150ms var(--k-ease);
+  transition-delay: calc(var(--i, 0) * 90ms + var(--k-lines-delay, 0ms));
+}
+
+/* ---- entrance reveal for media ---------------------------------------------------
+   A frame opens from its base, the photograph inside settling from a slightly
+   closer crop. Fires once on entry. */
+html.js [data-k-reveal] { clip-path: inset(100% 0 0 0); }
+html.js [data-k-reveal] img, html.js [data-k-reveal] video { transform: scale(1.18); }
+html.js [data-k-reveal].is-in { clip-path: inset(0 0 0 0); transition: clip-path 1400ms var(--k-ease-io); }
+html.js [data-k-reveal].is-in img, html.js [data-k-reveal].is-in video { transform: scale(1); transition: transform 2200ms var(--k-ease); }
+
+html.js [data-k-fade] { opacity: 0; transform: translateY(1.5rem); }
+html.js [data-k-fade].is-in { opacity: 1; transform: none; transition: opacity 900ms var(--k-ease), transform 1100ms var(--k-ease); transition-delay: var(--k-delay, 0ms); }
+
+/* ---- figures ------------------------------------------------------------------------ */
+.k-fig { position: relative; }
+.k-fig__frame { position: relative; overflow: hidden; background: var(--sc-surface); }
+.k-fig__frame > picture, .k-fig__frame > img, .k-fig__frame > video { display: block; width: 100%; height: 100%; }
+.k-fig__frame img, .k-fig__frame video { width: 100%; height: 100%; object-fit: cover; }
+.k-fig__cap {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin-top: 0.9rem; font-size: 0.8125rem; letter-spacing: 0.03em; color: var(--sc-ink-soft);
+}
+.k-ratio-21x9 { aspect-ratio: 21 / 9; }
+.k-ratio-16x9 { aspect-ratio: 16 / 9; }
+.k-ratio-3x2  { aspect-ratio: 3 / 2; }
+.k-ratio-5x4  { aspect-ratio: 5 / 4; }
+.k-ratio-1x1  { aspect-ratio: 1 / 1; }
+.k-ratio-4x5  { aspect-ratio: 4 / 5; }
+.k-ratio-2x3  { aspect-ratio: 2 / 3; }
+@media (max-width: 700px) { .k-ratio-21x9 { aspect-ratio: 4 / 3; } }
+
+/* Parallax drift inside a frame, driven by the enclosing act's progress. The
+   image is overscaled so the drift never shows an edge. */
+.k-drift img, .k-drift video {
+  scale: 1.16;
+  translate: 0 calc((var(--sc-p, 0.5) - 0.5) * -9%);
+}
+@media (prefers-reduced-motion: reduce) { .k-drift img, .k-drift video { scale: 1; translate: none; } }
+
+/* ---- page hero ------------------------------------------------------------------ */
+.k-phero { padding-top: calc(var(--k-header-h) + clamp(3rem, 8vw, 8rem)); padding-bottom: clamp(3rem, 6vw, 6rem); }
+.k-phero__head { display: grid; gap: clamp(1.5rem, 2.5vw, 2.25rem); }
+.k-phero__title { max-width: 17ch; }
+.k-phero__row {
+  display: grid; gap: 2rem; align-items: end;
+  margin-top: clamp(0.5rem, 2vw, 1.5rem);
+}
+@media (min-width: 900px) { .k-phero__row { grid-template-columns: minmax(0, 1fr) auto; } }
+
+/* The opening plate. It arrives inset to the gutter and opens to full bleed
+   as it reaches the middle of the screen. Its own flow act supplies --sc-p. */
+.k-plate { position: relative; }
+.k-plate__frame {
+  --k-open: clamp(0, calc((var(--sc-p, 0.62) - 0.14) / 0.36), 1);
+  position: relative; overflow: hidden; background: var(--k-surface);
+  aspect-ratio: 21 / 9;
+  clip-path: inset(0 calc((1 - var(--k-open)) * var(--sc-gutter)));
+}
+.k-plate__frame img, .k-plate__frame video {
+  width: 100%; height: 100%; object-fit: cover;
+  scale: calc(1.2 - var(--k-open) * 0.08);
+  translate: 0 calc((var(--sc-p, 0.5) - 0.5) * -10%);
+}
+@media (max-width: 700px) { .k-plate__frame { aspect-ratio: 4 / 5; } }
+@media (prefers-reduced-motion: reduce) {
+  .k-plate__frame { clip-path: none; }
+  .k-plate__frame img { scale: 1; translate: none; }
+}
+.k-plate__cap { padding-top: 0.9rem; font-size: 0.8125rem; color: var(--sc-ink-soft); letter-spacing: 0.03em; }
+
+/* ---- statement --------------------------------------------------------------------
+   The old callout box, rebuilt as a spread: the first sentence at display
+   size, the reasoning underneath in body copy. No box, no coloured border. */
+.k-state { display: grid; gap: 1.5rem; padding-top: 2rem; border-top: 1px solid var(--k-line-strong); }
+.k-state__line { max-width: 24ch; }
+.k-state .k-body { max-width: 58ch; }
+
+/* ---- index rows -------------------------------------------------------------------- */
+.k-index { border-top: 1px solid var(--k-line); }
+.k-index__row {
+  position: relative; display: grid; gap: 0.6rem 2rem;
+  padding-block: clamp(1.4rem, 2.4vw, 2.1rem);
+  border-bottom: 1px solid var(--k-line);
+  text-decoration: none; color: inherit;
+}
+@media (min-width: 800px) {
+  .k-index__row { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr) 2.5rem; align-items: baseline; }
+}
+.k-index__title {
+  font-family: var(--sc-font-display); font-weight: var(--k-display-weight);
+  font-size: clamp(1.5rem, 1.15rem + 1vw, 2.3rem); line-height: 1.1; letter-spacing: -0.015em;
+  transition: transform 520ms var(--k-ease);
+}
+.k-index__desc { color: var(--sc-ink-soft); max-width: 52ch; }
+.k-index__go { justify-self: end; align-self: center; opacity: 0.5; transition: opacity 320ms var(--k-ease), transform 520ms var(--k-ease); }
+a.k-index__row::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--sc-ink);
+  transform: scaleX(0); transform-origin: left; transition: transform 700ms var(--k-ease-io);
+}
+@media (hover: hover) and (pointer: fine) {
+  a.k-index__row:hover::before { transform: scaleX(1); }
+  a.k-index__row:hover .k-index__title { transform: translateX(0.5rem); }
+  a.k-index__row:hover .k-index__go { opacity: 1; transform: translateX(0.25rem); }
+}
+
+/* ---- ordered build-up ---------------------------------------------------------------- */
+.k-spec { counter-reset: none; border-top: 1px solid var(--k-line); }
+.k-spec li {
+  display: grid; grid-template-columns: 3.25rem 1fr; gap: 1rem; align-items: baseline;
+  padding-block: 1rem; border-bottom: 1px solid var(--k-line);
+}
+.k-spec__n { font-family: var(--sc-font-display); font-size: 1.05rem; color: var(--sc-accent); font-variant-numeric: lining-nums tabular-nums; }
+.k-spec__t { color: var(--sc-ink); }
+
+/* ---- table -------------------------------------------------------------------------------- */
+.k-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.k-table { width: 100%; min-width: 44rem; border-collapse: collapse; font-size: 0.9688rem; }
+.k-table th {
+  text-align: left; font-weight: 500; font-size: var(--k-t-label); letter-spacing: var(--k-track-label); text-transform: uppercase;
+  color: var(--sc-ink-soft); padding: 0 1.25rem 1rem 0; border-bottom: 1px solid var(--k-line-strong);
+}
+.k-table td { padding: 1.15rem 1.25rem 1.15rem 0; border-bottom: 1px solid var(--k-line); vertical-align: top; color: var(--sc-ink-soft); }
+.k-table td:first-child { color: var(--sc-ink); font-family: var(--sc-font-display); font-size: 1.2rem; line-height: 1.3; white-space: nowrap; }
+.k-table tbody tr { transition: background-color 240ms var(--k-ease); }
+@media (hover: hover) { .k-table tbody tr:hover { background: color-mix(in oklab, var(--sc-ink) 4%, transparent); } }
+
+/* ---- facts ----------------------------------------------------------------------------------- */
+.k-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); border-top: 1px solid var(--k-line); }
+.k-facts > div { padding: 1.25rem 1.5rem 1.4rem 0; border-bottom: 1px solid var(--k-line); display: grid; gap: 0.35rem; align-content: start; }
+.k-facts dt { font-size: var(--k-t-label); letter-spacing: var(--k-track-label); text-transform: uppercase; color: var(--sc-ink-soft); font-weight: 500; }
+.k-facts dd { color: var(--sc-ink); font-size: 1.0625rem; }
+
+/* ---- credentials ------------------------------------------------------------------------------ */
+.k-creds { display: grid; border-top: 1px solid var(--k-line); }
+@media (min-width: 700px) { .k-creds { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .k-creds { grid-template-columns: repeat(4, 1fr); } }
+.k-creds > li { padding: 1.5rem 1.5rem 1.75rem 0; border-bottom: 1px solid var(--k-line); display: grid; gap: 0.6rem; align-content: start; }
+@media (min-width: 1100px) { .k-creds > li + li { padding-left: 1.5rem; border-left: 1px solid var(--k-line); } }
+.k-creds__v { font-family: var(--sc-font-display); font-weight: var(--k-display-weight); font-size: clamp(1.25rem, 1.05rem + 0.55vw, 1.6rem); line-height: 1.2; letter-spacing: -0.01em; }
+
+/* ---- named clients ------------------------------------------------------------------------------ */
+.k-clients { display: flex; flex-wrap: wrap; gap: 0.2em 0.55em; font-family: var(--sc-font-display); font-weight: 300; font-size: var(--k-t-md); line-height: 1.2; letter-spacing: -0.02em; }
+.k-clients li { display: inline-flex; align-items: center; gap: 0.55em; }
+.k-clients li + li::before { content: ""; width: 0.2em; height: 0.2em; background: var(--sc-accent); transform: rotate(45deg); }
+
+/* ---- faq ------------------------------------------------------------------------------------------ */
+.k-faq { border-top: 1px solid var(--k-line); }
+.k-faq__item { border-bottom: 1px solid var(--k-line); }
+.k-faq__q {
+  display: grid; grid-template-columns: 1fr 1.5rem; gap: 1.5rem; align-items: center;
+  padding-block: 1.45rem; cursor: pointer; list-style: none;
+  font-family: var(--sc-font-display); font-weight: var(--k-display-weight);
+  font-size: clamp(1.2rem, 1.05rem + 0.45vw, 1.5rem); line-height: 1.3; letter-spacing: -0.008em;
+}
+.k-faq__q::-webkit-details-marker { display: none; }
+.k-faq__icon { position: relative; width: 1rem; height: 1rem; justify-self: end; }
+.k-faq__icon::before, .k-faq__icon::after { content: ""; position: absolute; left: 0; top: 50%; width: 100%; height: 1px; background: currentColor; transition: transform 420ms var(--k-ease); }
+.k-faq__icon::after { transform: rotate(90deg); }
+.k-faq__item[open] .k-faq__icon::after { transform: rotate(0deg); }
+.k-faq__a { padding: 0 3rem 1.75rem 0; color: var(--sc-ink-soft); max-width: 66ch; }
+.k-faq__item[open] .k-faq__a { animation: k-rise 620ms var(--k-ease) both; }
+@media (hover: hover) { .k-faq__q:hover { color: var(--sc-accent); } }
+
+/* ---- two worlds ---------------------------------------------------------------------------------------- */
+.k-worlds { display: grid; gap: clamp(3rem, 6vw, 5rem); }
+@media (min-width: 900px) { .k-worlds { grid-template-columns: 1fr 1fr; column-gap: clamp(1.5rem, 3vw, 3rem); } .k-worlds > :nth-child(2) { margin-top: clamp(6rem, 14vw, 13rem); } }
+.k-world { display: grid; gap: 1.5rem; text-decoration: none; color: inherit; }
+.k-world__frame { aspect-ratio: 4 / 5; }
+.k-world__title { max-width: 16ch; }
+@media (hover: hover) and (pointer: fine) {
+  .k-world .k-fig__frame img { transition: scale 1400ms var(--k-ease); }
+  .k-world:hover .k-fig__frame img { scale: 1.22; }
+}
+
+/* ---- project rows (films) -------------------------------------------------------------------------------- */
+.k-projects { display: grid; gap: clamp(4rem, 8vw, 8rem); }
+.k-proj { display: grid; gap: 1.75rem; }
+@media (min-width: 1000px) {
+  .k-proj { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1rem, 2.4vw, 2.5rem); align-items: end; }
+  .k-proj__media { grid-column: 1 / 9; }
+  .k-proj__body  { grid-column: 9 / 13; }
+  .k-proj--flip .k-proj__media { grid-column: 5 / 13; grid-row: 1; }
+  .k-proj--flip .k-proj__body  { grid-column: 1 / 5; grid-row: 1; }
+}
+.k-proj__media { display: block; position: relative; text-decoration: none; }
+.k-proj__media .k-fig__frame { aspect-ratio: 16 / 10; }
+.k-proj__body { display: grid; gap: 1.1rem; align-content: end; }
+.k-proj__tags { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.8125rem; letter-spacing: 0.06em; color: var(--sc-ink-soft); }
+.k-proj__badge {
+  position: absolute; left: 1rem; bottom: 1rem; z-index: 2;
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.45rem 0.75rem; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  background: color-mix(in oklab, var(--k-night) 78%, transparent); color: var(--k-paper);
+}
+.k-proj__badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #E0503A; }
+
+/* ---- film --------------------------------------------------------------------------------------------------- */
+.k-film { position: relative; background: #000; overflow: hidden; aspect-ratio: 16 / 9; }
+.k-film video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.k-film__cover {
+  position: absolute; inset: 0; z-index: 2; width: 100%;
+  display: grid; place-items: center; color: var(--k-paper);
+  background: radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--k-night) 35%, transparent), color-mix(in oklab, var(--k-night) 10%, transparent));
+  transition: opacity 600ms var(--k-ease);
+}
+.k-film__cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; transition: scale 1400ms var(--k-ease); }
+.k-film__play {
+  display: grid; place-items: center; gap: 0.7rem; text-align: center;
+  font-size: 0.8125rem; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.k-film__disc {
+  width: clamp(5rem, 9vw, 7.5rem); aspect-ratio: 1; border-radius: 50%;
+  display: grid; place-items: center; border: 1px solid color-mix(in oklab, var(--k-paper) 60%, transparent);
+  backdrop-filter: blur(6px); background: color-mix(in oklab, var(--k-night) 30%, transparent);
+  transition: transform 700ms var(--k-ease), background-color 400ms var(--k-ease);
+}
+.k-film__disc svg { width: 22%; margin-left: 6%; }
+@media (hover: hover) and (pointer: fine) {
+  .k-film__cover:hover .k-film__disc { transform: scale(1.08); background: color-mix(in oklab, var(--k-paper) 16%, transparent); }
+  .k-film__cover:hover img { scale: 1.03; }
+}
+.k-film.is-playing .k-film__cover { opacity: 0; pointer-events: none; }
+html:not(.js) .k-film__cover { display: none; }
+
+/* ---- film strip ------------------------------------------------------------------------------------------------ */
+.k-strip { display: grid; gap: clamp(1rem, 2vw, 1.75rem); grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px) {
+  .k-strip { grid-template-columns: repeat(12, 1fr); }
+  .k-strip > :nth-child(5n+1) { grid-column: span 7; }
+  .k-strip > :nth-child(5n+2) { grid-column: span 5; margin-top: clamp(4rem, 9vw, 9rem); }
+  .k-strip > :nth-child(5n+3) { grid-column: span 4; }
+  .k-strip > :nth-child(5n+4) { grid-column: span 4; margin-top: clamp(3rem, 6vw, 6rem); }
+  .k-strip > :nth-child(5n+5) { grid-column: span 4; }
+}
+.k-strip > :nth-child(5n+1) { grid-column: 1 / -1; }
+.k-strip .k-fig__frame { aspect-ratio: 4 / 3; }
+.k-strip > :nth-child(5n+1) .k-fig__frame { aspect-ratio: 16 / 10; }
+
+/* ---- material objects ------------------------------------------------------------------------------------------------ */
+.k-obj { display: grid; gap: 1.1rem; text-decoration: none; color: inherit; }
+.k-obj__frame { aspect-ratio: 4 / 5; }
+.k-obj__name { font-family: var(--sc-font-display); font-weight: var(--k-display-weight); font-size: clamp(1.6rem, 1.25rem + 1vw, 2.4rem); line-height: 1.05; letter-spacing: -0.02em; }
+.k-obj__meta { display: grid; gap: 0.2rem; font-size: 0.875rem; color: var(--sc-ink-soft); }
+.k-obj__meta span:first-child { color: var(--sc-ink); }
+@media (hover: hover) and (pointer: fine) {
+  .k-obj .k-fig__frame img { transition: scale 1600ms var(--k-ease); }
+  .k-obj:hover .k-fig__frame img { scale: 1.08; }
+}
+
+/* the pan rail on the homepage */
+.k-rail-stage { display: flex; flex-direction: column; justify-content: center; padding-top: var(--k-header-h); }
+.k-rail { gap: clamp(1.25rem, 2.6vw, 2.75rem); padding-inline: var(--sc-gutter); align-items: end; }
+.k-rail > * { flex: none; }
+.k-rail__lead { width: min(34rem, 80vw); align-self: center; display: grid; gap: 1.5rem; padding-right: clamp(1rem, 4vw, 5rem); }
+.k-rail .k-obj { width: clamp(15rem, 25vw, 23rem); }
+.k-rail .k-obj:nth-child(even) { transform: translateY(-2.5rem); }
+.k-rail__end { width: min(24rem, 72vw); align-self: center; display: grid; gap: 1.25rem; padding-inline: clamp(1rem, 3vw, 4rem); }
+@media (max-width: 700px) { .k-rail .k-obj:nth-child(even) { transform: none; } }
+
+/* materials page gallery */
+.k-objs { display: grid; gap: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 2.4vw, 2.5rem); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 1000px) {
+  .k-objs { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .k-objs > * { grid-column: span 4; }
+  .k-objs > :nth-child(3n+2) { margin-top: clamp(4rem, 8vw, 8rem); }
+}
+@media (max-width: 599px) { .k-objs { grid-template-columns: 1fr; } }
+
+/* ---- services list with preview ------------------------------------------------------------------------------------------ */
+.k-svcs { display: grid; gap: clamp(2rem, 4vw, 4rem); }
+@media (min-width: 1000px) { .k-svcs { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; } }
+.k-svcs__preview { display: none; }
+@media (min-width: 1000px) {
+  .k-svcs__preview { display: block; position: sticky; top: calc(var(--k-header-h) + 2rem); aspect-ratio: 4 / 5; overflow: hidden; background: var(--sc-surface); }
+  .k-svcs__preview img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; scale: 1.08; transition: opacity 700ms var(--k-ease), scale 1600ms var(--k-ease); }
+  .k-svcs__preview img.is-on { opacity: 1; scale: 1; }
+  .k-svc__thumb { display: none; }
+}
+.k-svc { display: grid; gap: 1rem; padding-block: clamp(1.6rem, 3vw, 2.5rem); border-bottom: 1px solid var(--k-line); text-decoration: none; color: inherit; }
+.k-svcs__list { border-top: 1px solid var(--k-line); }
+.k-svc__top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.k-svc__name { font-family: var(--sc-font-display); font-weight: var(--k-display-weight); font-size: clamp(2rem, 1.2rem + 2.6vw, 4rem); line-height: 1; letter-spacing: -0.03em; transition: transform 700ms var(--k-ease), color 300ms var(--k-ease); }
+.k-svc__desc { color: var(--sc-ink-soft); max-width: 50ch; }
+.k-svc__thumb { aspect-ratio: 3 / 2; }
+@media (hover: hover) and (pointer: fine) {
+  .k-svc:hover .k-svc__name, .k-svc:focus-visible .k-svc__name { transform: translateX(0.75rem); }
+  .k-svcs__list:hover .k-svc:not(:hover) .k-svc__name { color: var(--sc-ink-soft); }
+}
+
+/* ---- steps ---------------------------------------------------------------------------------------------------------------------- */
+.k-steps { display: grid; border-top: 1px solid var(--k-line); }
+.k-steps > li {
+  display: grid; gap: 0.6rem 2rem; padding-block: clamp(1.75rem, 3.5vw, 3rem); border-bottom: 1px solid var(--k-line);
+}
+@media (min-width: 900px) { .k-steps > li { grid-template-columns: 7rem minmax(0, 5fr) minmax(0, 6fr); align-items: baseline; } }
+.k-steps__n { font-family: var(--sc-font-display); font-weight: 300; font-size: clamp(2.2rem, 1.6rem + 1.8vw, 3.6rem); line-height: 1; color: var(--sc-ink-soft); font-variant-numeric: lining-nums; }
+.k-steps__t { font-family: var(--sc-font-display); font-weight: var(--k-display-weight); font-size: clamp(1.5rem, 1.15rem + 1vw, 2.3rem); line-height: 1.1; letter-spacing: -0.015em; }
+.k-steps__d { color: var(--sc-ink-soft); }
+
+/* ---- commitments (about) -------------------------------------------------------------------------------------------------------- */
+.k-vows { display: grid; gap: clamp(2.5rem, 5vw, 4rem); }
+@media (min-width: 900px) { .k-vows { grid-template-columns: repeat(3, minmax(0, 1fr)); } .k-vows > :nth-child(2) { margin-top: 4rem; } .k-vows > :nth-child(3) { margin-top: 8rem; } }
+.k-vow { display: grid; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--k-line-strong); }
+
+/* ---- form ---------------------------------------------------------------------------------------------------------------------------- */
+.k-contact { display: grid; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
+@media (min-width: 1000px) { .k-contact { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); } }
+/* align-content: start, or the rows stretch to match the taller column beside
+   them and the form opens up a hole under its step tabs. */
+.k-form { display: grid; gap: 2.5rem; align-content: start; }
+.k-form fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 2rem; min-width: 0; }
+/* `display: grid` overrides the browser's own [hidden] rule, so a step the
+   script has hidden would keep rendering. Restore it explicitly. */
+.k-form fieldset[hidden] { display: none; }
+.k-form__row { display: grid; gap: 2rem; }
+@media (min-width: 700px) { .k-form__row { grid-template-columns: 1fr 1fr; } }
+.k-field { display: grid; gap: 0.6rem; }
+.k-field__label { font-size: var(--k-t-label); letter-spacing: var(--k-track-label); text-transform: uppercase; color: var(--sc-ink-soft); font-weight: 500; }
+.k-field__req { color: var(--sc-accent); }
+.k-input, .k-select, .k-textarea {
+  width: 100%; min-height: 3.25rem; padding: 0.6rem 0; appearance: none; border-radius: 0;
+  background: transparent; border: 0; border-bottom: 1px solid var(--k-line-strong);
+  color: var(--sc-ink); font-size: 1.125rem; font-family: var(--sc-font-text);
+  transition: border-color 300ms var(--k-ease);
+}
+.k-textarea { min-height: 8rem; resize: vertical; line-height: 1.55; }
+.k-select { background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 10px) 55%, calc(100% - 5px) 55%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 1.5rem; }
+.k-select option { background: var(--k-night); color: var(--k-paper); }
+.k-input::placeholder, .k-textarea::placeholder { color: color-mix(in oklab, var(--sc-ink-soft) 70%, transparent); }
+.k-input:focus, .k-select:focus, .k-textarea:focus { outline: none; border-bottom-color: var(--sc-accent); }
+.k-input:focus-visible, .k-select:focus-visible, .k-textarea:focus-visible { box-shadow: 0 1px 0 0 var(--sc-accent); }
+[aria-invalid="true"] { border-bottom-color: #E07A6A !important; }
+.k-help { font-size: 0.8125rem; color: var(--sc-ink-soft); }
+
+.k-choices { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.k-choice { position: relative; }
+.k-choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.k-choice span {
+  display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.1rem;
+  border: 1px solid var(--k-line-strong); font-size: 0.9375rem; transition: background-color 240ms var(--k-ease), color 240ms var(--k-ease), border-color 240ms var(--k-ease);
+}
+.k-choice input:checked + span { background: var(--sc-ink); color: var(--sc-canvas); border-color: var(--sc-ink); }
+.k-choice input:focus-visible + span { outline: 1.5px solid var(--sc-accent); outline-offset: 3px; }
+@media (hover: hover) { .k-choice:hover span { border-color: var(--sc-ink); } }
+
+.k-steptabs { display: flex; gap: 2rem; border-bottom: 1px solid var(--k-line); }
+.k-steptabs li { padding-bottom: 1rem; font-size: 0.875rem; letter-spacing: 0.08em; color: var(--sc-ink-soft); position: relative; display: flex; gap: 0.6rem; }
+.k-steptabs li[aria-current="step"] { color: var(--sc-ink); }
+.k-steptabs li[aria-current="step"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--sc-ink); }
+.k-steptabs__n { font-family: var(--sc-font-display); }
+
+.k-upload { display: grid; gap: 0.35rem; padding: 1.5rem; border: 1px dashed var(--k-line-strong); cursor: pointer; transition: border-color 240ms var(--k-ease); }
+.k-upload:hover, .k-upload:focus-within { border-color: var(--sc-ink); }
+.k-upload__title { font-family: var(--sc-font-display); font-size: 1.35rem; }
+.k-upload__hint { font-size: 0.8125rem; color: var(--sc-ink-soft); }
+
+.k-aside { display: grid; gap: 2rem; align-content: start; }
+.k-aside dl { display: grid; gap: 0.35rem; padding-top: 1.25rem; border-top: 1px solid var(--k-line); }
+.k-aside dt { font-size: var(--k-t-label); letter-spacing: var(--k-track-label); text-transform: uppercase; color: var(--sc-ink-soft); font-weight: 500; }
+.k-aside dd { font-family: var(--sc-font-display); font-size: 1.4rem; line-height: 1.3; }
+.k-aside dd a { text-decoration: none; }
+.k-aside dd a:hover { color: var(--sc-accent); }
+
+/* ---- related work --------------------------------------------------------------------------------------------------------------------- */
+.k-related { display: grid; gap: clamp(3rem, 5vw, 4rem) clamp(1rem, 2.4vw, 2.5rem); }
+@media (min-width: 800px) { .k-related { grid-template-columns: 1fr 1fr; } .k-related > :nth-child(2) { margin-top: clamp(3rem, 7vw, 7rem); } }
+.k-rel { display: grid; gap: 1rem; text-decoration: none; color: inherit; align-content: start; }
+.k-rel__frame { aspect-ratio: 16 / 10; }
+.k-rel h3 { transition: color 300ms var(--k-ease); }
+@media (hover: hover) and (pointer: fine) { .k-rel:hover h3 { color: var(--sc-accent); } }
+
+/* A photograph under the sticky heading beside the process list, so the
+   column holds its side of the spread. */
+.k-steps__fig { margin-top: clamp(2rem, 4vw, 3rem); }
+@media (max-width: 899px) { .k-steps__fig { max-width: 26rem; } }
+
+/* ---- fixed plate -----------------------------------------------------------------------------------
+   The photograph stays put while the section scrolls over it. `clip-path` on the
+   section makes it the containing block for the fixed child, so the image is
+   held inside this section only. Preferred over background-attachment: fixed,
+   which iOS ignores. Under reduced motion the image simply sits still with the
+   page, which is the same picture without the travel. */
+.k-fixed {
+  position: relative; clip-path: inset(0);
+  padding-block: clamp(8rem, 20vw, 18rem);
+  display: grid; align-items: center; min-height: 70svh;
+}
+.k-fixed__media { position: fixed; inset: 0; z-index: 0; }
+.k-fixed__media img { width: 100%; height: 100%; object-fit: cover; }
+.k-fixed__scrim {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(100deg,
+    color-mix(in oklab, var(--k-night) 92%, transparent) 0%,
+    color-mix(in oklab, var(--k-night) 78%, transparent) 42%,
+    color-mix(in oklab, var(--k-night) 30%, transparent) 78%,
+    transparent 100%);
+}
+.k-fixed__body { position: relative; z-index: 2; }
+.k-fixed__copy { display: grid; gap: 1.5rem; max-width: 34rem; }
+.k-fixed__copy .k-body { max-width: 42ch; }
+@media (max-width: 899px) {
+  .k-fixed__scrim { background: linear-gradient(180deg,
+    color-mix(in oklab, var(--k-night) 55%, transparent) 0%,
+    color-mix(in oklab, var(--k-night) 88%, transparent) 55%,
+    color-mix(in oklab, var(--k-night) 92%, transparent) 100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .k-fixed__media { position: absolute; }
+}
+
+/* ---- fixed hero plate ------------------------------------------------------------------------------
+   The plate still opens from the gutter to full bleed as it arrives, but the
+   photograph inside it is fixed: the frame is a window travelling over a
+   stationary image. clip-path on the frame makes it the containing block. */
+.k-plate--fixed .k-plate__frame { clip-path: inset(0 calc((1 - var(--k-open)) * var(--sc-gutter))); }
+.k-plate--fixed .k-plate__frame picture {
+  position: fixed; inset: 0; width: 100vw; height: 100svh; display: block; z-index: 0;
+}
+.k-plate--fixed .k-plate__frame img { width: 100%; height: 100%; object-fit: cover; scale: 1; translate: none; }
+@media (prefers-reduced-motion: reduce) {
+  .k-plate--fixed .k-plate__frame picture { position: absolute; height: 100%; width: 100%; }
+}
+
+/* ---- fixed side panel -------------------------------------------------------------------------------
+   Half the chapter is a held photograph with the heading over it; the copy
+   scrolls past on the other half. Same mechanism as .k-fixed, in one column. */
+.k-splitfix { position: relative; clip-path: inset(0); }
+.k-splitfix__media { position: fixed; inset: 0 auto 0 0; width: 46vw; z-index: 0; overflow: hidden; }
+.k-splitfix__media img { width: 100%; height: 100%; object-fit: cover; }
+.k-splitfix__media::after {
+  content: ""; position: absolute; inset: 0;
+  /* Tuned against the measured pixels behind the heading: a pale panel (the
+     terrazzo and the granite) needs this much density to clear 3:1 on large
+     type. Measured worst case, not eyeballed. */
+  background: linear-gradient(170deg,
+    color-mix(in oklab, var(--k-night) 88%, transparent) 0%,
+    color-mix(in oklab, var(--k-night) 66%, transparent) 46%,
+    color-mix(in oklab, var(--k-night) 28%, transparent) 100%);
+}
+.k-splitfix__lead { position: relative; z-index: 2; color: var(--k-paper); }
+/* The heading must stay inside the panel: past its edge it would be light type
+   on paper. Hold it to the panel width less a gutter, at every viewport. */
+.k-splitfix__lead .k-display {
+  color: var(--k-paper);
+  max-width: min(11ch, calc(46vw - var(--sc-gutter) * 2.4));
+  font-size: clamp(1.9rem, 1.1rem + 2.1vw, 3.4rem);
+}
+.k-splitfix > .k-wrap { position: relative; z-index: 1; }
+@media (max-width: 899px) {
+  /* No held panel on a phone: the image sits above the copy at its own size. */
+  .k-splitfix__media { position: relative; width: auto; inset: auto; aspect-ratio: 3 / 2; margin-bottom: 2rem; }
+  .k-splitfix__lead { margin-top: -6.5rem; padding: 0 var(--sc-gutter) 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .k-splitfix__media { position: absolute; }
+}
+
+/* ---- quote page ------------------------------------------------------------------------------------- */
+.k-aside--panel {
+  background: var(--k-surface); padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  border: 1px solid var(--k-line); gap: 1.75rem; align-content: start;
+}
+@media (min-width: 1000px) {
+  .k-aside--panel { position: sticky; top: calc(var(--k-header-h) + 1.5rem); }
+}
+.k-aside__fig { margin: calc(-1 * clamp(1.5rem, 2.5vw, 2.25rem)); margin-bottom: 0; }
+/* On a short window the panel would be taller than the viewport and its
+   sticky position would strand the details. Drop the picture there. */
+@media (min-width: 1000px) and (max-height: 820px) { .k-aside__fig { display: none; } }
+.k-aside--panel dl:first-of-type { padding-top: 0; border-top: 0; }
+
+.k-fixed__list { display: grid; gap: 0.6rem; margin-top: 0.5rem; }
+.k-fixed__list li { display: flex; align-items: baseline; gap: 0.7rem; color: var(--k-paper); font-size: 1.0625rem; }
+.k-fixed__list li::before { content: ""; width: 5px; height: 5px; flex: none; background: var(--sc-accent); transform: rotate(45deg); }

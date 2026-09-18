@@ -1,0 +1,230 @@
+/* ==========================================================================
+   KROLL INTERIORS, PAGE-LEVEL PATTERNS
+   Larger compositions built from the components in 04. Same rules apply:
+   semantic tokens only, radius 0, hairline separation.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   HOMEPAGE HERO
+   Sized to what it holds, not to the viewport. A 100vh opener would push the
+   page itself out of the first frame and delay the proof.
+   ========================================================================== */
+
+.k-hero { position: relative; padding-block: 0; }
+
+.k-hero__media { position: relative; }
+
+/* Hero video. Layered over the still, not instead of it. kroll.js creates the
+   element only when the film will actually play, so phones, reduced-motion
+   visitors and slow connections request neither the video nor an oversized
+   poster. It fades in on canplay so the still never blinks. */
+.k-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  opacity: 0;
+  transition: opacity 600ms var(--k-ease);
+}
+.k-hero__video.is-playing { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .k-hero__video { transition: none; }
+}
+
+.k-hero__media .k-media { --k-ratio: 16 / 9; }
+@media (max-width: 768px) { .k-hero__media .k-media { --k-ratio: 4 / 5; } }
+
+.k-hero__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top,
+    rgba(18,23,26,.80) 0%, rgba(18,23,26,.42) 46%, rgba(18,23,26,.16) 100%);
+}
+
+.k-hero__body {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding-block: clamp(30px, 5vw, 76px);
+}
+.k-hero__inner { display: flex; flex-direction: column; gap: var(--k-md); max-width: 900px; }
+
+.k-hero__eyebrow {
+  font-size: var(--k-fs-eyebrow); font-weight: 600;
+  letter-spacing: var(--k-ls-eyebrow); text-transform: uppercase;
+  color: var(--k-petrol-lift);
+}
+
+.k-hero__title {
+  font-family: var(--k-serif);
+  font-variation-settings: "opsz" 72;
+  font-size: var(--k-fs-display);
+  line-height: var(--k-lh-display);
+  letter-spacing: var(--k-ls-display);
+  font-weight: 400;
+  color: var(--k-paper);
+  max-width: 17ch;
+  text-wrap: balance;
+}
+
+.k-hero__lead {
+  font-size: var(--k-fs-lead);
+  line-height: var(--k-lh-lead);
+  color: var(--k-limestone);
+  max-width: 54ch;
+}
+
+.k-hero .k-btn--primary { background: var(--k-paper); border-color: var(--k-paper); color: var(--k-ink); }
+.k-hero .k-btn--primary:hover, .k-hero .k-btn--primary:focus-visible {
+  background: var(--k-petrol-lift); border-color: var(--k-petrol-lift); color: var(--k-ink);
+}
+.k-hero .k-btn--secondary { color: var(--k-paper); border-color: rgba(247,245,241,.5); }
+.k-hero .k-btn--secondary:hover, .k-hero .k-btn--secondary:focus-visible {
+  background: var(--k-paper); color: var(--k-ink); border-color: var(--k-paper);
+}
+
+
+/* ==========================================================================
+   INNER PAGE HEADER, type-led, no hero image required.
+   Most inner pages open on the argument, not on a picture.
+   ========================================================================== */
+
+.k-page-header { padding-block: clamp(48px, 7vw, 104px) clamp(40px, 5vw, 72px); }
+.k-page-header__inner { display: flex; flex-direction: column; gap: var(--k-md); max-width: 900px; }
+.k-page-header h1 { max-width: 18ch; }
+.k-page-header .k-breadcrumb { margin-bottom: var(--k-xs); }
+
+
+/* ==========================================================================
+   EXPERTISE PILLARS, the two-way split, tiling / stone
+   ========================================================================== */
+
+.k-pillars { display: grid; gap: var(--k-gutter); grid-template-columns: 1fr; }
+@media (min-width: 860px) { .k-pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.k-pillar { display: flex; flex-direction: column; gap: var(--k-md); text-decoration: none; color: inherit; }
+.k-pillar .k-media { --k-ratio: 3 / 2; }
+.k-pillar .k-media img { transition: transform var(--k-dur-hover) var(--k-ease); }
+.k-pillar:hover .k-media img { transform: scale(1.03); }
+.k-pillar__title { font-family: var(--k-serif); font-size: var(--k-fs-h2); line-height: 1.05; color: var(--fg); }
+.k-pillar__desc { font-size: var(--k-fs-small); color: var(--fg-body); max-width: 46ch; }
+.k-pillar__list { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.k-pillar__list li {
+  font-size: 11px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--fg-muted);
+}
+
+
+/* ==========================================================================
+   TECHNICAL CALLOUT
+   The differentiator made visible. Used sparingly, one per page maximum.
+   ========================================================================== */
+
+.k-callout {
+  display: flex; flex-direction: column; gap: var(--k-sm);
+  padding: clamp(24px, 3vw, 38px);
+  background: var(--k-petrol-tint);
+  border-left: 2px solid var(--accent);
+}
+.k-invert .k-callout { background: rgba(125,176,202,.10); }
+.k-callout__title { font-family: var(--k-serif); font-size: var(--k-fs-h3); line-height: 1.15; color: var(--fg); }
+.k-callout p { font-size: var(--k-fs-small); color: var(--fg-body); }
+
+
+/* ==========================================================================
+   SECTOR SPLIT, residential / commercial
+   ========================================================================== */
+
+.k-sectors { display: grid; gap: var(--k-hairline); background: var(--line-strong);
+             border: var(--k-hairline) solid var(--line-strong); grid-template-columns: 1fr; }
+@media (min-width: 800px) { .k-sectors { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.k-sector {
+  position: relative; display: flex; flex-direction: column;
+  text-decoration: none; color: inherit; background: var(--surface);
+}
+.k-sector .k-media { --k-ratio: 4 / 3; }
+.k-sector .k-media img { transition: transform var(--k-dur-hover) var(--k-ease); }
+.k-sector:hover .k-media img { transform: scale(1.03); }
+.k-sector__body { display: flex; flex-direction: column; gap: var(--k-xs); padding: clamp(22px, 2.6vw, 32px); }
+.k-sector__title { font-family: var(--k-serif); font-size: var(--k-fs-h3); line-height: 1.15; color: var(--fg); }
+.k-sector__desc { font-size: var(--k-fs-small); color: var(--fg-body); max-width: 42ch; }
+
+
+/* ==========================================================================
+   CASE STUDY
+   ========================================================================== */
+
+.k-case-hero .k-media { --k-ratio: 21 / 9; }
+@media (max-width: 768px) { .k-case-hero .k-media { --k-ratio: 4 / 5; } }
+
+.k-case-section { display: flex; flex-direction: column; gap: var(--k-md); max-width: var(--k-measure); }
+.k-case-section h2 { font-size: var(--k-fs-h3); }
+
+.k-gallery { display: grid; gap: var(--k-gutter); grid-template-columns: 1fr; }
+@media (min-width: 700px) { .k-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.k-gallery--full { grid-template-columns: 1fr; }
+.k-gallery figure { margin: 0; }
+
+/* Before / during / completed, a genuine sequence, so numbering is earned. */
+.k-stages { display: grid; gap: var(--k-gutter); grid-template-columns: 1fr; }
+@media (min-width: 800px) { .k-stages { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.k-stage { display: flex; flex-direction: column; gap: var(--k-sm); }
+.k-stage .k-media { --k-ratio: 5 / 4; }
+.k-stage__label {
+  font-size: 11px; font-weight: 600; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--accent);
+}
+.k-stage__desc { font-size: var(--k-fs-caption); color: var(--fg-muted); }
+
+
+/* ==========================================================================
+   CONTACT PANEL
+   ========================================================================== */
+
+.k-contact-grid { display: grid; gap: clamp(32px, 4vw, 72px); grid-template-columns: 1fr; }
+@media (min-width: 960px) { .k-contact-grid { grid-template-columns: 7fr 4fr; } }
+
+.k-contact-aside { display: flex; flex-direction: column; gap: var(--k-lg); }
+.k-contact-block { display: flex; flex-direction: column; gap: 7px; }
+.k-contact-block dt {
+  font-size: 11px; font-weight: 600; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--fg-muted);
+}
+.k-contact-block dd { margin: 0; font-size: var(--k-fs-small); color: var(--fg); }
+.k-contact-block dd a { color: var(--fg); text-decoration: none; }
+.k-contact-block dd a:hover { color: var(--accent); }
+
+
+/* ==========================================================================
+   PLACEHOLDER
+   Stands in for photography that does not exist yet. Every instance names the
+   shot it needs, so the gap stays visible instead of being papered over with
+   stock. Delete this rule once the shoot lands.
+   ========================================================================== */
+
+.k-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; text-align: center;
+  background:
+    repeating-linear-gradient(135deg, transparent, transparent 9px,
+      rgba(154,164,170,.10) 9px, rgba(154,164,170,.10) 18px),
+    linear-gradient(150deg, var(--k-slate), var(--k-graphite));
+}
+.k-ph span {
+  font-family: var(--k-mono); font-size: 11px; line-height: 1.55;
+  color: var(--k-limestone); letter-spacing: .04em; max-width: 34ch;
+}
+
+
+/* ==========================================================================
+   PROSE, long-form legal / editorial copy
+   ========================================================================== */
+
+.k-prose { display: flex; flex-direction: column; gap: var(--k-md); max-width: var(--k-measure); }
+.k-prose h2 { font-size: var(--k-fs-h3); margin-top: var(--k-md); }
+.k-prose h3 { font-size: var(--k-fs-h4); font-family: var(--k-sans); font-weight: 600; }
+.k-prose ul, .k-prose ol { padding-left: 20px; display: flex; flex-direction: column; gap: var(--k-xs); }
+.k-prose li { font-size: var(--k-fs-small); color: var(--fg-body); }

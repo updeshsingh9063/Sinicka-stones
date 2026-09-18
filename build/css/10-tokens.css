@@ -1,0 +1,101 @@
+/* ==========================================================================
+   KROLL INTERIORS, TOKENS
+   Loads after scrollcraft.css and overrides its roles. Everything visual on
+   the site derives from this file: six colour roles per ground, two faces,
+   one type ramp, one radius.
+
+   Grounds. The site cuts hard between two families, never interpolates:
+     night   architectural black, the default. Stone reads best on it.
+     paper   the approved #F7F5F1 family, for long reading chapters.
+   A section switches ground with .k-ground--paper, which restates the ink
+   AND `color` (redefining a token alone does not re-ink inherited text).
+
+   Accent. Derived from the inner arc of the client's logo (#116B9C), lifted
+   for dark grounds and deepened for paper. One hue, two stops, because a
+   page that cuts between black and paper cannot clear 4.5:1 on both with a
+   single lightness. The orange in the build-up cutaway is not an accent: it
+   is the colour of the tanking membrane, a material, drawn as a material.
+   ========================================================================== */
+
+:root {
+  /* ---- scrollcraft roles: night ground -------------------------------- */
+  --sc-canvas:      #0E1215;
+  --sc-surface:     #161C20;
+  --sc-ink:         #ECEAE4;
+  --sc-ink-soft:    #A3ABAF;
+  --sc-accent:      #8DB9CF;
+  --sc-accent-ink:  #0E1215;
+
+  --sc-font-display: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sc-font-text:    "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  --sc-font-mono:    "Jost", "Futura", system-ui, sans-serif;
+
+  --sc-maxw:   92rem;
+  --sc-gutter: clamp(1.25rem, 4.2vw, 4.5rem);
+  --sc-section: clamp(5rem, 11vw, 12rem);
+
+  /* One radius for the whole site. Stone is cut square. */
+  --sc-r-sm: 2px;  --sc-r-md: 2px;  --sc-r-lg: 2px;  --sc-r-pill: 999px;
+
+  --sc-shadow-color: 205 35% 3%;
+
+  /* ---- Kroll additions -------------------------------------------------- */
+  --k-night:      #0E1215;
+  --k-night-2:    #12171B;
+  --k-surface:    #161C20;
+  --k-paper:      #F3F1EC;
+  --k-paper-2:    #EAE7E0;
+  --k-paper-ink:  #12171A;
+  --k-paper-soft: #4E585E;
+  --k-petrol:     #1B5A7A;
+  --k-petrol-lift:#8DB9CF;
+
+  --k-membrane:   #E2692F;   /* Schluter-orange tanking membrane, cutaway only */
+
+  --k-line:       color-mix(in oklab, var(--sc-ink) 14%, transparent);
+  --k-line-strong:color-mix(in oklab, var(--sc-ink) 28%, transparent);
+
+  /* Type ramp. Display is Newsreader with the optical-size axis left on auto,
+     so a 10rem line and a 1.4rem line each get the cut drawn for that size. */
+  --k-t-hero: clamp(3.1rem, 0.9rem + 8.2vw, 10.75rem);
+  --k-t-xl:   clamp(2.6rem, 1.05rem + 5.1vw, 7rem);
+  --k-t-lg:   clamp(2.15rem, 1.2rem + 3.1vw, 4.75rem);
+  --k-t-md:   clamp(1.75rem, 1.2rem + 1.7vw, 3.1rem);
+  --k-t-sm:   clamp(1.35rem, 1.12rem + 0.8vw, 1.9rem);
+  --k-t-lede: clamp(1.15rem, 1.02rem + 0.45vw, 1.45rem);
+  --k-t-body: clamp(1rem, 0.97rem + 0.14vw, 1.0875rem);
+  --k-t-small:0.9375rem;
+  --k-t-label:0.75rem;
+
+  --k-display-weight: 340;
+  --k-track-label: 0.16em;
+
+  --k-header-h: clamp(4.75rem, 6.5vw, 6rem);
+
+  --k-ease:     cubic-bezier(0.23, 1, 0.32, 1);
+  --k-ease-io:  cubic-bezier(0.77, 0, 0.175, 1);
+  --k-ease-cut: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Paper ground. Restate `color` with the ink or inherited text keeps night ink. */
+.k-ground--paper {
+  --sc-canvas:     var(--k-paper);
+  --sc-surface:    var(--k-paper-2);
+  --sc-ink:        var(--k-paper-ink);
+  --sc-ink-soft:   var(--k-paper-soft);
+  --sc-accent:     var(--k-petrol);
+  --sc-accent-ink: #FFFFFF;
+  --k-line:        color-mix(in oklab, var(--k-paper-ink) 13%, transparent);
+  --k-line-strong: color-mix(in oklab, var(--k-paper-ink) 26%, transparent);
+  background-color: var(--k-paper);
+  color: var(--sc-ink);
+}
+.k-ground--night {
+  background-color: var(--k-night);
+  color: var(--sc-ink);
+}
+.k-ground--surface {
+  --sc-canvas: var(--k-night-2);
+  background-color: var(--k-night-2);
+  color: var(--sc-ink);
+}

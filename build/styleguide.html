@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kroll Interiors, Design System · Phase C</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
+
+<link rel="stylesheet" href="css/01-tokens.css">
+<link rel="stylesheet" href="css/02-base.css">
+<link rel="stylesheet" href="css/03-layout.css">
+<link rel="stylesheet" href="css/04-components.css">
+<link rel="stylesheet" href="css/05-components-page.css">
+<link rel="stylesheet" href="css/06-motion.css">
+
+<style>
+/* Styleguide chrome only, not part of the shipped system. */.sg-note{border-left:2px solid var(--accent);padding-left:16px;font-size:14px;color: var(--fg-muted);max-width:64ch;line-height:1.6}.sg-label{font-family: var(--k-mono);font-size:11px;color: var(--fg-muted);letter-spacing:.04em;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:20px;display: block}.sg-swatches{display: grid;grid-template-columns: repeat(auto-fill, minmax(168px,1fr));gap:1px;background: var(--line-strong);border:1px solid var(--line-strong)}.sg-sw{background: var(--surface);display: flex;flex-direction: column}.sg-sw__chip{height:88px}.sg-sw__b{padding:13px 15px 16px;display: flex;flex-direction: column;gap:3px}.sg-sw__tok{font-family: var(--k-mono);font-size:12.5px;color: var(--fg)}.sg-sw__hex{font-family: var(--k-mono);font-size:12px;color: var(--fg-muted)}.sg-sw__role{font-size:12.5px;color: var(--fg-muted);line-height:1.45;margin-top:4px}.sg-spec{border-top:1px solid var(--line);padding-top:20px;display: flex;flex-direction: column;gap:11px}.sg-spec__meta{display: flex;flex-wrap: wrap;gap:7px 18px;font-size:11px;letter-spacing:.13em;text-transform: uppercase;color: var(--fg-muted)}
+/* Placeholder stands in for photography that does not exist yet.
+   Doubles as the art-direction brief: every one names its required shot. */.sg-ph{width:100%;height:100%;background: repeating-linear-gradient(135deg, transparent, transparent 9px, rgba(154,164,170,.10) 9px, rgba(154,164,170,.10) 18px), linear-gradient(150deg, var(--k-slate), var(--k-graphite));
+  display: flex;align-items: center;justify-content: center;padding:16px;text-align: center}.sg-ph span{font-family: var(--k-mono);font-size:11px;line-height:1.5;color: var(--k-limestone);letter-spacing:.04em}.sg-scale{display: flex;flex-direction: column;gap:9px}.sg-step{display: grid;grid-template-columns:80px 56px 1fr;gap:16px;align-items: center}.sg-step b{font-family: var(--k-mono);font-size:12.5px;font-weight:400;color: var(--fg)}.sg-step i{font-family: var(--k-mono);font-size:12px;font-style: normal;color: var(--fg-muted);text-align: right}.sg-step u{height:12px;background: var(--accent);opacity:.82;text-decoration: none;display: block}
+</style>
+</head>
+
+<body>
+<a class="k-skip-link" href="#main">Skip to content</a>
+
+<!-- ====================== HEADER ====================== -->
+<header class="k-header" data-header>
+  <div class="k-container k-header__inner">
+    <a class="k-logo" href="/">Kroll Interiors</a>
+
+    <nav class="k-nav" aria-label="Primary">
+      <ul class="k-nav__list">
+        <li class="k-nav__item"><a class="k-nav__link" href="/approach/">Approach</a></li>
+        <li class="k-nav__item" data-dropdown>
+          <button class="k-nav__link" type="button" data-dropdown-toggle
+                  aria-expanded="false" aria-controls="nav-services">
+            Services <span class="k-nav__toggle-icon" aria-hidden="true"></span>
+          </button>
+          <ul class="k-nav__panel" id="nav-services" hidden>
+            <li><a href="/services/ceramic-porcelain-tiling/">Ceramic &amp; Porcelain Tiling</a></li>
+            <li><a href="/services/natural-stone/">Natural Stone</a></li>
+            <li><a href="/services/granite/">Granite</a></li>
+            <li><a href="/services/engineered-stone/">Engineered Stone</a></li>
+            <li><a href="/services/bathrooms-wet-rooms/">Bathrooms &amp; Wet Rooms</a></li>
+          </ul>
+        </li>
+        <li class="k-nav__item" data-dropdown>
+          <button class="k-nav__link" type="button" data-dropdown-toggle
+                  aria-expanded="false" aria-controls="nav-sectors">
+            Sectors <span class="k-nav__toggle-icon" aria-hidden="true"></span>
+          </button>
+          <ul class="k-nav__panel" id="nav-sectors" hidden>
+            <li><a href="/sectors/luxury-residential/">Luxury Residential</a></li>
+            <li><a href="/sectors/commercial/">Commercial</a></li>
+          </ul>
+        </li>
+        <li class="k-nav__item"><a class="k-nav__link" href="/projects/">Projects</a></li>
+        <li class="k-nav__item"><a class="k-nav__link" href="/materials/">Materials</a></li>
+        <li class="k-nav__item"><a class="k-nav__link" href="/about/">About</a></li>
+      </ul>
+      <a class="k-btn k-btn--primary" href="/contact/">Get a Quote</a>
+    </nav>
+
+    <button class="k-nav-toggle" type="button" data-nav-toggle
+            aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="k-mobile-nav" id="mobile-nav" data-mobile-nav hidden>
+  <a class="k-mobile-nav__link" href="/approach/">Approach</a>
+  <details class="k-mobile-nav__group">
+    <summary>Services</summary>
+    <ul class="k-mobile-nav__sub">
+      <li><a href="/services/ceramic-porcelain-tiling/">Ceramic &amp; Porcelain Tiling</a></li>
+      <li><a href="/services/natural-stone/">Natural Stone</a></li>
+      <li><a href="/services/granite/">Granite</a></li>
+      <li><a href="/services/engineered-stone/">Engineered Stone</a></li>
+      <li><a href="/services/bathrooms-wet-rooms/">Bathrooms &amp; Wet Rooms</a></li>
+    </ul>
+  </details>
+  <details class="k-mobile-nav__group">
+    <summary>Sectors</summary>
+    <ul class="k-mobile-nav__sub">
+      <li><a href="/sectors/luxury-residential/">Luxury Residential</a></li>
+      <li><a href="/sectors/commercial/">Commercial</a></li>
+    </ul>
+  </details>
+  <a class="k-mobile-nav__link" href="/projects/">Projects</a>
+  <a class="k-mobile-nav__link" href="/materials/">Materials</a>
+  <a class="k-mobile-nav__link" href="/about/">About</a>
+  <div class="k-mobile-nav__foot">
+    <a class="k-btn k-btn--primary" href="/contact/">Get a Quote</a>
+    <a class="k-btn k-btn--secondary" href="tel:+442036330923">020 3633 0923</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ====================== INTRO ====================== -->
+<section class="k-section k-section--tight">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Phase C · Design system</span>
+      <h1>Every component, built and working.</h1>
+      <p class="k-lead">Five stylesheets and one progressive-enhancement script. No framework, no
+      builder, no dependencies. Tokens transfer to any WordPress approach unchanged.</p>
+    </div>
+    <p class="sg-note">Image placeholders below name the shot each slot needs, they double as the
+    art-direction brief from Phase B. Nothing here uses stock or supplier imagery.</p>
+  </div>
+</section>
+
+<!-- ====================== COLOUR ====================== -->
+<section class="k-section k-section--alt">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Tokens · colour</span>
+      <h2>Cool charcoal against warm limestone.</h2>
+    </div>
+    <div class="sg-swatches">
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#12171A"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-ink</span><span class="sg-sw__hex">#12171A</span><span class="sg-sw__role">Headings, dark sections, primary CTA</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#20272C"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-graphite</span><span class="sg-sw__hex">#20272C</span><span class="sg-sw__role">Dark surface, footer</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#3A444B"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-slate</span><span class="sg-sw__hex">#3A444B</span><span class="sg-sw__role">Body text on light</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#5C666D"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-concrete</span><span class="sg-sw__hex">#5C666D</span><span class="sg-sw__role">Muted text, AA-tested, do not tidy</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#98A2A8"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-silica</span><span class="sg-sw__hex">#98A2A8</span><span class="sg-sw__role">Muted on dark, disabled</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#D6D2CB"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-limestone</span><span class="sg-sw__hex">#D6D2CB</span><span class="sg-sw__role">Hairlines, dividers</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#EAE7E1"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-chalk</span><span class="sg-sw__hex">#EAE7E1</span><span class="sg-sw__role">Alternating surface</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#F7F5F1"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-paper</span><span class="sg-sw__hex">#F7F5F1</span><span class="sg-sw__role">Page background</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#1B5A7A"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-petrol</span><span class="sg-sw__hex">#1B5A7A</span><span class="sg-sw__role">Accent, links, focus, rules</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#123F56"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-petrol-deep</span><span class="sg-sw__hex">#123F56</span><span class="sg-sw__role">Hover, pressed</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#7DB0CA"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-petrol-lift</span><span class="sg-sw__hex">#7DB0CA</span><span class="sg-sw__role">Accent on dark grounds only</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__chip" style="background:#E6EEF2"></div><div class="sg-sw__b"><span class="sg-sw__tok">--k-petrol-tint</span><span class="sg-sw__hex">#E6EEF2</span><span class="sg-sw__role">Quiet callouts</span></div></div>
+    </div>
+    <p class="sg-note">Components never reference these directly, they read semantic tokens
+    (<code>--fg</code>, <code>--bg</code>, <code>--accent</code>, <code>--line</code>). Dropping any
+    component inside <code>.k-invert</code> re-colours it with zero overrides. The dark band further
+    down proves it.</p>
+  </div>
+</section>
+
+<!-- ====================== TYPOGRAPHY ====================== -->
+<section class="k-section">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Tokens · typography</span>
+      <h2>Instrument Serif and Instrument Sans.</h2>
+      <p class="k-lead">The logo already pairs a high-contrast serif monogram with a wide-tracked
+      geometric sans. The site extends the brand's own logic.</p>
+    </div>
+
+    <div class="k-stack k-stack--lg">
+      <div class="sg-spec">
+        <div class="sg-spec__meta"><span>.k-display</span><span>Serif 400</span><span>clamp 44-104px</span><span>LH 0.98</span><span>LS −0.02em</span></div>
+        <div class="k-display">Stone, cut precisely.</div>
+      </div>
+      <div class="sg-spec">
+        <div class="sg-spec__meta"><span>h2</span><span>Serif 400</span><span>clamp 30-56px</span><span>LH 1.06</span></div>
+        <h2>Approved Schlüter tanking contractors.</h2>
+      </div>
+      <div class="sg-spec">
+        <div class="sg-spec__meta"><span>h3</span><span>Serif 400</span><span>clamp 23-34px</span><span>LH 1.16</span></div>
+        <h3>Large-format porcelain and natural stone</h3>
+      </div>
+      <div class="sg-spec">
+        <div class="sg-spec__meta"><span>h4</span><span>Sans 600</span><span>clamp 19-24px</span></div>
+        <h4>Substrate preparation and movement joints</h4>
+      </div>
+      <div class="sg-spec">
+        <div class="sg-spec__meta"><span>.k-lead</span><span>Sans 400</span><span>clamp 18-22px</span><span>56ch</span></div>
+        <p class="k-lead">London-based specialists delivering wall and floor tiling and stone work for
+        private clients, developers and main contractors.</p>
+      </div>
+      <div class="sg-spec">
+        <div class="sg-spec__meta"><span>body</span><span>Sans 400</span><span>17px / 16px mobile</span><span>LH 1.7</span><span>68ch</span></div>
+        <p>Every installation is set out, waterproofed and finished by NVQ Level 2 certified
+        installers. Substrate preparation, movement joints and tanking detail are specified before a
+        single tile is cut.</p>
+      </div>
+      <div class="sg-spec">
+        <div class="sg-spec__meta"><span>.k-eyebrow, the signature device</span><span>Sans 600</span><span>12px</span><span>LS 0.18em</span></div>
+        <span class="k-eyebrow">Materials &amp; sourcing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== SPACING ====================== -->
+<section class="k-section k-section--alt k-section--tight">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Tokens · spacing</span>
+      <h2>Every gap comes from this scale.</h2>
+    </div>
+    <div class="sg-scale">
+      <div class="sg-step"><b>--k-xs</b><i>8px</i><u style="width:8px"></u></div>
+      <div class="sg-step"><b>--k-sm</b><i>16px</i><u style="width:16px"></u></div>
+      <div class="sg-step"><b>--k-md</b><i>24px</i><u style="width:24px"></u></div>
+      <div class="sg-step"><b>--k-lg</b><i>40px</i><u style="width:40px"></u></div>
+      <div class="sg-step"><b>--k-xl</b><i>64px</i><u style="width:64px"></u></div>
+      <div class="sg-step"><b>--k-2xl</b><i>96px</i><u style="width:96px"></u></div>
+      <div class="sg-step"><b>--k-3xl</b><i>140px</i><u style="width:140px"></u></div>
+      <div class="sg-step"><b>--k-4xl</b><i>200px</i><u style="width:200px"></u></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== BUTTONS ====================== -->
+<section class="k-section">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Component · buttons</span>
+      <h2>One height, one radius, one voice.</h2>
+      <p class="k-lead">Primary is ink; petrol is the hover. That keeps the accent rare and makes the
+      interaction feel deliberate. Tab through to see the focus rings.</p>
+    </div>
+    <div class="k-btn-row">
+      <a class="k-btn k-btn--primary" href="#">Get a Quote</a>
+      <a class="k-btn k-btn--secondary" href="#">View Projects</a>
+      <a class="k-btn k-btn--text" href="#">Discover Materials</a>
+      <button class="k-btn k-btn--primary" type="button" disabled>Unavailable</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CREDENTIALS ====================== -->
+<section class="k-section k-section--tight k-section--flush-bottom">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Component · credential band</span>
+      <h2>Verified proof only.</h2>
+    </div>
+  </div>
+  <div class="k-container" style="margin-top:40px">
+    <div class="k-credentials">
+      <div class="k-credential"><span class="k-credential__label">Certified</span><span class="k-credential__value">Approved Schlüter tanking contractor</span></div>
+      <div class="k-credential"><span class="k-credential__label">Qualified</span><span class="k-credential__value">NVQ Level 2 certified installers</span></div>
+      <div class="k-credential"><span class="k-credential__label">Covered</span><span class="k-credential__value">Fully insured</span></div>
+      <div class="k-credential"><span class="k-credential__label">Pre-qualified</span><span class="k-credential__value">Accredited contractor</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PROJECT CARDS ====================== -->
+<section class="k-section">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Component · project card</span>
+      <h2>4:5 portrait. Never four across.</h2>
+      <p class="k-lead">Small project images read as cheap. Three across is the maximum, and the whole
+      card is one link target.</p>
+    </div>
+    <div class="k-grid k-grid--3">
+      <a class="k-project" href="#" data-reveal-image>
+        <div class="k-media"><div class="sg-ph"><span>PROJECT CARD 4:5<br>Portrait establishing shot<br>Raking light, verticals vertical</span></div></div>
+        <div class="k-project__meta"><span>Commercial</span><span>London</span></div>
+        <span class="k-project__title">Third Space</span>
+        <p class="k-project__desc">Large-format porcelain to changing areas, wet rooms and pool surround.</p>
+        <div class="k-project__materials"><span class="k-project__material">Porcelain</span><span class="k-project__material">Tanking</span></div>
+      </a>
+      <a class="k-project" href="#" data-reveal-image>
+        <div class="k-media"><div class="sg-ph"><span>PROJECT CARD 4:5<br>Awaiting client photography</span></div></div>
+        <div class="k-project__meta"><span>Residential</span><span>Wimbledon</span></div>
+        <span class="k-project__title">Wimbledon residence</span>
+        <p class="k-project__desc">Natural stone flooring and a fully tanked wet room.</p>
+        <div class="k-project__materials"><span class="k-project__material">Natural stone</span><span class="k-project__material">Wet room</span></div>
+      </a>
+      <a class="k-project" href="#" data-reveal-image>
+        <div class="k-media"><div class="sg-ph"><span>PROJECT CARD 4:5<br>Awaiting client photography</span></div></div>
+        <div class="k-project__meta"><span>Residential</span><span>To be confirmed</span></div>
+        <span class="k-project__title">Project three</span>
+        <p class="k-project__desc">Gated on the photography day, see Phase A risks.</p>
+        <div class="k-project__materials"><span class="k-project__material">TBC</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== EDITORIAL SPLIT ====================== -->
+<section class="k-section k-section--alt">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Layout · editorial split</span>
+      <h2>Seven-five, not six-six.</h2>
+      <p class="k-lead">Asymmetry gives the page direction. Symmetry makes it feel like a template.</p>
+    </div>
+    <div class="k-grid k-grid--7-5 k-grid--gutter-lg k-grid--align-center">
+      <div class="k-media k-ratio-editorial" data-reveal-image><div class="sg-ph"><span>EDITORIAL 3:2<br>Edge condition, threshold or junction<br>Where craft is visible</span></div></div>
+      <div class="k-split-text">
+        <span class="k-eyebrow">Why it lasts</span>
+        <h3>A finish is only as good as what sits behind it.</h3>
+        <p class="k-small">Substrate, tanking and movement joints are specified before a single tile is
+        cut. It is the part nobody sees, and the only reason the part they do see still looks right in
+        ten years.</p>
+        <div><a class="k-btn k-btn--text" href="#">Our Approach</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PROCESS ====================== -->
+<section class="k-section">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Component · process strip</span>
+      <h2>Numbering is earned here.</h2>
+      <p class="k-lead">This is a genuine sequence. The order carries information the reader needs.
+      Numbered markers are not used anywhere they would be decoration.</p>
+    </div>
+    <div class="k-process">
+      <div class="k-step"><span class="k-step__n">01</span><span class="k-step__title">Idea</span><span class="k-step__desc">Brief, site visit, measured survey</span></div>
+      <div class="k-step"><span class="k-step__n">02</span><span class="k-step__title">Design &amp; planning</span><span class="k-step__desc">Setting out, tile layout, tolerances</span></div>
+      <div class="k-step"><span class="k-step__n">03</span><span class="k-step__title">Material sourcing</span><span class="k-step__desc">Specification, batching, lead times</span></div>
+      <div class="k-step"><span class="k-step__n">04</span><span class="k-step__title">Engineering</span><span class="k-step__desc">Substrate, tanking, movement joints</span></div>
+      <div class="k-step"><span class="k-step__n">05</span><span class="k-step__title">Installation</span><span class="k-step__desc">Fixing, cutting, grouting, sealing</span></div>
+      <div class="k-step"><span class="k-step__n">06</span><span class="k-step__title">Completion</span><span class="k-step__desc">Snagging, handover, aftercare</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FILM (dark) ====================== -->
+<section class="k-section k-section--dark k-invert">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Component · project film</span>
+      <h2>Cinematic, not an embed.</h2>
+      <p class="k-lead">This whole band is <code>.k-invert</code>. Every component inside re-coloured
+      itself from the semantic tokens. No overrides were written.</p>
+    </div>
+
+    <button class="k-film" type="button" data-film-trigger="film-third-space">
+      <div class="k-media"><div class="sg-ph"><span>CINEMATIC 21:9<br>Still frame pulled from the project film</span></div></div>
+      <span class="k-film__scrim"></span>
+      <span class="k-film__body">
+        <span class="k-film__eyebrow">Project film</span>
+        <span class="k-film__title">Third Space, London</span>
+        <span class="k-film__cta">Watch project</span>
+      </span>
+    </button>
+
+    <div class="k-btn-row">
+      <a class="k-btn k-btn--primary" href="#">Get a Quote</a>
+      <a class="k-btn k-btn--secondary" href="#">View Projects</a>
+      <a class="k-btn k-btn--text" href="#">Discover Materials</a>
+    </div>
+  </div>
+</section>
+
+<dialog class="k-film-dialog" id="film-third-space" aria-label="Third Space project film">
+  <button class="k-film-dialog__close" type="button" data-film-close aria-label="Close film">&times;</button>
+  <video controls preload="none" playsinline>
+    <source src="/assets/video/third-space-1080.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    <a href="/projects/third-space-london/">Read the Third Space case study</a>.
+  </video>
+</dialog>
+
+<!-- ====================== SERVICES + SWATCHES ====================== -->
+<section class="k-section">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Component · service card &amp; material swatch</span>
+      <h2>Hairline cells. No shadow, no radius.</h2>
+    </div>
+
+    <div class="k-grid k-grid--3 k-grid--hairline">
+      <a class="k-service" href="#">
+        <span class="k-service__title">Ceramic &amp; Porcelain</span>
+        <p class="k-service__desc">Large-format porcelain, slabs and precision-cut ceramic to walls and floors.</p>
+        <span class="k-service__more">Explore</span>
+      </a>
+      <a class="k-service" href="#">
+        <span class="k-service__title">Natural Stone</span>
+        <p class="k-service__desc">Marble, limestone, travertine and onyx, specified, sourced and set out.</p>
+        <span class="k-service__more">Explore</span>
+      </a>
+      <a class="k-service" href="#">
+        <span class="k-service__title">Bathrooms &amp; Wet Rooms</span>
+        <p class="k-service__desc">Fully tanked wet rooms using the approved Schlüter system.</p>
+        <span class="k-service__more">Explore</span>
+      </a>
+    </div>
+
+    <div class="k-grid k-grid--3">
+      <a class="k-swatch" href="#"><div class="k-media"><div class="sg-ph"><span>SWATCH 1:1<br>Material close-up</span></div></div><span class="k-swatch__name">Carrara</span><span class="k-swatch__type">Natural stone · marble</span></a>
+      <a class="k-swatch" href="#"><div class="k-media"><div class="sg-ph"><span>SWATCH 1:1<br>Material close-up</span></div></div><span class="k-swatch__name">Nero Assoluto</span><span class="k-swatch__type">Natural stone · granite</span></a>
+      <a class="k-swatch" href="#"><div class="k-media"><div class="sg-ph"><span>SWATCH 1:1<br>Material close-up</span></div></div><span class="k-swatch__name">Large-format porcelain</span><span class="k-swatch__type">Porcelain · 1200×2400</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CASE STUDY META ====================== -->
+<section class="k-section k-section--alt k-section--tight">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Component · case study meta</span>
+      <h2>Reads like a drawing schedule.</h2>
+    </div>
+    <dl class="k-meta-list">
+      <div class="k-meta"><dt>Location</dt><dd>London</dd></div>
+      <div class="k-meta"><dt>Sector</dt><dd>Commercial · leisure</dd></div>
+      <div class="k-meta"><dt>Scope</dt><dd>Wall and floor tiling, tanking</dd></div>
+      <div class="k-meta"><dt>Materials</dt><dd>Large-format porcelain</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ====================== FORM ====================== -->
+<section class="k-section">
+  <div class="k-container k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Component · quote form</span>
+      <h2>Project first. Contact details last.</h2>
+      <p class="k-lead">Three steps, low commitment at the start. The maths captcha on the current
+      site is replaced by a honeypot and timing check, invisible to real users.</p>
+    </div>
+
+    <div class="k-steps">
+      <div class="k-step-tab" aria-current="step"><span class="k-step-tab__n">01</span><span class="k-step-tab__t">Project</span></div>
+      <div class="k-step-tab"><span class="k-step-tab__n">02</span><span class="k-step-tab__t">Scope</span></div>
+      <div class="k-step-tab"><span class="k-step-tab__n">03</span><span class="k-step-tab__t">Contact</span></div>
+    </div>
+
+    <form class="k-stack k-stack--lg" style="max-width:760px" onsubmit="return false">
+      <div class="k-field">
+        <span class="k-label" id="lbl-services">Services required <span class="k-label__req">*</span></span>
+        <div class="k-choices" role="group" aria-labelledby="lbl-services">
+          <label class="k-choice"><input type="checkbox" name="services" value="ceramic"><span>Ceramic &amp; porcelain</span></label>
+          <label class="k-choice"><input type="checkbox" name="services" value="stone" checked><span>Natural stone</span></label>
+          <label class="k-choice"><input type="checkbox" name="services" value="wetroom" checked><span>Wet room / tanking</span></label>
+          <label class="k-choice"><input type="checkbox" name="services" value="engineered"><span>Engineered stone</span></label>
+        </div>
+      </div>
+
+      <div class="k-grid k-grid--2">
+        <div class="k-field">
+          <label class="k-label" for="ptype">Property type <span class="k-label__req">*</span></label>
+          <select class="k-select" id="ptype" name="ptype">
+            <option>Private residence</option>
+            <option>New-build development</option>
+            <option>Commercial fit-out</option>
+            <option>Hospitality / leisure</option>
+          </select>
+        </div>
+        <div class="k-field">
+          <label class="k-label" for="borough">Location</label>
+          <input class="k-input" id="borough" name="borough" type="text" placeholder="London borough" value="Wandsworth">
+        </div>
+      </div>
+
+      <div class="k-field">
+        <label class="k-label" for="msg">Tell us about the project</label>
+        <textarea class="k-textarea" id="msg" name="msg" placeholder="Rooms, approximate areas, materials if known…">Two bathrooms and a hallway. Around 40m² total. Considering large-format porcelain but open to natural stone.</textarea>
+        <span class="k-help-text">Example content, shows the field in a realistic filled state.</span>
+      </div>
+
+      <div class="k-field">
+        <span class="k-label">Photographs of the space</span>
+        <label class="k-upload">
+          <input type="file" class="k-visually-hidden" multiple accept="image/*.pdf">
+          <span class="k-upload__title">Add photos, drawings or a schedule</span>
+          <span class="k-upload__hint">JPG, PNG or PDF · up to 10 files · 20 MB each</span>
+        </label>
+        <span class="k-help-text">A genuine differentiator, clients almost always have photos, and it
+        makes the first quote far more accurate.</span>
+      </div>
+
+      <div class="k-field">
+        <label class="k-label" for="err-demo">Email <span class="k-label__req">*</span></label>
+        <input class="k-input" id="err-demo" type="email" value="not-an-email" aria-invalid="true" aria-describedby="err-demo-msg">
+        <span class="k-error-text" id="err-demo-msg">Enter an email address in the format name@example.com</span>
+      </div>
+
+      <div class="k-btn-row">
+        <button class="k-btn k-btn--primary" type="submit">Continue</button>
+        <a class="k-btn k-btn--text" href="tel:+442036330923">Or call 020 3633 0923</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ====================== FAQ ====================== -->
+<section class="k-section k-section--alt">
+  <div class="k-container k-container--narrow k-stack">
+    <div class="k-section-head">
+      <span class="k-eyebrow">Component · FAQ</span>
+      <h2>Native details. No JavaScript.</h2>
+    </div>
+    <div class="k-faq">
+      <details class="k-faq__item" open>
+        <summary class="k-faq__q">What is a tanking system, and do I need one?<span class="k-faq__icon" aria-hidden="true"></span></summary>
+        <div class="k-faq__a"><p>Tanking is a waterproof membrane applied to walls and floors before
+        tiling. In a wet room it is not optional. Tile and grout are not waterproof on their own. As
+        approved Schlüter contractors we install it as a continuous layer, sealed at every junction
+        and pipe penetration.</p></div>
+      </details>
+      <details class="k-faq__item">
+        <summary class="k-faq__q">Do you work with architects and main contractors?<span class="k-faq__icon" aria-hidden="true"></span></summary>
+        <div class="k-faq__a"><p>Yes. We are a pre-qualified accredited contractor and work to the
+        drawing, the programme and the site's health and safety requirements.</p></div>
+      </details>
+      <details class="k-faq__item">
+        <summary class="k-faq__q">Which areas of London do you cover?<span class="k-faq__icon" aria-hidden="true"></span></summary>
+        <div class="k-faq__a"><p>Awaiting client confirmation of target boroughs, see Phase A, question 6.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CTA ====================== -->
+<section class="k-section k-section--dark k-invert">
+  <div class="k-container">
+    <div class="k-cta">
+      <span class="k-eyebrow">Start your project</span>
+      <h2 class="k-cta__title">Ready to discuss your project?</h2>
+      <p class="k-lead">Send us the space, the materials you are considering and your timeline. We will
+      come back with a measured quote.</p>
+      <div class="k-btn-row">
+        <a class="k-btn k-btn--primary" href="/contact/">Get a Quote</a>
+        <a class="k-btn k-btn--secondary" href="tel:+442036330923">020 3633 0923</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="k-footer k-invert">
+  <div class="k-container">
+    <div class="k-footer__top">
+      <div class="k-footer__col">
+        <span class="k-logo">Kroll Interiors</span>
+        <p class="k-small">Specialist tiling and stone contractors, London. Residential and commercial.</p>
+      </div>
+      <div class="k-footer__col">
+        <span class="k-footer__heading">Services</span>
+        <ul class="k-footer__list">
+          <li><a href="/services/ceramic-porcelain-tiling/">Ceramic &amp; Porcelain</a></li>
+          <li><a href="/services/natural-stone/">Natural Stone</a></li>
+          <li><a href="/services/granite/">Granite</a></li>
+          <li><a href="/services/engineered-stone/">Engineered Stone</a></li>
+          <li><a href="/services/bathrooms-wet-rooms/">Bathrooms &amp; Wet Rooms</a></li>
+        </ul>
+      </div>
+      <div class="k-footer__col">
+        <span class="k-footer__heading">Contact</span>
+        <ul class="k-footer__list">
+          <li><a href="tel:+442036330923">020 3633 0923</a></li>
+          <li><a href="tel:+447754556388">07754 556388</a></li>
+          <li><a href="mailto:enquiries@krollinteriors.co.uk">enquiries@krollinteriors.co.uk</a></li>
+        </ul>
+        <p class="k-caption">Registered address and company number pending client confirmation.</p>
+      </div>
+    </div>
+    <div class="k-footer__bottom">
+      <span>© 2026 Kroll Interiors LTD</span>
+      <span>Phase C · Design system</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ====================== STICKY MOBILE CTA ====================== -->
+<div class="k-sticky-cta" data-sticky-cta>
+  <a class="k-sticky-cta__item" href="tel:+442036330923">Call</a>
+  <a class="k-sticky-cta__item" href="https://wa.me/447754556388">WhatsApp</a>
+  <a class="k-sticky-cta__item k-sticky-cta__item--primary" href="/contact/">Get a Quote</a>
+</div>
+
+<script src="js/kroll.js" defer></script>
+</body>
+</html>

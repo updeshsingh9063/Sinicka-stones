@@ -1,0 +1,67 @@
+/* ==========================================================================
+   KROLL INTERIORS, LAYOUT
+   A 12-column field inside a wide wrap. Chapters are sections that own a
+   ground; spacing between chapters is generous, spacing inside them tight.
+   ========================================================================== */
+
+.k-wrap {
+  width: 100%;
+  max-width: var(--sc-maxw);
+  margin-inline: auto;
+  padding-inline: var(--sc-gutter);
+}
+.k-wrap--narrow { max-width: 58rem; }
+
+.k-ch { position: relative; padding-block: var(--sc-section); }
+.k-ch--tight { padding-block: clamp(3.5rem, 7vw, 7rem); }
+.k-ch--flush-top { padding-top: 0; }
+.k-ch--flush-bottom { padding-bottom: 0; }
+/* A flow chapter straight after a pinned act starts close: the stage already
+   spent a viewport scrolling off. */
+.k-ch--after-pin { padding-top: clamp(3rem, 6vw, 6rem); }
+
+.k-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(1rem, 2.4vw, 2.5rem);
+  row-gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+.k-grid > * { grid-column: 1 / -1; }
+
+@media (min-width: 900px) {
+  .k-c-1-5   { grid-column: 1 / 6 !important; }
+  .k-c-1-6   { grid-column: 1 / 7 !important; }
+  .k-c-1-7   { grid-column: 1 / 8 !important; }
+  .k-c-1-8   { grid-column: 1 / 9 !important; }
+  .k-c-1-9   { grid-column: 1 / 10 !important; }
+  .k-c-2-7   { grid-column: 2 / 8 !important; }
+  .k-c-2-12  { grid-column: 2 / 12 !important; }
+  .k-c-3-11  { grid-column: 3 / 11 !important; }
+  .k-c-5-13  { grid-column: 5 / 13 !important; }
+  .k-c-6-13  { grid-column: 6 / 13 !important; }
+  .k-c-7-13  { grid-column: 7 / 13 !important; }
+  .k-c-8-13  { grid-column: 8 / 13 !important; }
+  .k-c-9-13  { grid-column: 9 / 13 !important; }
+  .k-c-7-12  { grid-column: 7 / 12 !important; }
+  .k-c-6-12  { grid-column: 6 / 12 !important; }
+  .k-c-2-6   { grid-column: 2 / 6 !important; }
+  .k-grid--middle { align-items: center; }
+  .k-grid--end { align-items: end; }
+}
+
+/* Sticky heading column: the heading holds while the long copy beside it
+   scrolls, which is the editorial spread doing its job. */
+@media (min-width: 900px) {
+  .k-sticky { position: sticky; top: calc(var(--k-header-h) + 2rem); align-self: start; }
+}
+
+.k-stack > * + * { margin-top: var(--k-stack, 1.25rem); }
+.k-stack--lg { --k-stack: 2rem; }
+.k-stack--xl { --k-stack: clamp(2.5rem, 4vw, 3.75rem); }
+.k-stack--sm { --k-stack: 0.75rem; }
+
+.k-head { display: grid; gap: 1.25rem; max-width: 60rem; }
+.k-head--center { margin-inline: auto; text-align: center; justify-items: center; }
+.k-head + * { margin-top: clamp(2.75rem, 5.5vw, 5rem); }
+
+.k-rule { border: 0; height: 1px; background: var(--k-line); margin: 0; }

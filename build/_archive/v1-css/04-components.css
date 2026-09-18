@@ -1,0 +1,880 @@
+/* ==========================================================================
+   KROLL INTERIORS, COMPONENTS
+   Every component inherits colour from the semantic tokens, so dropping any
+   of them inside .k-invert re-colours it with no override needed.
+   Radius is 0 throughout. Separation is hairline + whitespace.
+
+   TOKEN DISCIPLINE, components read semantic tokens (--fg, --bg, --accent,
+   --line), never the raw palette. There are exactly ten deliberate exceptions,
+   all of them ground-INDEPENDENT elements that must look identical whatever
+   surface they sit on:
+
+     · .k-btn[disabled]          disabled reads the same on light and dark
+     · .k-film__title / __cta    sit on an always-dark scrim
+     · .k-film-dialog            modal is always dark
+     · .k-sticky-cta             fixed mobile chrome, never inverts
+
+   These are correct as written. Do not "tidy" them into semantic tokens
+   doing so makes the film title invert to dark-on-dark over the scrim.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   BUTTONS
+   One height, one radius, one voice.
+   Primary is --k-ink, NOT petrol. Petrol is the hover, which keeps the
+   accent rare and makes the interaction feel deliberate.
+   ========================================================================== */
+
+.k-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--k-xs);
+  height: var(--k-control-h);
+  padding-inline: var(--k-control-pad-x);
+  border: var(--k-hairline) solid transparent;
+  border-radius: var(--k-radius);
+  background: none;
+  font-family: var(--k-sans);
+  font-size: var(--k-fs-btn);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: var(--k-ls-btn);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--k-dur-micro) var(--k-ease-micro),
+    color            var(--k-dur-micro) var(--k-ease-micro),
+    border-color     var(--k-dur-micro) var(--k-ease-micro);
+}
+
+@media (max-width: 560px) {
+  .k-btn { height: var(--k-control-h-mobile); padding-inline: 28px; }
+}
+
+.k-btn--primary {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+.k-btn--primary:hover,
+.k-btn--primary:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.k-btn--secondary {
+  background: transparent;
+  color: var(--fg);
+  border-color: var(--fg);
+}
+.k-btn--secondary:hover,
+.k-btn--secondary:focus-visible {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.k-btn--text {
+  height: auto;
+  padding: 0 0 6px;
+  color: var(--fg);
+  border: 0;
+  border-bottom: var(--k-hairline) solid var(--line-strong);
+  letter-spacing: 0.1em;
+}
+.k-btn--text:hover,
+.k-btn--text:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.k-btn[disabled],
+.k-btn--disabled {
+  background: var(--k-limestone);
+  border-color: var(--k-limestone);
+  color: var(--k-concrete);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.k-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--k-sm);
+  align-items: center;
+}
+
+
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+
+.k-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--k-z-header);
+  background: var(--bg);
+  border-bottom: var(--k-hairline) solid var(--line);
+  transition: height var(--k-dur-micro) var(--k-ease-micro);
+}
+
+.k-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--k-lg);
+  height: var(--k-header-h);
+  transition: height 300ms var(--k-ease-micro);
+}
+.k-header.is-condensed .k-header__inner { height: var(--k-header-h-condensed); }
+
+.k-logo {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--k-sans);
+  font-size: var(--k-fs-nav);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.k-logo img, .k-logo svg { height: 56px; width: auto; display: block; }
+.k-header.is-condensed .k-logo img { height: 42px; }
+.k-logo--footer img { height: 80px; }
+/* NOTE: the client supplied a STACKED lockup only (emblem over wordmark).
+   It works but it is not ideal in a slim header - a horizontal lockup would
+   sit better and read larger. Worth requesting from the client, or producing
+   one for their approval. Do not invent one without sign-off. */
+
+.k-nav { display: none; }
+@media (min-width: 1024px) {
+  .k-nav { display: flex; align-items: center; gap: clamp(20px, 2.2vw, 34px); }
+}
+
+.k-nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.2vw, 34px);
+  list-style: none;
+}
+
+.k-nav__link {
+  position: relative;
+  display: inline-block;
+  padding-block: 6px;
+  font-size: var(--k-fs-nav);
+  font-weight: 500;
+  letter-spacing: var(--k-ls-nav);
+  color: var(--fg);
+  text-decoration: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Underline draws from the left rather than fading, the one hover flourish
+   the system allows, because it reads as precision rather than decoration. */
+.k-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms var(--k-ease);
+}
+.k-nav__link:hover::after,
+.k-nav__link:focus-visible::after,
+.k-nav__link[aria-current="page"]::after,
+.k-nav__link[aria-expanded="true"]::after { transform: scaleX(1); }
+
+.k-nav__link[aria-current="page"] { color: var(--accent); }
+
+/* ---- Dropdown ---- */
+.k-nav__item { position: relative; }
+
+.k-nav__toggle-icon {
+  display: inline-block;
+  margin-left: 6px;
+  width: 7px; height: 7px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--k-dur-micro) var(--k-ease-micro);
+}
+.k-nav__link[aria-expanded="true"] .k-nav__toggle-icon { transform: translateY(1px) rotate(-135deg); }
+
+.k-nav__panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: -20px;
+  min-width: 268px;
+  padding: var(--k-sm) 0;
+  background: var(--surface);
+  border: var(--k-hairline) solid var(--line-strong);
+  box-shadow: var(--k-shadow-md);
+  list-style: none;
+}
+.k-nav__panel[hidden] { display: none; }
+
+/* The panel sits 14px below the toggle. Without this the pointer crosses dead
+   space on the way down and the menu closes under it. */
+.k-nav__panel::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: -16px;
+  height: 16px;
+}
+
+.k-nav__panel a {
+  display: block;
+  padding: 10px 24px;
+  font-size: var(--k-fs-small);
+  color: var(--fg-body);
+  text-decoration: none;
+  transition: background-color var(--k-dur-micro) var(--k-ease-micro),
+              color var(--k-dur-micro) var(--k-ease-micro);
+}
+.k-nav__panel a:hover,
+.k-nav__panel a:focus-visible {
+  background: var(--bg-alt);
+  color: var(--fg);
+}
+
+/* ---- Mobile ---- */
+.k-nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px; height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+@media (min-width: 1024px) { .k-nav-toggle { display: none; } }
+
+.k-nav-toggle span {
+  display: block;
+  width: 22px; height: 1px;
+  background: var(--fg);
+  transition: transform var(--k-dur-micro) var(--k-ease-micro),
+              opacity   var(--k-dur-micro) var(--k-ease-micro);
+}
+.k-nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.k-nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.k-nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.k-mobile-nav {
+  position: fixed;
+  inset: var(--k-header-h) 0 0;
+  z-index: var(--k-z-overlay);
+  background: var(--bg);
+  overflow-y: auto;
+  padding: var(--k-lg) var(--k-pad) var(--k-2xl);
+}
+.k-mobile-nav[hidden] { display: none; }
+@media (min-width: 1024px) { .k-mobile-nav { display: none !important; } }
+
+.k-mobile-nav__group { border-bottom: var(--k-hairline) solid var(--line); }
+.k-mobile-nav__group > summary,
+.k-mobile-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 18px;
+  font-family: var(--k-serif);
+  font-size: 24px;
+  color: var(--fg);
+  text-decoration: none;
+  cursor: pointer;
+  list-style: none;
+}
+.k-mobile-nav__group > summary::-webkit-details-marker { display: none; }
+.k-mobile-nav__sub { list-style: none; padding: 0 0 18px; }
+.k-mobile-nav__sub a {
+  display: block;
+  padding: 9px 0 9px var(--k-sm);
+  font-family: var(--k-sans);
+  font-size: var(--k-fs-small);
+  color: var(--fg-body);
+  text-decoration: none;
+}
+.k-mobile-nav__foot { display: flex; flex-direction: column; gap: var(--k-sm); margin-top: var(--k-lg); }
+
+
+/* ==========================================================================
+   CREDENTIAL BAND
+   Verified proof only, Schlüter, NVQ Level 2, insured, accredited.
+   ========================================================================== */
+
+.k-credentials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--k-hairline);
+  background: var(--line-strong);
+  border-block: var(--k-hairline) solid var(--line-strong);
+}
+@media (min-width: 860px) { .k-credentials { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.k-credential {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: clamp(22px, 2.6vw, 34px) clamp(18px, 2vw, 28px);
+  background: var(--bg);
+}
+.k-credential__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.k-credential__value {
+  font-family: var(--k-serif);
+  font-size: clamp(19px, 1.8vw, 25px);
+  line-height: 1.2;
+  color: var(--fg);
+}
+.k-credential__note { font-size: var(--k-fs-caption); color: var(--fg-muted); }
+
+
+/* ==========================================================================
+   FIGURE / IMAGE
+   Ratio is set per role via --k-ratio. object-position carries the focal
+   point so nothing is ever distorted or badly cropped.
+   ========================================================================== */
+
+.k-figure { display: flex; flex-direction: column; gap: var(--k-sm); margin: 0; }
+
+.k-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-alt);
+  aspect-ratio: var(--k-ratio, 3 / 2);
+}
+/* <picture> renders nothing itself, but it is still a block box in the layout.
+   The img inside resolves height:100% against it, so it has to fill the frame
+   or the image collapses to its intrinsic height. */
+.k-media picture { display: block; width: 100%; height: 100%; }
+
+/* Descendant, not child: every image is wrapped in <picture> for the avif and
+   webp sources, so a direct-child combinator would never match and object-fit
+   would silently not apply. */
+.k-media img,
+.k-media video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: var(--k-focal, center);
+}
+
+.k-ratio-hero    { --k-ratio: 16 / 9; }
+.k-ratio-cinema  { --k-ratio: 21 / 9; }
+.k-ratio-editorial { --k-ratio: 3 / 2; }
+.k-ratio-detail  { --k-ratio: 5 / 4; }
+.k-ratio-square  { --k-ratio: 1 / 1; }
+.k-ratio-portrait{ --k-ratio: 4 / 5; }
+
+@media (max-width: 560px) {
+  .k-ratio-hero, .k-ratio-cinema { --k-ratio: 4 / 5; }
+}
+
+.k-figure figcaption { font-size: var(--k-fs-caption); color: var(--fg-muted); max-width: 52ch; }
+
+
+/* ==========================================================================
+   PROJECT CARD
+   4:5 portrait. Whole card is one link target. Image scales on hover behind
+   a mask, the only transform in the system.
+   ========================================================================== */
+
+.k-project {
+  display: flex;
+  flex-direction: column;
+  gap: var(--k-sm);
+  text-decoration: none;
+  color: inherit;
+}
+
+.k-project .k-media { --k-ratio: 4 / 5; }
+.k-project .k-media img { transition: transform var(--k-dur-hover) var(--k-ease); }
+.k-project:hover .k-media img,
+.k-project:focus-visible .k-media img { transform: scale(1.03); }
+
+.k-project__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.k-project__meta > span + span::before { content: "· "; }
+
+.k-project__title {
+  font-family: var(--k-serif);
+  font-size: clamp(21px, 1.9vw, 27px);
+  line-height: 1.2;
+  color: var(--fg);
+  transition: color var(--k-dur-micro) var(--k-ease-micro);
+}
+.k-project:hover .k-project__title { color: var(--accent); }
+
+.k-project__desc { font-size: var(--k-fs-small); color: var(--fg-body); max-width: 40ch; }
+
+.k-project__materials {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 2px;
+}
+.k-project__material {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  border: var(--k-hairline) solid var(--line);
+  padding: 4px 9px;
+}
+
+
+/* ==========================================================================
+   SERVICE CARD, hairline grid cell, no shadow, no radius
+   ========================================================================== */
+
+.k-service {
+  display: flex;
+  flex-direction: column;
+  gap: var(--k-sm);
+  padding: clamp(26px, 3vw, 40px);
+  background: var(--surface);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color var(--k-dur-micro) var(--k-ease-micro);
+}
+.k-service:hover { background: var(--bg-alt); }
+.k-service__title { font-family: var(--k-serif); font-size: var(--k-fs-h3); line-height: 1.15; color: var(--fg); }
+.k-service__desc  { font-size: var(--k-fs-small); color: var(--fg-body); max-width: 42ch; flex: 1; }
+.k-service__more {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent);
+}
+
+
+/* ---- Service cards over photography -------------------------------------
+   Same square card, same hairline grid, but the cell carries a photograph of
+   the work instead of flat surface colour. The scrim is heavy enough to hold
+   body copy over a bright frame, and .k-invert on the card flips the type
+   tokens so the colours come from the palette rather than hardcoded whites.
+
+   The grid paints its children with --surface to draw the dividers, so the
+   media cards have to win that back explicitly. */
+
+.k-grid--hairline > .k-service--media,
+.k-service--media:hover { background: var(--k-ink); }
+
+.k-service--media {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(260px, 26vw, 340px);
+}
+
+.k-service__bg { position: absolute; inset: 0; z-index: -2; }
+.k-service__bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--k-dur-hover) var(--k-ease);
+}
+
+/* Near-even scrim rather than a bottom-weighted gradient: the title sits at
+   the top of the card, so darkening only the foot would strand it.
+
+   0.80 at the top is not arbitrary. Measured against the brightest 5% of each
+   of the six photographs, it is the lightest scrim that still holds the
+   Explore link (11px petrol-lift, the tightest element) at 4.5:1. Marble is
+   the binding case at 4.81:1. Lighten this and that link drops below AA. */
+.k-service--media::after {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg,
+              rgba(18, 23, 26, 0.80) 0%,
+              rgba(18, 23, 26, 0.90) 100%);
+}
+
+.k-service--media:hover .k-service__bg img,
+.k-service--media:focus-visible .k-service__bg img { transform: scale(1.04); }
+
+@media (prefers-reduced-motion: reduce) {
+  .k-service__bg img { transition: none; }
+}
+
+
+/* ==========================================================================
+   MATERIAL SWATCH, 1:1, the only 3-col photography in the system
+   ========================================================================== */
+
+.k-swatch { display: flex; flex-direction: column; gap: var(--k-xs); text-decoration: none; color: inherit; }
+.k-swatch .k-media { --k-ratio: 1 / 1; }
+.k-swatch__name { font-size: var(--k-fs-small); font-weight: 500; color: var(--fg); }
+.k-swatch__type { font-size: var(--k-fs-caption); color: var(--fg-muted); }
+
+
+/* ==========================================================================
+   PROCESS STRIP
+   Numbering is earned here, this is a genuine sequence, and the order
+   carries information the reader needs.
+   ========================================================================== */
+
+.k-process { display: grid; gap: var(--k-hairline); background: var(--line-strong); border: var(--k-hairline) solid var(--line-strong); }
+@media (min-width: 700px)  { .k-process { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .k-process { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+
+.k-step {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(22px, 2.4vw, 30px) clamp(18px, 2vw, 24px);
+  background: var(--bg);
+}
+.k-step__n {
+  font-family: var(--k-mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+.k-step__title { font-size: var(--k-fs-small); font-weight: 600; color: var(--fg); line-height: 1.35; }
+.k-step__desc  { font-size: var(--k-fs-caption); color: var(--fg-muted); line-height: 1.5; }
+
+
+/* ==========================================================================
+   PROJECT FILM
+   Cinematic. Not an embed dropped in a section.
+   ========================================================================== */
+
+.k-film { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; }
+.k-film .k-media { --k-ratio: 21 / 9; }
+@media (max-width: 768px) { .k-film .k-media { --k-ratio: 4 / 5; } }
+
+.k-film__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(18,23,26,.72) 0%, rgba(18,23,26,.28) 45%, rgba(18,23,26,.12) 100%);
+}
+
+.k-film__body {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: clamp(24px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--k-xs);
+}
+.k-film__eyebrow {
+  font-size: var(--k-fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--k-ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--k-petrol-lift);
+}
+.k-film__title {
+  font-family: var(--k-serif);
+  font-size: clamp(26px, 3.4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: var(--k-ls-h2);
+  color: var(--k-paper);
+  max-width: 18ch;
+}
+.k-film__cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: var(--k-sm);
+  font-size: var(--k-fs-btn); font-weight: 600;
+  letter-spacing: var(--k-ls-btn); text-transform: uppercase;
+  color: var(--k-paper);
+}
+.k-film__cta::before {
+  content: "";
+  width: 0; height: 0;
+  border-left: 9px solid currentColor;
+  border-block: 6px solid transparent;
+}
+.k-film:hover .k-media img { transform: scale(1.02); }
+.k-film .k-media img { transition: transform var(--k-dur-hover) var(--k-ease); }
+
+.k-film-dialog { width: min(1200px, 92vw); padding: 0; border: 0; background: var(--k-ink); }
+.k-film-dialog::backdrop { background: rgba(18, 23, 26, 0.92); }
+.k-film-dialog video { width: 100%; height: auto; display: block; }
+.k-film-dialog__close {
+  position: absolute; top: 12px; right: 12px;
+  width: 44px; height: 44px;
+  background: var(--k-ink); color: var(--k-paper);
+  border: var(--k-hairline) solid rgba(214,210,203,.34);
+  cursor: pointer; font-size: 18px; line-height: 1;
+}
+
+
+/* ==========================================================================
+   CASE STUDY META, the spec sheet. Reads as a drawing schedule.
+   ========================================================================== */
+
+.k-meta-list { display: grid; gap: var(--k-hairline); background: var(--line); border-block: var(--k-hairline) solid var(--line); }
+@media (min-width: 700px) { .k-meta-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px){ .k-meta-list { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.k-meta { display: flex; flex-direction: column; gap: 6px; padding: var(--k-md) 0; background: var(--bg); }
+@media (min-width: 700px) { .k-meta { padding-inline: var(--k-md); } }
+.k-meta dt { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fg-muted); }
+.k-meta dd { font-size: var(--k-fs-small); color: var(--fg); margin: 0; }
+
+
+/* ==========================================================================
+   CTA BLOCK
+   ========================================================================== */
+
+.k-cta { display: flex; flex-direction: column; gap: var(--k-md); align-items: flex-start; }
+.k-cta__title {
+  font-family: var(--k-serif);
+  font-size: clamp(30px, 4.4vw, 66px);
+  line-height: 1.04;
+  letter-spacing: var(--k-ls-display);
+  color: var(--fg);
+  max-width: 16ch;
+}
+
+
+/* ==========================================================================
+   STICKY MOBILE BAR
+   Appears after ~40% scroll so it never covers the hero.
+   ========================================================================== */
+
+.k-sticky-cta {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: var(--k-z-sticky);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--k-hairline);
+  background: var(--line-strong);
+  border-top: var(--k-hairline) solid var(--line-strong);
+  transform: translateY(100%);
+  transition: transform 300ms var(--k-ease);
+}
+.k-sticky-cta.is-visible { transform: translateY(0); }
+@media (min-width: 1024px) { .k-sticky-cta { display: none; } }
+
+.k-sticky-cta__item {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 58px; padding-inline: 8px;
+  background: var(--k-paper);
+  color: var(--k-ink);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none;
+}
+.k-sticky-cta__item--primary { background: var(--k-ink); color: var(--k-paper); }
+
+
+/* ==========================================================================
+   FORMS
+   Radius 0 including inputs. Focus is a 2px petrol ring, never a glow.
+   ========================================================================== */
+
+.k-field { display: flex; flex-direction: column; gap: var(--k-xs); }
+
+.k-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.k-label__req { color: var(--accent); }
+
+.k-input, .k-select, .k-textarea {
+  width: 100%;
+  min-height: var(--k-control-h);
+  padding: 14px 16px;
+  background: var(--surface);
+  color: var(--fg);
+  border: var(--k-hairline) solid var(--line-strong);
+  border-radius: var(--k-radius);
+  font-size: var(--k-fs-small);
+  transition: border-color var(--k-dur-micro) var(--k-ease-micro);
+}
+.k-textarea { min-height: 132px; resize: vertical; line-height: 1.6; }
+
+.k-input:focus, .k-select:focus, .k-textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+  border-color: var(--accent);
+}
+.k-input::placeholder, .k-textarea::placeholder { color: var(--fg-muted); opacity: 1; }
+
+.k-select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(50% + 1px), calc(100% - 14px) calc(50% + 1px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 44px;
+}
+
+.k-input[aria-invalid="true"], .k-textarea[aria-invalid="true"] { border-color: var(--k-error); }
+.k-error-text { font-size: var(--k-fs-caption); color: var(--k-error); }
+.k-help-text  { font-size: var(--k-fs-caption); color: var(--fg-muted); }
+
+/* Choice chips, used for project type / services required.
+   Real radio/checkbox inputs underneath, so it works without JS. */
+.k-choices { display: flex; flex-wrap: wrap; gap: var(--k-xs); }
+.k-choice { position: relative; }
+.k-choice input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.k-choice span {
+  display: block;
+  padding: 12px 20px;
+  background: var(--surface);
+  border: var(--k-hairline) solid var(--line-strong);
+  font-size: var(--k-fs-small);
+  color: var(--fg-body);
+  transition: background-color var(--k-dur-micro) var(--k-ease-micro),
+              border-color var(--k-dur-micro) var(--k-ease-micro),
+              color var(--k-dur-micro) var(--k-ease-micro);
+}
+.k-choice input:checked + span { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.k-choice input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* File upload, a genuine differentiator for a tiling contractor;
+   clients almost always have photos of the space. */
+.k-upload {
+  display: flex; flex-direction: column; align-items: flex-start; gap: var(--k-xs);
+  padding: var(--k-lg) var(--k-md);
+  border: var(--k-hairline) dashed var(--line-strong);
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+.k-upload:hover { border-color: var(--accent); }
+.k-upload__title { font-size: var(--k-fs-small); font-weight: 600; color: var(--fg); }
+.k-upload__hint  { font-size: var(--k-fs-caption); color: var(--fg-muted); }
+
+/* Progress, three steps, project first, contact details last */
+.k-steps { display: flex; gap: var(--k-hairline); background: var(--line-strong); border: var(--k-hairline) solid var(--line-strong); }
+.k-step-tab {
+  flex: 1;
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 14px 18px;
+  background: var(--bg);
+  color: var(--fg-muted);
+}
+.k-step-tab[aria-current="step"] { background: var(--fg); color: var(--bg); }
+.k-step-tab[aria-current="step"] .k-step-tab__n { color: var(--bg); }
+.k-step-tab__n { font-family: var(--k-mono); font-size: 11px; color: var(--accent); }
+.k-step-tab__t { font-size: var(--k-fs-caption); font-weight: 600; letter-spacing: 0.06em; }
+
+
+/* ==========================================================================
+   FAQ, native <details>, no JavaScript required
+   ========================================================================== */
+
+.k-faq { border-top: var(--k-hairline) solid var(--line-strong); }
+.k-faq__item { border-bottom: var(--k-hairline) solid var(--line); }
+
+.k-faq__q {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--k-md);
+  padding-block: var(--k-md);
+  font-family: var(--k-serif);
+  font-size: clamp(19px, 1.7vw, 24px);
+  line-height: 1.3;
+  color: var(--fg);
+  cursor: pointer;
+  list-style: none;
+}
+.k-faq__q::-webkit-details-marker { display: none; }
+
+.k-faq__icon { position: relative; flex: none; width: 14px; height: 14px; margin-top: 6px; }
+.k-faq__icon::before, .k-faq__icon::after {
+  content: ""; position: absolute; background: var(--accent);
+  transition: transform var(--k-dur-micro) var(--k-ease-micro);
+}
+.k-faq__icon::before { top: 50%; left: 0; width: 100%; height: 1px; transform: translateY(-50%); }
+.k-faq__icon::after  { left: 50%; top: 0; width: 1px; height: 100%; transform: translateX(-50%); }
+.k-faq__item[open] .k-faq__icon::after { transform: translateX(-50%) scaleY(0); }
+
+.k-faq__a { padding-bottom: var(--k-md); }
+.k-faq__a p { font-size: var(--k-fs-small); color: var(--fg-body); }
+
+
+/* ==========================================================================
+   BREADCRUMB
+   ========================================================================== */
+
+.k-breadcrumb ol { display: flex; flex-wrap: wrap; gap: 6px 10px; list-style: none; }
+.k-breadcrumb li { font-size: var(--k-fs-caption); color: var(--fg-muted); }
+.k-breadcrumb li + li::before { content: "/"; margin-right: 10px; color: var(--line-strong); }
+.k-breadcrumb a { color: var(--fg-muted); text-decoration: none; }
+.k-breadcrumb a:hover { color: var(--accent); }
+
+
+/* ==========================================================================
+   TABLE
+   ========================================================================== */
+
+.k-table { width: 100%; border-collapse: collapse; }
+.k-table th, .k-table td {
+  text-align: left;
+  padding: 13px 18px;
+  border-bottom: var(--k-hairline) solid var(--line);
+  font-size: var(--k-fs-small);
+  vertical-align: top;
+}
+.k-table th {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--fg-muted); white-space: nowrap;
+  border-bottom: var(--k-hairline) solid var(--line-strong);
+}
+.k-table tr:last-child td { border-bottom: 0; }
+.k-table .k-num { font-family: var(--k-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+/* The CTA band above the footer is also inverted, so without a rule the two
+   dark blocks read as one. This is the only dark-on-dark adjacency in the
+   system, which is why the border lives here rather than on .k-section--dark. */
+.k-footer {
+  padding-block: var(--k-2xl) var(--k-lg);
+  border-top: var(--k-hairline) solid var(--line-strong);
+}
+.k-footer__top { display: grid; gap: var(--k-xl); grid-template-columns: 1fr; }
+@media (min-width: 860px) { .k-footer__top { grid-template-columns: 1.4fr 1fr 1fr; } }
+
+.k-footer__col { display: flex; flex-direction: column; gap: var(--k-sm); }
+.k-footer__heading {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.k-footer__list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.k-footer__list a { font-size: var(--k-fs-small); color: var(--fg-body); text-decoration: none; }
+.k-footer__list a:hover { color: var(--accent); }
+
+.k-footer__bottom {
+  display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between;
+  margin-top: var(--k-xl); padding-top: var(--k-md);
+  border-top: var(--k-hairline) solid var(--line);
+  font-size: var(--k-fs-caption); color: var(--fg-muted);
+}

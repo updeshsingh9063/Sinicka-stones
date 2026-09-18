@@ -1,0 +1,559 @@
+{
+ "hero-stone-h": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1440,
+  "alt": "Close-up of dark brown marble with a bold white vein running diagonally"
+ },
+ "interior-res-w": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1097,
+  "alt": "Bathroom with travertine walls, a walk-in shower, stone vanity and floating wood cabinets"
+ },
+ "interior-res-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Bathroom with travertine walls, a walk-in shower, stone vanity and floating wood cabinets"
+ },
+ "interior-com-w": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1097,
+  "alt": "Office tower lobby with a polished marble floor inlaid with dark stone bands"
+ },
+ "interior-com-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Long corridor with speckled stone columns and sunlight falling across a polished floor"
+ },
+ "tex-concrete-s": {
+  "widths": [
+   800,
+   1200
+  ],
+  "width": 1200,
+  "height": 1200,
+  "alt": "Flat view of grey troweled plaster or screed with swirling tool marks"
+ },
+ "tex-tile-s": {
+  "widths": [
+   800,
+   1200
+  ],
+  "width": 1200,
+  "height": 1200,
+  "alt": "White marble surface with sweeping diagonal grey veins"
+ },
+ "craft-trowel-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Wall surface covered in ridged notched trowel lines of tile adhesive"
+ },
+ "craft-setting-w": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1097,
+  "alt": "Gloved hand inserting a tile levelling clip at the joint of large grey floor tiles"
+ },
+ "craft-setting-l": {
+  "widths": [
+   640,
+   960,
+   1440,
+   1920
+  ],
+  "width": 1920,
+  "height": 1280,
+  "alt": "Gloved hand inserting a tile levelling clip at the joint of large grey floor tiles"
+ },
+ "craft-cutting-l": {
+  "widths": [
+   640,
+   960,
+   1440,
+   1920
+  ],
+  "width": 1920,
+  "height": 1280,
+  "alt": "Bridge saw for cutting stone slabs in a fabrication workshop"
+ },
+ "craft-level-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Line laser level projecting green reference lines across a concrete floor"
+ },
+ "wet-drain-l": {
+  "widths": [
+   640,
+   960,
+   1440,
+   1920
+  ],
+  "width": 1920,
+  "height": 1280,
+  "alt": "Close-up of a metal slot drain set into a wet concrete surface"
+ },
+ "wet-drain-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Close-up of a metal slot drain set into a wet concrete surface"
+ },
+ "plans-samples-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Hands comparing marble tile samples over architectural drawings on a desk"
+ },
+ "mat-calacatta-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "White marble surface with sweeping diagonal grey veins"
+ },
+ "mat-limestone-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Close-up of pale grey and cream natural stone with a horizontal ridge"
+ },
+ "mat-travertine-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Flat close-up of porous travertine style stone in cream and rust tones"
+ },
+ "mat-granite-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Flat close-up of speckled black and white granite"
+ },
+ "mat-quartz-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "White engineered stone worktop with soft grey and gold veining"
+ },
+ "mat-porcelain-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Hands holding a dark marble sample and a white tile sample against a dark grey background"
+ },
+ "svc-porcelain-w": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1097,
+  "alt": "Bathroom lined floor to ceiling with large format grey marble effect porcelain tiles and a floating white vanity"
+ },
+ "svc-porcelain-l": {
+  "widths": [
+   640,
+   960,
+   1440,
+   1920
+  ],
+  "width": 1920,
+  "height": 1280,
+  "alt": "Bathroom lined floor to ceiling with large format grey marble effect porcelain tiles and a floating white vanity"
+ },
+ "svc-porcelain-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Large grey floor tiles laid in a staggered pattern with dappled light and a black chair"
+ },
+ "svc-stone-w": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1097,
+  "alt": "Green marble basin block with chrome taps against oak panelling and a stone strip"
+ },
+ "svc-stone-l": {
+  "widths": [
+   640,
+   960,
+   1440,
+   1920
+  ],
+  "width": 1920,
+  "height": 1280,
+  "alt": "Green marble basin block with chrome taps against oak panelling and a stone strip"
+ },
+ "svc-stone-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Green marble basin block with chrome taps against oak panelling and a stone strip"
+ },
+ "svc-granite-w": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1097,
+  "alt": "Indoor staircase with speckled granite walls and treads and stainless steel handrails"
+ },
+ "svc-granite-l": {
+  "widths": [
+   640,
+   960,
+   1440,
+   1920
+  ],
+  "width": 1920,
+  "height": 1280,
+  "alt": "Indoor staircase with speckled granite walls and treads and stainless steel handrails"
+ },
+ "svc-granite-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Close-up of textured grey stone steps"
+ },
+ "svc-engineered-w": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1097,
+  "alt": "Kitchen with a grey terrazzo island and splashback, dark wood cabinets and wood floor"
+ },
+ "svc-engineered-l": {
+  "widths": [
+   640,
+   960,
+   1440,
+   1920
+  ],
+  "width": 1920,
+  "height": 1280,
+  "alt": "Kitchen with a grey terrazzo island and splashback, dark wood cabinets and wood floor"
+ },
+ "svc-engineered-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Kitchen with a white stone waterfall island with dark veins and a book matched stone wall"
+ },
+ "svc-wetroom-w": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1097,
+  "alt": "Bathroom with dark stone tiled walls, a glass shower screen and black stone vanity top"
+ },
+ "svc-wetroom-l": {
+  "widths": [
+   640,
+   960,
+   1440,
+   1920
+  ],
+  "width": 1920,
+  "height": 1280,
+  "alt": "Bathroom with dark stone tiled walls, a glass shower screen and black stone vanity top"
+ },
+ "svc-wetroom-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Narrow bathroom with a walk-in shower, terracotta tile feature wall, stone floor and linear drain"
+ },
+ "stone-stairs-l": {
+  "widths": [
+   640,
+   960,
+   1440,
+   1920
+  ],
+  "width": 1920,
+  "height": 1280,
+  "alt": "Black and white view of dark veined stone steps in low light"
+ },
+ "london-arch-w": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1097,
+  "alt": "White stucco Georgian terrace in Kensington with black iron railings and York stone paving"
+ },
+ "yard-slabs-l": {
+  "widths": [
+   640,
+   960,
+   1440,
+   1920
+  ],
+  "width": 1920,
+  "height": 1280,
+  "alt": "Large white marble effect slabs and offcuts standing against the wall of a stone workshop"
+ },
+ "close-stone-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Large format grey stone effect tiles with a fine joint lit by a backlit round mirror"
+ },
+ "setting-out-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Green laser level crosshair projected onto a bare concrete wall"
+ },
+ "levelling-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Close-up of a gloved hand fitting levelling clips and wedges between floor tiles"
+ },
+ "home-wet-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Travertine lined shower with a stone bench and a lit linear drain channel"
+ },
+ "fixed-stone-h": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1440,
+  "alt": "Dark natural rock surface with deep shadows and low raking light across its ridges"
+ },
+ "disc-ceramic-v": {
+  "widths": [
+   600,
+   900,
+   1400,
+   2000
+  ],
+  "width": 2000,
+  "height": 2666,
+  "alt": "Large grey floor tiles laid in a staggered pattern with dappled light and a black chair"
+ },
+ "disc-stone-v": {
+  "widths": [
+   600,
+   900,
+   1400,
+   2000
+  ],
+  "width": 2000,
+  "height": 2667,
+  "alt": "Black marble surface with fine white veins"
+ },
+ "disc-granite-v": {
+  "widths": [
+   600,
+   900,
+   1400,
+   2000
+  ],
+  "width": 2000,
+  "height": 2667,
+  "alt": "Close-up of polished granite with black, cream and brown crystals"
+ },
+ "disc-engineered-v": {
+  "widths": [
+   600,
+   900,
+   1400,
+   2000
+  ],
+  "width": 2000,
+  "height": 2667,
+  "alt": "Flat close-up of grey terrazzo with white and pale pink marble chips"
+ },
+ "disc-wetroom-v": {
+  "widths": [
+   600,
+   900,
+   1400,
+   2000
+  ],
+  "width": 2000,
+  "height": 2667,
+  "alt": "Travertine shower with vein cut panels, a low stone upstand and black fittings"
+ },
+ "contact-aside-p": {
+  "widths": [
+   480,
+   800,
+   1200,
+   1600
+  ],
+  "width": 1600,
+  "height": 2000,
+  "alt": "Close-up of the sharp corner of a travertine block meeting a stone tiled floor"
+ },
+ "contact-band-h": {
+  "widths": [
+   960,
+   1440,
+   1920,
+   2560
+  ],
+  "width": 2560,
+  "height": 1440,
+  "alt": "Rectangular block wall with a granular stone finish and soft diagonal shadows in warm light"
+ }
+}

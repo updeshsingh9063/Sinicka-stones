@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="canonical" href="https://krollinteriors.co.uk{{PATH}}">
+
+<meta property="og:type" content="{{OGTYPE}}">
+<meta property="og:site_name" content="Kroll Interiors">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:url" content="https://krollinteriors.co.uk{{PATH}}">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="theme-color" content="#0E1215">
+<meta name="color-scheme" content="dark light">
+
+<!-- Marks the document before first paint, so entrance states only hide
+     content when a script is actually present to reveal it. -->
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- The display face appears above the fold on every page. -->
+<link rel="preload" href="{{ROOT}}/assets/fonts/Newsreader-var-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="{{ROOT}}/css/00-fonts.css">
+<link rel="stylesheet" href="{{ROOT}}/css/scrollcraft.css">
+<link rel="stylesheet" href="{{ROOT}}/css/10-tokens.css">
+<link rel="stylesheet" href="{{ROOT}}/css/11-base.css">
+<link rel="stylesheet" href="{{ROOT}}/css/12-layout.css">
+<link rel="stylesheet" href="{{ROOT}}/css/13-chrome.css">
+<link rel="stylesheet" href="{{ROOT}}/css/14-components.css">
+<link rel="stylesheet" href="{{ROOT}}/css/15-home.css">
+
+{{SCHEMA}}
+</head>
+<body>
+
+<div class="sc-grain" aria-hidden="true"></div>
+
+{{HEADER}}
+
+<main id="main" tabindex="-1">
+{{CONTENT}}
+</main>
+
+{{FOOTER}}
+
+<script src="{{ROOT}}/js/vendor/lenis.min.js" defer></script>
+<script src="{{ROOT}}/js/scrollcraft.js" defer></script>
+<script src="{{ROOT}}/js/kroll.js" defer></script>
+</body>
+</html>

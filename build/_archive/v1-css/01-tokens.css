@@ -1,0 +1,193 @@
+/* ==========================================================================
+   KROLL INTERIORS, DESIGN TOKENS
+   Phase C. Single source of truth. Nothing below this file hard-codes a value.
+
+   Transfers to any WordPress approach unchanged: enqueue as-is, or paste the
+   :root block into theme.json / a block theme's global styles.
+   ========================================================================== */
+
+:root {
+
+  /* ---- COLOUR · neutrals ------------------------------------------------
+     Cool at the dark end, warm-cast at the light end. That tension is what
+     real London stone interiors look like, and it stops the palette reading
+     clinical. */
+
+  --k-ink:        #12171A;   /* Architectural black, headings, dark sections, primary CTA */
+  --k-graphite:   #20272C;   /* Dark surface, footer */
+  --k-slate:      #3A444B;   /* Body text on light */
+  --k-concrete:   #5C666D;   /* Muted text, captions, metadata, AA-tested, see note */
+  --k-silica:     #98A2A8;   /* Muted text on dark, disabled */
+  --k-limestone:  #D6D2CB;   /* Hairlines, dividers, borders */
+  --k-chalk:      #EAE7E1;   /* Alternating section surface */
+  --k-paper:      #F7F5F1;   /* Page background */
+  --k-white:      #FFFFFF;   /* Pure white, image mats */
+
+  /* --k-concrete is #5C666D and NOT the more obvious #68737A: that value
+     measures 4.46:1 on --k-paper and fails WCAG AA body text. Do not "tidy" it. */
+
+  /* ---- COLOUR · accent --------------------------------------------------
+     Derived from the client's own logo, the inner arc #116B9C, deepened and
+     desaturated. Reads as architectural drawing ink, not corporate tech.
+
+     DISCIPLINE: this is a precision instrument, not a brand colour.
+     Primary CTAs are --k-ink, never petrol. Petrol appears in links, active
+     nav, focus rings, the rule above each eyebrow, and form focus. If more
+     than ~3% of a viewport is petrol, it has been overused.
+
+     NEVER sample the logo's cyan #009ED6, purple #422874 or periwinkle
+     #B5B8D7 into the UI. Those exist at logo size only. */
+
+  --k-petrol:      #1B5A7A;
+  --k-petrol-deep: #123F56;  /* hover / pressed */
+  --k-petrol-tint: #E6EEF2;  /* tinted surfaces, quiet callouts */
+  --k-petrol-lift: #7DB0CA;  /* accent on dark grounds only, AA on --k-ink */
+
+  /* ---- COLOUR · semantic ---- */
+  --k-success:      #2E6B4F;
+  --k-success-lift: #6FBF95;  /* on dark grounds */
+  --k-error:        #8C2F2F;
+  --k-error-lift:   #D68585;  /* on dark grounds */
+
+  /* ---- SEMANTIC SURFACE TOKENS ------------------------------------------
+     Components reference these, never the raw palette above. A dark section
+     re-declares this block (see .k-section--dark) and everything inside it
+     re-colours with no component-level overrides. */
+
+  --bg:           var(--k-paper);
+  --bg-alt:       var(--k-chalk);
+  --surface:      var(--k-white);
+  --fg:           var(--k-ink);
+  --fg-body:      var(--k-slate);
+  --fg-muted:     var(--k-concrete);
+  --accent:       var(--k-petrol);
+  --accent-hover: var(--k-petrol-deep);
+  --accent-ink:   var(--k-white);
+  --line:         rgba(18, 23, 26, 0.14);
+  --line-strong:  rgba(18, 23, 26, 0.30);
+
+  /* ---- ELEVATION · tinted to the palette, never neutral black ----
+     The hairline is the primary separation device. Shadows are rare. */
+
+  --k-shadow-sm: 0 2px 14px  rgba(18, 23, 26, 0.05);
+  --k-shadow-md: 0 18px 48px rgba(18, 23, 26, 0.09);
+  --k-shadow-lg: 0 34px 96px rgba(18, 23, 26, 0.14);
+
+  /* ---- SHAPE ------------------------------------------------------------
+     Zero. Site-wide. No exceptions, including form inputs.
+     Separation comes from hairlines and whitespace. */
+
+  --k-radius: 0px;
+  --k-hairline: 1px;
+
+  /* ---- TYPE FAMILIES ----
+     Both SIL OFL. Self-host at Phase M, the CDN link is a build-time
+     convenience only. Fallbacks are real, not decorative. */
+
+  --k-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --k-sans:  "Jost", "Futura", "Century Gothic", -apple-system,
+             BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --k-mono:  ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* ---- TYPE SCALE · fluid ---- */
+  --k-fs-display: clamp(40px, 5.6vw, 94px);
+  --k-fs-h1:      clamp(37px, 4.7vw, 74px);
+  --k-fs-h2:      clamp(28px, 3.4vw, 51px);
+  --k-fs-h3:      clamp(23px, 2.3vw, 34px);
+  --k-fs-h4:      clamp(19px, 1.5vw, 24px);
+  --k-fs-lead:    clamp(18px, 1.5vw, 22px);
+  --k-fs-body:    17.5px;
+  --k-fs-small:   15px;
+  --k-fs-caption: 13px;
+  --k-fs-eyebrow: 12px;
+  --k-fs-nav:     14px;
+  --k-fs-btn:     13px;
+
+  --k-lh-display: 0.98;
+  --k-lh-h1:      1.02;
+  --k-lh-h2:      1.06;
+  --k-lh-h3:      1.16;
+  --k-lh-h4:      1.3;
+  --k-lh-lead:    1.55;
+  --k-lh-body:    1.7;
+
+  --k-ls-display: -0.02em;
+  --k-ls-h2:      -0.015em;
+  --k-ls-h3:      -0.01em;
+  --k-ls-eyebrow: 0.16em;   /* the signature device; Jost is already wide */
+  --k-ls-btn:     0.12em;
+  --k-ls-nav:     0.04em;
+
+  /* ---- MEASURE ---- */
+  --k-measure:      68ch;   /* body copy */
+  --k-measure-lead: 56ch;   /* lead paragraphs */
+
+  /* ---- SPACING · 8px base, editorial rhythm ---- */
+  --k-xs:  8px;
+  --k-sm:  16px;
+  --k-md:  24px;
+  --k-lg:  40px;
+  --k-xl:  64px;
+  --k-2xl: 96px;
+  --k-3xl: 140px;
+  --k-4xl: 200px;
+
+  --k-section-y:       clamp(96px, 12vw, 180px);
+  --k-section-y-tight: clamp(64px, 8vw, 112px);
+
+  /* ---- GRID ---- */
+  --k-max:        1320px;
+  --k-max-narrow: 720px;
+  --k-max-wide:   1560px;
+  --k-gutter:     clamp(20px, 2vw, 32px);
+  --k-pad:        clamp(20px, 4vw, 48px);   /* 20 mobile · 32 tablet · 48 desktop */
+
+  /* ---- MOTION ----
+     Restrained to the point of near-invisibility. DDL runs nine transitions
+     in 175 KB of CSS and reads as the most expensive site in the category. */
+
+  --k-ease:       cubic-bezier(0.22, 1, 0.36, 1);   /* expo-out, for reveals */
+  --k-ease-micro: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --k-dur-micro:  200ms;
+  --k-dur-reveal: 500ms;
+  --k-dur-image:  900ms;
+  --k-dur-hover:  500ms;
+
+  /* ---- CONTROLS ---- */
+  --k-control-h:        54px;
+  --k-control-h-mobile: 50px;
+  --k-control-pad-x:    36px;
+
+  --k-header-h:          88px;
+  --k-header-h-condensed: 66px;
+  --k-z-header:  100;
+  --k-z-sticky:  90;
+  --k-z-overlay: 200;
+}
+
+
+/* ==========================================================================
+   DARK GROUND, re-declares only the semantic tokens.
+   Applied by .k-section--dark, the footer, and any inverted block.
+   Components never override colour themselves; they inherit from here.
+   ========================================================================== */
+
+.k-invert {
+  --bg:          var(--k-ink);
+  --bg-alt:      var(--k-graphite);
+  --surface:     var(--k-graphite);
+  --fg:          var(--k-paper);
+  --fg-body:     var(--k-limestone);
+  --fg-muted:    var(--k-silica);
+  --accent:      var(--k-petrol-lift);
+  --accent-hover:var(--k-white);
+  --accent-ink:  var(--k-ink);
+  --line:        rgba(214, 210, 203, 0.16);
+  --line-strong: rgba(214, 210, 203, 0.32);
+  --k-success:   var(--k-success-lift);
+  --k-error:     var(--k-error-lift);
+
+  background: var(--bg);
+  color: var(--fg-body);
+}

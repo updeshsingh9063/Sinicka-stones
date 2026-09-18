@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kroll Interiors, Build</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
+<style>: root{--ink:#12171A;--paper:#F7F5F1;--chalk:#EAE7E1;--slate:#3A444B;--concrete:#5C666D;
+--limestone:#D6D2CB;--petrol:#1B5A7A;--line: rgba(18,23,26,.14);--strong: rgba(18,23,26,.3)}
+*{box-sizing: border-box}
+body{margin:0;background: var(--paper);color: var(--slate);
+font:400 17px/1.7 "Instrument Sans", system-ui, sans-serif;-webkit-font-smoothing: antialiased}.wrap{max-width:940px;margin:0 auto;padding: clamp(48px,7vw,96px) clamp(20px,4vw,48px)}.eyebrow{display: block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform: uppercase;color: var(--concrete)}
+h1{font-family:"Instrument Serif",Georgia, serif;font-weight:400;font-size: clamp(34px,5vw,64px);
+line-height:1.02;letter-spacing:-.02em;color: var(--ink);margin:20px 0 0}
+p{max-width:64ch;margin:18px 0 0}.grid{display: grid;gap:1px;background: var(--strong);border:1px solid var(--strong);margin-top: clamp(36px,5vw,56px)}
+@media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+a.card{display: flex;flex-direction: column;gap:9px;padding: clamp(24px,3vw,34px);background:#fff;
+text-decoration: none;color: inherit;transition: background-color.18s ease}
+a.card: hover{background: var(--chalk)}.card b{font-family:"Instrument Serif",Georgia, serif;font-weight:400;font-size:26px;line-height:1.15;color: var(--ink)}.card span{font-size:14.5px;color: var(--concrete);line-height:1.55}.card code{font-family: ui-monospace,Menlo,Consolas, monospace;font-size:12px;color: var(--petrol)}.note{margin-top: clamp(36px,5vw,56px);border-left:2px solid var(--petrol);padding:18px 0 18px 20px;background:#fff}.note b{display: block;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform: uppercase;color: var(--concrete);margin-bottom:9px}.note p{margin:0;font-size:15px}
+code.k{font-family: ui-monospace,Menlo,Consolas, monospace;font-size:13px;background: var(--chalk);padding:2px 6px}: focus-visible{outline:2px solid var(--petrol);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">Kroll Interiors · build</span>
+  <h1>Start here.</h1>
+  <p>This directory is the source. The browsable site is generated into <code class="k">site/</code>
+  by <code class="k">build.py</code>, open that, not the source folders.</p>
+
+  <div class="grid">
+    <a class="card" href="site/index.html">
+      <b>The site</b>
+      <span>All 18 pages, navigable. Generated output.</span>
+      <code>site/index.html</code>
+    </a>
+    <a class="card" href="styleguide.html">
+      <b>Component library</b>
+      <span>Every token and component, live and operable.</span>
+      <code>styleguide.html</code>
+    </a>
+  </div>
+
+  <div class="note">
+    <b>If a page renders as unstyled text</b>
+    <p>You have opened a file in <code class="k">_pages/</code>. Those are body-only fragments with no
+    <code class="k">&lt;head&gt;</code>, no stylesheets and no header or footer, <code class="k">build.py</code>
+    assembles them into <code class="k">site/</code>. Underscore-prefixed directories are source, never
+    output.</p>
+  </div>
+
+  <div class="note">
+    <b>Rebuilding</b>
+    <p><code class="k">python build.py</code> for development, or <code class="k">python build.py --prod</code>
+    to concatenate and minify the stylesheets into one request. Both write to <code class="k">site/</code>, which is deleted and recreated each run, never edit anything in there by hand.</p>
+  </div>
+</div>
+</body>
+</html>

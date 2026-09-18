@@ -1,0 +1,245 @@
+<!-- =====================================================================
+     HOMEPAGE. Chaptered editorial, eight chapters, one peak.
+     See scrollcraft/builds/kroll/BRIEF.md for the feeling curve.
+       I    title page        pin, the stone slit opens            night
+       II   who we are        flow, spread + credentials           night
+       III  the problem       flow, one sentence (authored silence) paper
+       IV   the build-up      pin, the cutaway  PEAK                night
+       V    the work          flow, Kroll's own films               surface
+       VI   materials         pan, museum labels                    paper
+       VII  who we work with  flow, two worlds                      night
+       VIII close             (footer partial)                      night
+     {{img}} tags are expanded by build.py from assets/img/manifest.json.
+     ===================================================================== -->
+
+<!-- I · title page -->
+<section class="k-hero" data-sc-act="pin" data-sc-span="1.9" data-folio="Kroll Interiors">
+  <div data-sc-stage class="k-hero__stage">
+    <div class="k-hero__plate">
+      {{img slot=hero-stone crop=h sizes="100vw" eager}}
+    </div>
+    <div class="k-hero__copy k-wrap">
+      <p class="k-label k-hero__label" data-k-fade>Specialist tiling &amp; stone · London</p>
+      <h1 class="k-display k-hero__title" data-k-lines>Specialist tiling and stone contractors in London.</h1>
+      <div class="k-hero__foot">
+        <p class="k-lede" data-k-fade style="--k-delay:450ms">Wall and floor tiling and stone work for private clients, developers and main contractors. Approved Schlüter tanking contractors.</p>
+        <div class="k-actions" data-k-fade style="--k-delay:600ms">
+          <a class="k-btn k-btn--solid" href="{{ROOT}}/contact/">Get a Quote <svg class="k-arrow" viewBox="0 0 18 11" aria-hidden="true"><path d="M0 5.5h16M11.5 1l4.5 4.5L11.5 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- II · who we are -->
+<section class="k-ch k-ch--after-pin k-ground--night" data-sc-act="flow" data-folio="Who we are">
+  <div class="k-wrap k-grid">
+    <h2 class="k-display k-display--xl k-c-1-8" data-k-lines>A London contractor, <em>not</em> a showroom.</h2>
+
+    <figure class="k-fig k-c-1-6">
+      <div class="k-fig__frame k-ratio-4x5 k-drift" data-k-reveal>
+        {{img slot=craft-trowel crop=p sizes="(min-width:900px) 40vw, 100vw"}}
+      </div>
+    </figure>
+
+    <div class="k-c-7-13 k-stack k-stack--xl" style="align-self:end">
+      <p class="k-lede" data-k-fade>We work alongside architects, designers and main contractors, and directly with private clients, from first survey through to snagging and handover.</p>
+      <p class="k-body" data-k-fade>Kroll Interiors specialises in wall and floor tiling and stone work for the construction industry, across private London homes and commercial fit-outs. Two disciplines, one contractor, one standard of setting out.</p>
+      <div class="k-index" data-k-fade>
+        <a class="k-index__row" href="{{ROOT}}/services/ceramic-porcelain-tiling/">
+          <span class="k-index__title">Tiling</span>
+          <span class="k-index__desc">Ceramic and porcelain to walls and floors, including large-format slabs.</span>
+          <svg class="k-arrow k-index__go" viewBox="0 0 18 11" aria-hidden="true"><path d="M0 5.5h16M11.5 1l4.5 4.5L11.5 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+        </a>
+        <a class="k-index__row" href="{{ROOT}}/services/natural-stone/">
+          <span class="k-index__title">Stone</span>
+          <span class="k-index__desc">Natural and engineered stone, specified, sourced, set out and sealed.</span>
+          <svg class="k-arrow k-index__go" viewBox="0 0 18 11" aria-hidden="true"><path d="M0 5.5h16M11.5 1l4.5 4.5L11.5 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="k-wrap" style="margin-top:clamp(4.5rem,9vw,8rem)">
+    <ul class="k-creds" data-sc-stagger="70" data-sc-in>
+      <li><span class="k-label">Certified</span><span class="k-creds__v">Approved Schlüter tanking contractor</span></li>
+      <li><span class="k-label">Qualified</span><span class="k-creds__v">NVQ Level 2 certified installers</span></li>
+      <li><span class="k-label">Covered</span><span class="k-creds__v">Fully insured</span></li>
+      <li><span class="k-label">Pre-qualified</span><span class="k-creds__v">Accredited contractor</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- III · the problem. Still the quiet chapter before the peak, but the claim
+     now has the thing it describes beside it: water leaving a floor. -->
+<section class="k-hush k-ground--paper" data-sc-act="flow" data-folio="The problem">
+  <div class="k-wrap k-hush__grid">
+    <figure class="k-fig k-hush__fig">
+      <div class="k-fig__frame k-ratio-4x5 k-drift" data-k-reveal>
+        {{img slot=wet-drain crop=p sizes="(min-width:900px) 34vw, 100vw"}}
+      </div>
+    </figure>
+    <div class="k-hush__body">
+      <h2 class="k-display k-display--xl k-hush__line" data-k-lines>Tile and grout are not <em>waterproof.</em></h2>
+      <p class="k-body k-hush__note" data-k-fade>Tile is impervious. Grout is not, and neither is the substrate behind it. Water finds the joints, then the fixings, then the timber or plasterboard underneath.</p>
+      <div class="k-hush__tail" data-k-fade style="--k-delay:120ms">
+        <p class="k-label">What keeps it out</p>
+        <p class="k-body k-body--ink">A tanking membrane, bonded to the walls and floor before tiling and sealed at every corner, penetration and drain upstand.</p>
+        <div><a class="k-link" href="{{ROOT}}/services/bathrooms-wet-rooms/">How we tank a wet room <svg class="k-arrow" viewBox="0 0 18 11" aria-hidden="true"><path d="M0 5.5h16M11.5 1l4.5 4.5L11.5 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IV · the build-up cutaway. PEAK. Largest span on the page. -->
+<!-- The layer textures are declared in 15-home.css: see the note there. -->
+<section class="k-cut" id="build-up" data-sc-act="pin" data-sc-span="4.6" data-k-cut data-folio="What sits behind">
+  <div data-sc-stage class="k-cut__stage">
+    <div class="k-cut__copy">
+      <p class="k-label">The build-up</p>
+      <h2 class="k-display k-display--lg k-cut__title">
+        <span class="k-cut__h k-cut__h--a">A finish is only as good as what sits <em>behind</em> it.</span>
+        <span class="k-cut__h k-cut__h--b" aria-hidden="true">The part you see is the <em>last</em> layer.</span>
+      </h2>
+      <p class="k-body">Substrate, tanking and movement joints are specified before a single tile is cut. It is the part nobody sees, and the only reason the part they do see still looks right in ten years.</p>
+      <div><a class="k-link" href="{{ROOT}}/approach/">Our approach <svg class="k-arrow" viewBox="0 0 18 11" aria-hidden="true"><path d="M0 5.5h16M11.5 1l4.5 4.5L11.5 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a></div>
+    </div>
+
+    <div class="k-cut__scene" aria-hidden="true">
+      <div class="k-cut__rig">
+        <div class="k-cut__layer k-cut__layer--0" data-layer="0"><span class="k-cut__face"></span><span class="k-cut__edge k-cut__edge--b"></span><span class="k-cut__edge k-cut__edge--l"></span><i class="k-cut__pin"></i></div>
+        <div class="k-cut__layer k-cut__layer--1" data-layer="1"><span class="k-cut__shadow"></span><span class="k-cut__face"></span><span class="k-cut__edge k-cut__edge--b"></span><span class="k-cut__edge k-cut__edge--l"></span><i class="k-cut__pin"></i></div>
+        <div class="k-cut__layer k-cut__layer--2" data-layer="2"><span class="k-cut__shadow"></span><span class="k-cut__face"></span><span class="k-cut__edge k-cut__edge--b"></span><span class="k-cut__edge k-cut__edge--l"></span><i class="k-cut__pin"></i></div>
+        <div class="k-cut__layer k-cut__layer--3" data-layer="3"><span class="k-cut__shadow"></span><span class="k-cut__face"></span><span class="k-cut__edge k-cut__edge--b"></span><span class="k-cut__edge k-cut__edge--l"></span><i class="k-cut__pin"></i></div>
+        <div class="k-cut__layer k-cut__layer--4" data-layer="4"><span class="k-cut__shadow"></span><span class="k-cut__face"></span><span class="k-cut__edge k-cut__edge--b"></span><span class="k-cut__edge k-cut__edge--l"></span><i class="k-cut__pin"></i></div>
+      </div>
+    </div>
+
+    <ol class="k-cut__labels">
+      <li class="k-cut__label" data-cut-label="4"><span class="k-cut__n">05</span><b>Tile and grout</b><span>Large format, back-buttered to full coverage. The only layer anyone sees.</span></li>
+      <li class="k-cut__label" data-cut-label="3"><span class="k-cut__n">04</span><b>Adhesive bed</b><span>Notched and beaten in. Voids under a tile are where cracks start.</span></li>
+      <li class="k-cut__label k-cut__label--membrane" data-cut-label="2"><span class="k-cut__n">03</span><b>Schlüter tanking membrane</b><span>One continuous layer, banded at every corner, joint and penetration.</span></li>
+      <li class="k-cut__label" data-cut-label="1"><span class="k-cut__n">02</span><b>Backer board</b><span>Uncoupling where the structure is expected to move.</span></li>
+      <li class="k-cut__label" data-cut-label="0"><span class="k-cut__n">01</span><b>Substrate</b><span>Surveyed, levelled and laid to falls before anything else.</span></li>
+    </ol>
+
+    <svg class="k-cut__lines" aria-hidden="true"></svg>
+  </div>
+</section>
+
+<!-- V · the work, on Kroll's own film -->
+<section class="k-ch k-ch--after-pin k-ground--surface" data-sc-act="flow" data-folio="The work">
+  <div class="k-wrap">
+    <div class="k-head">
+      <h2 class="k-display k-display--xl" data-k-lines>Recent work, <em>on film.</em></h2>
+      <p class="k-lede" data-k-fade>Two commercial leisure fit-outs, shown in the project films shot on site.</p>
+    </div>
+
+    <div class="k-projects">
+      <article class="k-proj">
+        <a class="k-proj__media" href="{{ROOT}}/projects/third-space-london/" aria-label="Third Space, London case study">
+          <div class="k-fig__frame" data-k-reveal>
+            <video data-k-loop muted loop playsinline preload="none" poster="{{ROOT}}/assets/video/ts-reel.jpg" aria-hidden="true" width="1280" height="720">
+              <source data-src="{{ROOT}}/assets/video/ts-reel-1280.mp4" type="video/mp4">
+            </video>
+          </div>
+        </a>
+        <div class="k-proj__body" data-k-fade>
+          <p class="k-proj__tags"><span>Commercial</span><span>Leisure</span><span>London</span></p>
+          <h3 class="k-display k-display--md">Third Space, London</h3>
+          <p class="k-body">Large-format porcelain and certified tanking to changing areas, wet rooms and the pool surround.</p>
+          <div><a class="k-link" href="{{ROOT}}/projects/third-space-london/">View project <svg class="k-arrow" viewBox="0 0 18 11" aria-hidden="true"><path d="M0 5.5h16M11.5 1l4.5 4.5L11.5 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="k-proj k-proj--flip">
+        <a class="k-proj__media" href="{{ROOT}}/projects/wimbledon/" aria-label="Third Space, Wimbledon case study">
+          <div class="k-fig__frame" data-k-reveal>
+            <video data-k-loop muted loop playsinline preload="none" poster="{{ROOT}}/assets/video/wb-reel.jpg" aria-hidden="true" width="1280" height="720">
+              <source data-src="{{ROOT}}/assets/video/wb-reel-1152.mp4" type="video/mp4">
+            </video>
+          </div>
+        </a>
+        <div class="k-proj__body" data-k-fade>
+          <p class="k-proj__tags"><span>Commercial</span><span>Leisure</span><span>Wimbledon</span></p>
+          <h3 class="k-display k-display--md">Third Space, Wimbledon</h3>
+          <p class="k-body">Porcelain, terrazzo and glazed ceramic across changing rooms, locker bays and circulation.</p>
+          <div><a class="k-link" href="{{ROOT}}/projects/wimbledon/">View project <svg class="k-arrow" viewBox="0 0 18 11" aria-hidden="true"><path d="M0 5.5h16M11.5 1l4.5 4.5L11.5 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VI · materials, travelling sideways -->
+<section class="k-ground--paper" data-sc-act="pan" data-sc-span="3.8" data-folio="Materials">
+  <div data-sc-stage class="k-rail-stage">
+    <div class="k-rail" data-sc-pan="0.02">
+      <div class="k-rail__lead">
+        <h2 class="k-display k-display--lg">Every material behaves differently once it is <em>on the wall.</em></h2>
+        <p class="k-body">Porcelain, natural stone, granite and engineered stone each need different substrates, adhesives and joint strategies.</p>
+      </div>
+      <a class="k-obj" href="{{ROOT}}/services/natural-stone/">
+        <div class="k-fig__frame k-obj__frame">{{img slot=mat-calacatta crop=p sizes="(min-width:900px) 25vw, 70vw"}}</div>
+        <p class="k-obj__name">Marble</p>
+        <p class="k-obj__meta"><span>Natural stone. Porous, reactive.</span><span>Bathrooms, feature walls.</span></p>
+      </a>
+      <a class="k-obj" href="{{ROOT}}/services/natural-stone/">
+        <div class="k-fig__frame k-obj__frame">{{img slot=mat-limestone crop=p sizes="(min-width:900px) 25vw, 70vw"}}</div>
+        <p class="k-obj__name">Limestone</p>
+        <p class="k-obj__meta"><span>Natural stone. Soft, absorbent.</span><span>Hallways, honed floors.</span></p>
+      </a>
+      <a class="k-obj" href="{{ROOT}}/services/natural-stone/">
+        <div class="k-fig__frame k-obj__frame">{{img slot=mat-travertine crop=p sizes="(min-width:900px) 25vw, 70vw"}}</div>
+        <p class="k-obj__name">Travertine</p>
+        <p class="k-obj__meta"><span>Natural stone. Naturally voided.</span><span>Floors and walls, in and out.</span></p>
+      </a>
+      <a class="k-obj" href="{{ROOT}}/services/granite/">
+        <div class="k-fig__frame k-obj__frame">{{img slot=mat-granite crop=p sizes="(min-width:900px) 25vw, 70vw"}}</div>
+        <p class="k-obj__name">Granite</p>
+        <p class="k-obj__meta"><span>Natural stone. Dense, hard-wearing.</span><span>Entrances, lobbies, stairs.</span></p>
+      </a>
+      <a class="k-obj" href="{{ROOT}}/services/engineered-stone/">
+        <div class="k-fig__frame k-obj__frame">{{img slot=mat-quartz crop=p sizes="(min-width:900px) 25vw, 70vw"}}</div>
+        <p class="k-obj__name">Quartz</p>
+        <p class="k-obj__meta"><span>Engineered. Consistent, low porosity.</span><span>Worktops, vanities.</span></p>
+      </a>
+      <a class="k-obj" href="{{ROOT}}/services/ceramic-porcelain-tiling/">
+        <div class="k-fig__frame k-obj__frame">{{img slot=mat-porcelain crop=p sizes="(min-width:900px) 25vw, 70vw"}}</div>
+        <p class="k-obj__name">Porcelain</p>
+        <p class="k-obj__meta"><span>Manufactured. Near-zero porosity.</span><span>Almost anywhere, wet areas included.</span></p>
+      </a>
+      <div class="k-rail__end">
+        <p class="k-display k-display--sm">Choosing the material is the start of the specification, not the end.</p>
+        <div><a class="k-link" href="{{ROOT}}/materials/">Compare materials <svg class="k-arrow" viewBox="0 0 18 11" aria-hidden="true"><path d="M0 5.5h16M11.5 1l4.5 4.5L11.5 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VII · who we work with -->
+<section class="k-ch k-ch--after-pin k-ground--night" data-sc-act="flow" data-folio="Who we work with">
+  <div class="k-wrap">
+    <div class="k-head">
+      <h2 class="k-display k-display--xl" data-k-lines>Private homes and <em>main contractors.</em></h2>
+    </div>
+    <div class="k-worlds">
+      <a class="k-world" href="{{ROOT}}/sectors/luxury-residential/">
+        <div class="k-fig__frame k-world__frame k-drift" data-k-reveal>
+          {{img slot=interior-res crop=p sizes="(min-width:900px) 45vw, 100vw"}}
+        </div>
+        <p class="k-label">Luxury residential</p>
+        <h3 class="k-display k-display--md k-world__title">The finish you specified, built to last.</h3>
+        <p class="k-body">Bathrooms, wet rooms, kitchens, hallways and whole-house schemes for private London homes.</p>
+      </a>
+      <a class="k-world" href="{{ROOT}}/sectors/commercial/">
+        <div class="k-fig__frame k-world__frame k-drift" data-k-reveal>
+          {{img slot=interior-com crop=p sizes="(min-width:900px) 45vw, 100vw"}}
+        </div>
+        <p class="k-label">Commercial fit-out</p>
+        <h3 class="k-display k-display--md k-world__title">Pre-qualified, accredited, insured.</h3>
+        <p class="k-body">Tiling and stone for developers and main contractors, working to the drawing and the programme.</p>
+      </a>
+    </div>
+  </div>
+</section>

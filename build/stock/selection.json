@@ -1,0 +1,703 @@
+{
+ "hero-stone": {
+  "file": "hero-stone__pexels-18325786.jpg",
+  "source": "pexels",
+  "id": "18325786",
+  "page_url": "https://www.pexels.com/photo/dark-marble-stone-texture-18325786/",
+  "photographer": "Akbar Nemati",
+  "photographer_url": "https://www.pexels.com/@akbar-nemati-220109/",
+  "license": "Pexels License",
+  "alt": "Close-up of dark brown marble with a bold white vein running diagonally",
+  "crops": [
+   "h"
+  ]
+ },
+ "interior-res": {
+  "file": "interior-res__unsplash-6YEMkA-2ji8.jpg",
+  "source": "unsplash",
+  "id": "6YEMkA-2ji8",
+  "page_url": "https://unsplash.com/photos/6YEMkA-2ji8",
+  "photographer": "Peter Muniz",
+  "photographer_url": "https://unsplash.com/@petepxl",
+  "license": "Unsplash License",
+  "alt": "Bathroom with travertine walls, a walk-in shower, stone vanity and floating wood cabinets",
+  "crops": [
+   "w",
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.62,
+    0.5
+   ]
+  }
+ },
+ "interior-com": {
+  "file": "interior-com__unsplash-08MQb0SSUDQ.jpg",
+  "source": "unsplash",
+  "id": "08MQb0SSUDQ",
+  "page_url": "https://unsplash.com/photos/08MQb0SSUDQ",
+  "photographer": "Andy Wang",
+  "photographer_url": "https://unsplash.com/@space_launch_system",
+  "license": "Unsplash License",
+  "alt": "Office tower lobby with a polished marble floor inlaid with dark stone bands",
+  "crops": [
+   "w",
+   "p"
+  ],
+  "focus": {
+   "w": [
+    0.5,
+    0.62
+   ]
+  },
+  "crop_files": {
+   "p": {
+    "file": "interior-com__unsplash-CbV2KZEA6tg.jpg",
+    "source": "unsplash",
+    "id": "CbV2KZEA6tg",
+    "page_url": "https://unsplash.com/photos/CbV2KZEA6tg",
+    "photographer": "Declan Sun",
+    "photographer_url": "https://unsplash.com/@declansun",
+    "license": "Unsplash License",
+    "alt": "Long corridor with speckled stone columns and sunlight falling across a polished floor"
+   }
+  }
+ },
+ "tex-concrete": {
+  "file": "tex-concrete__pexels-20364177.jpg",
+  "source": "pexels",
+  "id": "20364177",
+  "page_url": "https://www.pexels.com/photo/pattern-on-plaster-20364177/",
+  "photographer": "Zlatka Nešović",
+  "photographer_url": "https://www.pexels.com/@zlatka-nesovic-1033996364/",
+  "license": "Pexels License",
+  "alt": "Flat view of grey troweled plaster or screed with swirling tool marks",
+  "crops": [
+   "s"
+  ]
+ },
+ "tex-tile": {
+  "file": "mat-calacatta__pexels-2341290.jpg",
+  "source": "pexels",
+  "id": "2341290",
+  "page_url": "https://www.pexels.com/photo/marble-surface-2341290/",
+  "photographer": "H&CO",
+  "photographer_url": "https://www.pexels.com/@hngstrm/",
+  "license": "Pexels License",
+  "alt": "White marble surface with sweeping diagonal grey veins",
+  "crops": [
+   "s"
+  ]
+ },
+ "craft-trowel": {
+  "file": "craft-trowel__pexels-11299514.jpg",
+  "source": "pexels",
+  "id": "11299514",
+  "page_url": "https://www.pexels.com/photo/bright-wall-with-old-tile-adhesive-on-the-surface-11299514/",
+  "photographer": "Ann H",
+  "photographer_url": "https://www.pexels.com/@ann-h-45017/",
+  "license": "Pexels License",
+  "alt": "Wall surface covered in ridged notched trowel lines of tile adhesive",
+  "crops": [
+   "p"
+  ]
+ },
+ "craft-setting": {
+  "file": "craft-setting__pexels-11806490.jpg",
+  "source": "pexels",
+  "id": "11806490",
+  "page_url": "https://www.pexels.com/photo/a-close-up-shot-of-a-person-putting-tile-levelers-11806490/",
+  "photographer": "Vladimir Srajber",
+  "photographer_url": "https://www.pexels.com/@vladimirsrajber/",
+  "license": "Pexels License",
+  "alt": "Gloved hand inserting a tile levelling clip at the joint of large grey floor tiles",
+  "crops": [
+   "w",
+   "l"
+  ],
+  "focus": {
+   "w": [
+    0.6,
+    0.55
+   ],
+   "l": [
+    0.6,
+    0.5
+   ]
+  }
+ },
+ "craft-cutting": {
+  "file": "craft-cutting__pexels-30112375.jpg",
+  "source": "pexels",
+  "id": "30112375",
+  "page_url": "https://www.pexels.com/photo/industrial-granite-cutting-machine-in-factory-30112375/",
+  "photographer": "Deane Bayas",
+  "photographer_url": "https://www.pexels.com/@dbaler/",
+  "license": "Pexels License",
+  "alt": "Bridge saw for cutting stone slabs in a fabrication workshop",
+  "crops": [
+   "l"
+  ]
+ },
+ "craft-level": {
+  "file": "craft-level__pexels-6474119.jpg",
+  "source": "pexels",
+  "id": "6474119",
+  "page_url": "https://www.pexels.com/photo/close-up-shot-of-a-line-laser-6474119/",
+  "photographer": "Tima Miroshnichenko",
+  "photographer_url": "https://www.pexels.com/@tima-miroshnichenko/",
+  "license": "Pexels License",
+  "alt": "Line laser level projecting green reference lines across a concrete floor",
+  "crops": [
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.5,
+    0.6
+   ]
+  }
+ },
+ "wet-drain": {
+  "file": "svc-wetroom-detail__unsplash-CCjrm6A75GU.jpg",
+  "source": "unsplash",
+  "id": "CCjrm6A75GU",
+  "page_url": "https://unsplash.com/photos/CCjrm6A75GU",
+  "photographer": "Ilya Semenov",
+  "photographer_url": "https://unsplash.com/@si1og",
+  "license": "Unsplash License",
+  "alt": "Close-up of a metal slot drain set into a wet concrete surface",
+  "crops": [
+   "l",
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.5,
+    0.55
+   ]
+  }
+ },
+ "plans-samples": {
+  "file": "plans-samples__pexels-4977410.jpg",
+  "source": "pexels",
+  "id": "4977410",
+  "page_url": "https://www.pexels.com/photo/people-holding-tile-samples-4977410/",
+  "photographer": "Karola G",
+  "photographer_url": "https://www.pexels.com/@karola-g/",
+  "license": "Pexels License",
+  "alt": "Hands comparing marble tile samples over architectural drawings on a desk",
+  "crops": [
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.42,
+    0.62
+   ]
+  }
+ },
+ "mat-calacatta": {
+  "file": "mat-calacatta__pexels-2341290.jpg",
+  "source": "pexels",
+  "id": "2341290",
+  "page_url": "https://www.pexels.com/photo/marble-surface-2341290/",
+  "photographer": "H&CO",
+  "photographer_url": "https://www.pexels.com/@hngstrm/",
+  "license": "Pexels License",
+  "alt": "White marble surface with sweeping diagonal grey veins",
+  "crops": [
+   "p"
+  ]
+ },
+ "mat-limestone": {
+  "file": "mat-limestone__unsplash-ZQPtoOsPM-8.jpg",
+  "source": "unsplash",
+  "id": "ZQPtoOsPM-8",
+  "page_url": "https://unsplash.com/photos/ZQPtoOsPM-8",
+  "photographer": "the blowup",
+  "photographer_url": "https://unsplash.com/@theblowup",
+  "license": "Unsplash License",
+  "alt": "Close-up of pale grey and cream natural stone with a horizontal ridge",
+  "crops": [
+   "p"
+  ]
+ },
+ "mat-travertine": {
+  "file": "mat-travertine__pexels-12106848.jpg",
+  "source": "pexels",
+  "id": "12106848",
+  "page_url": "https://www.pexels.com/photo/marble-stone-floor-texture-12106848/",
+  "photographer": "Engin Akyurt",
+  "photographer_url": "https://www.pexels.com/@enginakyurt/",
+  "license": "Pexels License",
+  "alt": "Flat close-up of porous travertine style stone in cream and rust tones",
+  "crops": [
+   "p"
+  ]
+ },
+ "mat-granite": {
+  "file": "mat-granite__pexels-35690033.jpg",
+  "source": "pexels",
+  "id": "35690033",
+  "page_url": "https://www.pexels.com/photo/black-and-white-granite-texture-surface-35690033/",
+  "photographer": "Alex Dos Santos",
+  "photographer_url": "https://www.pexels.com/@alex-dos-santos-305643819/",
+  "license": "Pexels License",
+  "alt": "Flat close-up of speckled black and white granite",
+  "crops": [
+   "p"
+  ]
+ },
+ "mat-quartz": {
+  "file": "mat-quartz__unsplash-QWTubRKv_Ag.jpg",
+  "source": "unsplash",
+  "id": "QWTubRKv_Ag",
+  "page_url": "https://unsplash.com/photos/QWTubRKv_Ag",
+  "photographer": "Rosemary Media",
+  "photographer_url": "https://unsplash.com/@rosemarymedia",
+  "license": "Unsplash License",
+  "alt": "White engineered stone worktop with soft grey and gold veining",
+  "crops": [
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.45,
+    0.5
+   ]
+  }
+ },
+ "mat-porcelain": {
+  "file": "mat-porcelain__pexels-6568677.jpg",
+  "source": "pexels",
+  "id": "6568677",
+  "page_url": "https://www.pexels.com/photo/black-and-white-plates-of-marbles-in-hands-6568677/",
+  "photographer": "cottonbro studio",
+  "photographer_url": "https://www.pexels.com/@cottonbro/",
+  "license": "Pexels License",
+  "alt": "Hands holding a dark marble sample and a white tile sample against a dark grey background",
+  "crops": [
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.5,
+    0.45
+   ]
+  }
+ },
+ "svc-porcelain": {
+  "file": "svc-porcelain__pexels-19878528.jpg",
+  "source": "pexels",
+  "id": "19878528",
+  "page_url": "https://www.pexels.com/photo/bathroom-interior-with-gray-tiles-19878528/",
+  "photographer": "Lisa Anna",
+  "photographer_url": "https://www.pexels.com/@lisa-anna-901356985/",
+  "license": "Pexels License",
+  "alt": "Bathroom lined floor to ceiling with large format grey marble effect porcelain tiles and a floating white vanity",
+  "crops": [
+   "w",
+   "l",
+   "p"
+  ],
+  "focus": {
+   "w": [
+    0.5,
+    0.45
+   ]
+  },
+  "crop_files": {
+   "p": {
+    "file": "svc-porcelain__pexels-13799408.jpg",
+    "source": "pexels",
+    "id": "13799408",
+    "page_url": "https://www.pexels.com/photo/black-metal-chair-on-floor-tiles-13799408/",
+    "photographer": "Bimbim Sindu",
+    "photographer_url": "https://www.pexels.com/@bimbim-sindu-96724782/",
+    "license": "Pexels License",
+    "alt": "Large grey floor tiles laid in a staggered pattern with dappled light and a black chair"
+   }
+  }
+ },
+ "svc-stone": {
+  "file": "svc-stone__unsplash-3XGuOptvLJE.jpg",
+  "source": "unsplash",
+  "id": "3XGuOptvLJE",
+  "page_url": "https://unsplash.com/photos/3XGuOptvLJE",
+  "photographer": "Caroline Badran",
+  "photographer_url": "https://unsplash.com/@___atmos",
+  "license": "Unsplash License",
+  "alt": "Green marble basin block with chrome taps against oak panelling and a stone strip",
+  "crops": [
+   "w",
+   "l",
+   "p"
+  ],
+  "focus": {
+   "w": [
+    0.6,
+    0.66
+   ],
+   "l": [
+    0.6,
+    0.66
+   ]
+  }
+ },
+ "svc-granite": {
+  "file": "svc-granite__pexels-35588324.jpg",
+  "source": "pexels",
+  "id": "35588324",
+  "page_url": "https://www.pexels.com/photo/modern-indoor-staircase-with-metal-railings-35588324/",
+  "photographer": "Hoàng Phương Nguyễn",
+  "photographer_url": "https://www.pexels.com/@dichupdi/",
+  "license": "Pexels License",
+  "alt": "Indoor staircase with speckled granite walls and treads and stainless steel handrails",
+  "crops": [
+   "w",
+   "l",
+   "p"
+  ],
+  "crop_files": {
+   "p": {
+    "file": "svc-granite__pexels-1380661.jpg",
+    "source": "pexels",
+    "id": "1380661",
+    "page_url": "https://www.pexels.com/photo/gray-and-brown-surface-1380661/",
+    "photographer": "Andreea Ch",
+    "photographer_url": "https://www.pexels.com/@andreea-ch-371539/",
+    "license": "Pexels License",
+    "alt": "Close-up of textured grey stone steps"
+   }
+  }
+ },
+ "svc-engineered": {
+  "file": "svc-engineered__unsplash-Tf5QDU9xxMU.jpg",
+  "source": "unsplash",
+  "id": "Tf5QDU9xxMU",
+  "page_url": "https://unsplash.com/photos/Tf5QDU9xxMU",
+  "photographer": "Irena Oze",
+  "photographer_url": "https://unsplash.com/@iistyle",
+  "license": "Unsplash License",
+  "alt": "Kitchen with a grey terrazzo island and splashback, dark wood cabinets and wood floor",
+  "crops": [
+   "w",
+   "l",
+   "p"
+  ],
+  "crop_files": {
+   "p": {
+    "file": "svc-engineered__unsplash-xCAMk7wFZC4.jpg",
+    "source": "unsplash",
+    "id": "xCAMk7wFZC4",
+    "page_url": "https://unsplash.com/photos/xCAMk7wFZC4",
+    "photographer": "Franco Debartolo",
+    "photographer_url": "https://unsplash.com/@francotheshooter",
+    "license": "Unsplash License",
+    "alt": "Kitchen with a white stone waterfall island with dark veins and a book matched stone wall"
+   }
+  }
+ },
+ "svc-wetroom": {
+  "file": "svc-wetroom__unsplash-CeQpzwT63pU.jpg",
+  "source": "unsplash",
+  "id": "CeQpzwT63pU",
+  "page_url": "https://unsplash.com/photos/CeQpzwT63pU",
+  "photographer": "Franco Debartolo",
+  "photographer_url": "https://unsplash.com/@francotheshooter",
+  "license": "Unsplash License",
+  "alt": "Bathroom with dark stone tiled walls, a glass shower screen and black stone vanity top",
+  "crops": [
+   "w",
+   "l",
+   "p"
+  ],
+  "crop_files": {
+   "p": {
+    "file": "svc-wetroom__unsplash-FJZKTQspZmQ.jpg",
+    "source": "unsplash",
+    "id": "FJZKTQspZmQ",
+    "page_url": "https://unsplash.com/photos/FJZKTQspZmQ",
+    "photographer": "Irena Oze",
+    "photographer_url": "https://unsplash.com/@iistyle",
+    "license": "Unsplash License",
+    "alt": "Narrow bathroom with a walk-in shower, terracotta tile feature wall, stone floor and linear drain"
+   }
+  }
+ },
+ "stone-stairs": {
+  "file": "stone-stairs__unsplash-G8OTxsn7Bm0.jpg",
+  "source": "unsplash",
+  "id": "G8OTxsn7Bm0",
+  "page_url": "https://unsplash.com/photos/G8OTxsn7Bm0",
+  "photographer": "Mattias Russo-Larsson",
+  "photographer_url": "https://unsplash.com/@mattiasrl",
+  "license": "Unsplash License",
+  "alt": "Black and white view of dark veined stone steps in low light",
+  "crops": [
+   "l"
+  ]
+ },
+ "london-arch": {
+  "file": "london-arch__pexels-34715004.jpg",
+  "source": "pexels",
+  "id": "34715004",
+  "page_url": "https://www.pexels.com/photo/elegant-georgian-townhouses-in-kensington-london-34715004/",
+  "photographer": "Bob Jenkin",
+  "photographer_url": "https://www.pexels.com/@bob-jenkin-2007649943/",
+  "license": "Pexels License",
+  "alt": "White stucco Georgian terrace in Kensington with black iron railings and York stone paving",
+  "crops": [
+   "w"
+  ],
+  "focus": {
+   "w": [
+    0.5,
+    0.42
+   ]
+  }
+ },
+ "yard-slabs": {
+  "file": "yard-slabs__pexels-30112371.jpg",
+  "source": "pexels",
+  "id": "30112371",
+  "page_url": "https://www.pexels.com/photo/collection-of-granite-and-marble-slabs-in-factory-30112371/",
+  "photographer": "Deane Bayas",
+  "photographer_url": "https://www.pexels.com/@dbaler/",
+  "license": "Pexels License",
+  "alt": "Large white marble effect slabs and offcuts standing against the wall of a stone workshop",
+  "crops": [
+   "l"
+  ]
+ },
+ "close-stone": {
+  "file": "detail-junction__unsplash-cCZRvb3rdb0.jpg",
+  "source": "unsplash",
+  "id": "cCZRvb3rdb0",
+  "page_url": "https://unsplash.com/photos/cCZRvb3rdb0",
+  "photographer": "Bjørn Hansen",
+  "photographer_url": "https://unsplash.com/@stylepatrol",
+  "license": "Unsplash License",
+  "alt": "Large format grey stone effect tiles with a fine joint lit by a backlit round mirror",
+  "crops": [
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.42,
+    0.5
+   ]
+  }
+ },
+ "setting-out": {
+  "file": "craft-level__pexels-6473971.jpg",
+  "source": "pexels",
+  "id": "6473971",
+  "page_url": "https://www.pexels.com/photo/green-neon-lights-on-the-wall-6473971/",
+  "photographer": "Tima Miroshnichenko",
+  "photographer_url": "https://www.pexels.com/@tima-miroshnichenko/",
+  "license": "Pexels License",
+  "alt": "Green laser level crosshair projected onto a bare concrete wall",
+  "crops": [
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "levelling": {
+  "file": "craft-setting__pexels-11806482.jpg",
+  "source": "pexels",
+  "id": "11806482",
+  "page_url": "https://www.pexels.com/photo/a-close-up-shot-of-a-person-putting-tile-levelers-11806482/",
+  "photographer": "Vladimir Srajber",
+  "photographer_url": "https://www.pexels.com/@vladimirsrajber/",
+  "license": "Pexels License",
+  "alt": "Close-up of a gloved hand fitting levelling clips and wedges between floor tiles",
+  "crops": [
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.55,
+    0.5
+   ]
+  }
+ },
+ "home-wet": {
+  "file": "svc-wetroom__unsplash-ZFkvylq-n9A.jpg",
+  "source": "unsplash",
+  "id": "ZFkvylq-n9A",
+  "page_url": "https://unsplash.com/photos/ZFkvylq-n9A",
+  "photographer": "Peter Muniz",
+  "photographer_url": "https://unsplash.com/@petepxl",
+  "license": "Unsplash License",
+  "alt": "Travertine lined shower with a stone bench and a lit linear drain channel",
+  "crops": [
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "fixed-stone": {
+  "file": "hero-stone__pexels-18510619.jpg",
+  "source": "pexels",
+  "id": "18510619",
+  "page_url": "https://www.pexels.com/photo/dark-surface-of-a-large-stone-18510619/",
+  "photographer": "Adrien Olichon",
+  "photographer_url": "https://www.pexels.com/@adrien-olichon-1257089/",
+  "license": "Pexels License",
+  "alt": "Dark natural rock surface with deep shadows and low raking light across its ridges",
+  "crops": [
+   "h"
+  ],
+  "focus": {
+   "h": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "disc-ceramic": {
+  "file": "svc-porcelain__pexels-13799408.jpg",
+  "source": "pexels",
+  "id": "13799408",
+  "page_url": "https://www.pexels.com/photo/black-metal-chair-on-floor-tiles-13799408/",
+  "photographer": "Bimbim Sindu",
+  "photographer_url": "https://www.pexels.com/@bimbim-sindu-96724782/",
+  "license": "Pexels License",
+  "alt": "Large grey floor tiles laid in a staggered pattern with dappled light and a black chair",
+  "crops": [
+   "v"
+  ],
+  "focus": {
+   "v": [
+    0.5,
+    0.55
+   ]
+  }
+ },
+ "disc-stone": {
+  "file": "mat-nero__pexels-6634154.jpg",
+  "source": "pexels",
+  "id": "6634154",
+  "page_url": "https://www.pexels.com/photo/black-marble-surface-6634154/",
+  "photographer": "Karola G",
+  "photographer_url": "https://www.pexels.com/@karola-g/",
+  "license": "Pexels License",
+  "alt": "Black marble surface with fine white veins",
+  "crops": [
+   "v"
+  ],
+  "focus": {
+   "v": [
+    0.5,
+    0.45
+   ]
+  }
+ },
+ "disc-granite": {
+  "file": "mat-granite__unsplash-kXZDckruYlg.jpg",
+  "source": "unsplash",
+  "id": "kXZDckruYlg",
+  "page_url": "https://unsplash.com/photos/kXZDckruYlg",
+  "photographer": "Brian Wangenheim",
+  "photographer_url": "https://unsplash.com/@brianwangenheim",
+  "license": "Unsplash License",
+  "alt": "Close-up of polished granite with black, cream and brown crystals",
+  "crops": [
+   "v"
+  ],
+  "focus": {
+   "v": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "disc-engineered": {
+  "file": "mat-terrazzo__pexels-4977440.jpg",
+  "source": "pexels",
+  "id": "4977440",
+  "page_url": "https://www.pexels.com/photo/close-up-of-marble-surface-4977440/",
+  "photographer": "Karola G",
+  "photographer_url": "https://www.pexels.com/@karola-g/",
+  "license": "Pexels License",
+  "alt": "Flat close-up of grey terrazzo with white and pale pink marble chips",
+  "crops": [
+   "v"
+  ],
+  "focus": {
+   "v": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "disc-wetroom": {
+  "file": "svc-wetroom-detail__unsplash-BEOIjrLSO2Q.jpg",
+  "source": "unsplash",
+  "id": "BEOIjrLSO2Q",
+  "page_url": "https://unsplash.com/photos/BEOIjrLSO2Q",
+  "photographer": "Peter Muniz",
+  "photographer_url": "https://unsplash.com/@petepxl",
+  "license": "Unsplash License",
+  "alt": "Travertine shower with vein cut panels, a low stone upstand and black fittings",
+  "crops": [
+   "v"
+  ],
+  "focus": {
+   "v": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "contact-aside": {
+  "file": "detail-junction__unsplash-UP1T5tEn_WI.jpg",
+  "source": "unsplash",
+  "id": "UP1T5tEn_WI",
+  "page_url": "https://unsplash.com/photos/UP1T5tEn_WI",
+  "photographer": "José Ángel Ríos",
+  "photographer_url": "https://unsplash.com/@joseangelriosr",
+  "license": "Unsplash License",
+  "alt": "Close-up of the sharp corner of a travertine block meeting a stone tiled floor",
+  "crops": [
+   "p"
+  ],
+  "focus": {
+   "p": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "contact-band": {
+  "file": "hero-stone__unsplash-lQARE_-WqBw.jpg",
+  "source": "unsplash",
+  "id": "lQARE_-WqBw",
+  "page_url": "https://unsplash.com/photos/lQARE_-WqBw",
+  "photographer": "Tuaans",
+  "photographer_url": "https://unsplash.com/@tuaans_",
+  "license": "Unsplash License",
+  "alt": "Rectangular block wall with a granular stone finish and soft diagonal shadows in warm light",
+  "crops": [
+   "h"
+  ],
+  "focus": {
+   "h": [
+    0.5,
+    0.5
+   ]
+  }
+ }
+}

@@ -1,0 +1,109 @@
+/* ==========================================================================
+   KROLL INTERIORS, MOTION
+
+   Permitted: fade-up on section entry (once, never re-triggering), image mask
+   reveal, nav underline draw, subtle image scale on hover, header condense.
+
+   Forbidden: bounce, spin, floating elements, parallax on more than one
+   element per page, animation on every text block, letter-by-letter reveals,
+   scroll-jacking, page-load spinners.
+
+   CRITICAL: reveal elements are VISIBLE by default. The hiding rule is scoped
+   to .js-reveal-ready, a class kroll.js adds to <html> only after confirming
+   IntersectionObserver exists and reduced-motion is not requested. With JS
+   off, broken, or reduced-motion on, every element simply renders in place.
+   ========================================================================== */
+
+[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+.js-reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity   var(--k-dur-reveal) var(--k-ease),
+    transform var(--k-dur-reveal) var(--k-ease);
+}
+
+.js-reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger, 80ms between siblings. Set inline as style="--k-delay:2" or via
+   data-reveal-index; three steps is the maximum before it reads as slow. */
+.js-reveal-ready [data-reveal] { transition-delay: calc(var(--k-delay, 0) * 80ms); }
+
+
+/* ---- Sequential card reveal --------------------------------------------
+   The GROUP is observed, not each card, so the whole row plays as one
+   left-to-right sequence when it scrolls in. Observing each card separately
+   fires them at slightly different scroll positions, which reads as jitter
+   rather than intent.
+
+   Cards carry a small horizontal offset as well as the vertical one, so the
+   eye tracks along the row. It composes with the image mask below: the card
+   slides in while the picture inside settles from scale(1.06). */
+
+.js-reveal-ready [data-reveal-group] > * {
+  opacity: 0;
+  transform: translate3d(-18px, 22px, 0);
+  transition:
+    opacity   620ms var(--k-ease),
+    transform 620ms var(--k-ease);
+  transition-delay: calc(var(--k-delay, 0) * 90ms);
+}
+
+.js-reveal-ready [data-reveal-group].is-revealed > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hairline grids draw their dividers with the parent background, so a moving
+   child would tear the 1px lines. Fade those in place instead. */
+.js-reveal-ready [data-reveal-group].k-grid--hairline > *,
+.js-reveal-ready [data-reveal-group].k-process > *,
+.js-reveal-ready [data-reveal-group].k-credentials > *,
+.js-reveal-ready [data-reveal-group].k-sectors > *,
+.js-reveal-ready [data-reveal-group].k-meta-list > * {
+  transform: none;
+}
+
+
+/* ---- Image mask reveal ----
+   The image sits at scale(1.06) inside an overflow-hidden mask and settles to
+   1. Slower than the copy reveal, so the picture lands last. */
+
+.js-reveal-ready [data-reveal-image] .k-media img {
+  transform: scale(1.06);
+  transition: transform var(--k-dur-image) var(--k-ease);
+}
+.js-reveal-ready [data-reveal-image].is-revealed .k-media img {
+  transform: scale(1);
+}
+
+/* Hover scale must not fight the reveal transform. Once revealed, the project
+   card's own hover rule takes over cleanly. */
+.js-reveal-ready [data-reveal-image].is-revealed .k-media img {
+  transition: transform var(--k-dur-hover) var(--k-ease);
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   Belt and braces: kroll.js never adds .js-reveal-ready when reduce is set,
+   and this block neutralises anything that slips through.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal-ready [data-reveal-group] > *,
+  .js-reveal-ready [data-reveal],
+  .js-reveal-ready [data-reveal-image] .k-media img {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .k-sticky-cta { transition: none; }
+}

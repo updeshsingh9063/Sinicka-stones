@@ -1,0 +1,134 @@
+/* ==========================================================================
+   KROLL INTERIORS, LAYOUT
+   Containers, sections, grids. All spacing comes from the token scale;
+   nothing here invents a margin.
+   ========================================================================== */
+
+/* ---- Containers ---- */
+
+.k-container {
+  width: 100%;
+  max-width: var(--k-max);
+  margin-inline: auto;
+  padding-inline: var(--k-pad);
+}
+
+.k-container--narrow { max-width: calc(var(--k-max-narrow) + (var(--k-pad) * 2)); }
+.k-container--wide   { max-width: var(--k-max-wide); }
+.k-container--bleed  { max-width: none; padding-inline: 0; }
+
+
+/* ---- Sections -----------------------------------------------------------
+   One padding rule, one surface rule. Section variants never restate
+   component styles, they only swap the semantic tokens. */
+
+.k-section {
+  padding-block: var(--k-section-y);
+  background: var(--bg);
+}
+
+.k-section--tight { padding-block: var(--k-section-y-tight); }
+.k-section--flush-top    { padding-top: 0; }
+.k-section--flush-bottom { padding-bottom: 0; }
+
+.k-section--alt { background: var(--bg-alt); }
+
+/* Inverted section. Inherits the token swap from .k-invert in 01-tokens.css. */
+.k-section--dark { /* compose in markup: class="k-section k-section--dark k-invert" */ }
+
+
+/* ---- Vertical rhythm ----
+   Sibling spacing via gap, never per-element margins that collapse or double. */
+
+.k-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 3.5vw, 48px);
+}
+
+.k-stack--sm { gap: var(--k-sm); }
+.k-stack--md { gap: var(--k-md); }
+.k-stack--lg { gap: var(--k-lg); }
+.k-stack--xl { gap: var(--k-xl); }
+
+
+/* ---- Section header block ----
+   Eyebrow → heading → lead. The three-part system from Phase B. */
+
+.k-section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--k-sm);
+  max-width: 760px;
+}
+.k-section-head > h2 + .k-lead,
+.k-section-head > h3 + .k-lead { margin-top: var(--k-xs); }
+
+.k-section-head--center {
+  margin-inline: auto;
+  text-align: center;
+  align-items: center;
+}
+
+
+/* ---- Grid ---------------------------------------------------------------
+   1-col and 2-col dominate. 3-col only for material swatches and the process
+   strip. Never 4-col for photography, small project images read as cheap.
+
+   Asymmetry is the editorial device: 7/5 and 5/7, not 6/6, so pages have
+   direction. */
+
+.k-grid {
+  display: grid;
+  gap: var(--k-gutter);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .k-grid--2  { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .k-grid--3  { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .k-grid--7-5 { grid-template-columns: 7fr 5fr; }
+  .k-grid--5-7 { grid-template-columns: 5fr 7fr; }
+  .k-grid--8-4 { grid-template-columns: 8fr 4fr; }
+  .k-grid--4-8 { grid-template-columns: 4fr 8fr; }
+}
+
+.k-grid--gutter-lg { gap: clamp(32px, 4vw, 72px); }
+.k-grid--hairline  { gap: var(--k-hairline); background: var(--line-strong); border: var(--k-hairline) solid var(--line-strong); }
+.k-grid--hairline > * { background: var(--surface); }
+
+.k-grid--align-center { align-items: center; }
+.k-grid--align-end    { align-items: end; }
+
+/* Editorial split: image one side, text the other, text vertically centred
+   and held to the reading measure regardless of column width. */
+.k-split-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--k-md);
+  max-width: var(--k-measure-lead);
+}
+
+
+/* ---- Full-bleed escape ----
+   Breaks an element out of its container to the viewport edge without
+   causing horizontal overflow. */
+
+.k-bleed {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  max-width: 100vw;
+}
+
+
+/* ---- Overflow guard ----
+   Wide content, tables, code, diagrams, scrolls inside its own container
+   so the page body never scrolls sideways. */
+
+.k-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

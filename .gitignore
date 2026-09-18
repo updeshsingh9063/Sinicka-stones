@@ -1,0 +1,12 @@
+site-extract/
+provided by client/
+*.zip
+*.mp4
+__pycache__/
+scrollcraft/builds/*/lab/
+node_modules/
+
+stock-originals/
+
+# The built site's clips are the deploy, so they ship despite the *.mp4 rule above.
+!build/site/assets/video/**/*.mp4

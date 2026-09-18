@@ -1,0 +1,256 @@
+/* ==========================================================================
+   KROLL INTERIORS, HOMEPAGE: TITLE PAGE AND THE BUILD-UP CUTAWAY
+   ========================================================================== */
+
+/* ---- 1. title page ------------------------------------------------------------
+   A pinned stage. At rest the claim sits over a slit of dark stone; scrolling
+   opens the slit to a full plate while the type lifts away. Driven entirely by
+   the act's --sc-p, so there is no script here to fall out of step. */
+.k-hero { --p: var(--sc-p, 0); }
+.k-hero__stage { background: var(--k-night); }
+.k-hero__plate {
+  position: absolute; inset: 0; overflow: hidden;
+  --t: calc(71% - var(--p) * 71%);
+  --b: calc(5% - var(--p) * 5%);
+  --x: calc((1 - var(--p)) * var(--sc-gutter));
+  clip-path: inset(var(--t) var(--x) var(--b) var(--x));
+}
+.k-hero__plate img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%;
+  scale: calc(1.22 - var(--p) * 0.16);
+}
+.k-hero__plate::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, color-mix(in oklab, var(--k-night) 55%, transparent), transparent 38%);
+  opacity: var(--p);
+}
+/* The copy column holds label, claim and action together, so nothing can
+   collide whatever the viewport height. The headline is capped by height as
+   well as width, which keeps the whole column above the slit at 71%. */
+.k-hero__copy {
+  position: absolute; inset: 0 0 auto 0; z-index: 2;
+  padding-top: calc(var(--k-header-h) + clamp(1.5rem, 5.5vh, 4.5rem));
+  translate: 0 calc(var(--p) * -24vh);
+  opacity: calc(1 - var(--p) * 2.1);
+}
+.k-hero__label { margin-bottom: clamp(1rem, 2.6vh, 1.75rem); }
+.k-hero__title { font-size: min(0.9rem + 5.95vw, 10.4vh, 8.25rem); max-width: 15.5ch; }
+.k-hero__foot {
+  margin-top: clamp(1.5rem, 4vh, 2.75rem);
+  display: grid; gap: 1.25rem 2rem; align-items: end;
+}
+.k-hero__foot .k-lede { max-width: 50ch; }
+@media (min-width: 900px) {
+  .k-hero__foot { grid-template-columns: minmax(0, 1fr) auto; }
+}
+@media (max-width: 899px) {
+  .k-hero__title { font-size: min(2.2rem + 3.4vw, 7.2vh); }
+  .k-hero__plate { --t: calc(72% - var(--p) * 72%); }
+  .k-hero__foot .k-lede { font-size: 1.05rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .k-hero { height: auto !important; }
+  .k-hero__stage { position: relative; }
+  .k-hero__plate { clip-path: inset(71% var(--sc-gutter) 5% var(--sc-gutter)); }
+  .k-hero__plate img { scale: 1; }
+  .k-hero__copy { translate: none; opacity: 1; }
+}
+html:not(.js) .k-hero__stage { position: relative; }
+
+/* ---- 3. the quiet chapter before the peak ------------------------------------------
+   Still the calm before the cutaway: one claim, one photograph of the thing it
+   describes, and no third element. */
+.k-hush { padding-block: clamp(5rem, 11vw, 10rem); }
+.k-hush__grid { display: grid; gap: clamp(2.5rem, 5vw, 4.5rem); align-items: center; }
+@media (min-width: 900px) {
+  .k-hush__grid { grid-template-columns: minmax(0, 4.5fr) minmax(0, 7fr); }
+}
+.k-hush__body { display: grid; gap: clamp(2rem, 4vw, 3.25rem); }
+.k-hush__line { max-width: 13ch; margin-left: auto; text-align: right; }
+.k-hush__note { max-width: 36ch; margin-left: auto; }
+/* The answer to the claim, which is also the route into the wet room page. It
+   keeps the right column in proportion with the photograph beside it. */
+.k-hush__tail { max-width: 36ch; margin-left: auto; padding-top: 1.75rem; border-top: 1px solid var(--k-line-strong); display: grid; gap: 0.85rem; }
+@media (max-width: 899px) {
+  .k-hush__line, .k-hush__note, .k-hush__tail { text-align: left; margin-left: 0; }
+}
+
+/* ---- 4. the build-up cutaway -------------------------------------------------------
+   An exploded axonometric of a tiled floor, built from five real layers.
+   kroll.js reads the act's progress and writes one separation value per
+   joint (--s1 to --s4) plus the rig's turn. Everything else is CSS: the
+   geometry, the thickness faces, the cast shadows and the membrane's banding.
+
+   Defaults are the exploded state, so without JS, or with reduced motion,
+   the drawing is complete and every layer is labelled. */
+.k-cut {
+  /* Declared here, not on the element: a url() inside a custom property
+     resolves against the stylesheet that USES it, so a page-relative path set
+     in the markup would resolve as /css/assets/... and 404. Relative to this
+     file the assets are always one level up, on every page. */
+  --k-tex-concrete: url(../assets/img/tex-concrete-s-800.jpg);
+  --k-tex-tile:     url(../assets/img/tex-tile-s-800.jpg);
+  --s1: 1; --s2: 1; --s3: 1; --s4: 1;
+  --turn: -42deg; --tilt: 57deg;
+  --s: min(30vw, 44vh, 34rem);
+  --gap: calc(var(--s) * 0.25);
+  --t0: calc(var(--s) * 0.075);   /* substrate */
+  --t1: calc(var(--s) * 0.022);   /* backer board */
+  --t2: calc(var(--s) * 0.008);   /* membrane */
+  --t3: calc(var(--s) * 0.014);   /* adhesive bed */
+  --t4: calc(var(--s) * 0.026);   /* tile */
+}
+.k-cut__stage { display: grid; background: var(--k-night); }
+@media (min-width: 1000px) {
+  .k-cut__stage { grid-template-columns: minmax(0, 4fr) minmax(0, 5.6fr) 15rem; align-items: center; padding-inline: var(--sc-gutter); column-gap: clamp(1rem, 2vw, 2.5rem); padding-top: calc(var(--k-header-h) * 0.6); }
+  .k-cut__rig { translate: calc(var(--s) * -0.1) 0; }
+}
+.k-cut__copy { display: grid; gap: 1.5rem; align-content: center; position: relative; z-index: 3; padding-inline: 0; }
+.k-cut__title { position: relative; display: grid; }
+.k-cut__h { grid-area: 1 / 1; transition: opacity 700ms var(--k-ease), translate 900ms var(--k-ease); }
+.k-cut__h--b { opacity: 0; translate: 0 1.2rem; }
+.k-cut.is-resolved .k-cut__h--a { opacity: 0; translate: 0 -1.2rem; }
+.k-cut.is-resolved .k-cut__h--b { opacity: 1; translate: none; }
+.k-cut__copy .k-body { max-width: 40ch; }
+
+.k-cut__scene {
+  position: relative; z-index: 1; height: 100%;
+  display: grid; place-items: center;
+  perspective: calc(var(--s) * 5.5);
+  perspective-origin: 50% 30%;
+}
+.k-cut__rig {
+  position: relative; width: var(--s); height: var(--s);
+  transform-style: preserve-3d;
+  transform: translateY(calc(var(--s) * 0.34)) rotateX(var(--tilt)) rotateZ(var(--turn));
+}
+.k-cut__layer { position: absolute; inset: 0; transform-style: preserve-3d; }
+.k-cut__layer--0 { transform: translateZ(0px); }
+.k-cut__layer--1 { transform: translateZ(calc(var(--t0) + var(--gap) * var(--s1))); }
+.k-cut__layer--2 { transform: translateZ(calc(var(--t0) + var(--t1) + var(--gap) * (var(--s1) + var(--s2)))); }
+.k-cut__layer--3 { transform: translateZ(calc(var(--t0) + var(--t1) + var(--t2) + var(--gap) * (var(--s1) + var(--s2) + var(--s3)))); }
+.k-cut__layer--4 { transform: translateZ(calc(var(--t0) + var(--t1) + var(--t2) + var(--t3) + var(--gap) * (var(--s1) + var(--s2) + var(--s3) + var(--s4)))); }
+
+.k-cut__face, .k-cut__edge, .k-cut__shadow { position: absolute; display: block; }
+.k-cut__pin { position: absolute; right: 0; bottom: 0; width: 1px; height: 1px; }
+.k-cut__face { inset: 0; background-size: cover; background-position: center; backface-visibility: hidden; }
+/* Thickness. The two edges nearest the viewer are the square's bottom and
+   left sides; each hangs below the face by the layer's own thickness. */
+.k-cut__edge--b { left: 0; top: 100%; width: 100%; height: var(--th); transform-origin: top; transform: rotateX(-90deg); }
+.k-cut__edge--l { left: 0; top: 0; width: var(--th); height: 100%; transform-origin: left; transform: rotateY(90deg); }
+/* Cast shadow, dropped onto the layer beneath by exactly this layer's lift. */
+.k-cut__shadow {
+  inset: 4%; background: #000; filter: blur(calc(var(--s) * 0.035));
+  transform: translateZ(calc(var(--lift) * -1 - var(--th) + 1px));
+  opacity: calc(var(--sep) * 0.55);
+}
+.k-cut__layer--0 .k-cut__shadow { display: none; }
+
+/* substrate: screed */
+.k-cut__layer--0 { --th: var(--t0); }
+.k-cut__layer--0 .k-cut__face {
+  background-color: #6E706F;
+  background-image: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(0,0,0,0.18)), var(--k-tex-concrete, none);
+  background-size: 100% 100%, 62% 62%;
+}
+.k-cut__layer--0 .k-cut__edge--b { background: linear-gradient(#56585A, #3A3C3E), var(--k-tex-concrete, none); background-blend-mode: multiply; background-size: cover; }
+.k-cut__layer--0 .k-cut__edge--l { background: linear-gradient(90deg, #45474A, #2E3033), var(--k-tex-concrete, none); background-blend-mode: multiply; background-size: cover; }
+
+/* backer board */
+.k-cut__layer--1 { --th: var(--t1); --sep: var(--s1); --lift: calc(var(--gap) * var(--s1)); }
+.k-cut__layer--1 .k-cut__face {
+  background-color: #C5CACC;
+  background-image:
+    radial-gradient(circle at 50% 50%, #8E9496 0 0.18rem, transparent 0.2rem),
+    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(60,66,70,0.35) calc(50% - 0.5px) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(160deg, rgba(255,255,255,0.35), rgba(0,0,0,0.08));
+  background-size: 25% 25%, 100% 100%, 100% 100%;
+  background-position: 12.5% 12.5%, 0 0, 0 0;
+}
+.k-cut__layer--1 .k-cut__edge--b { background: #A9AEB1; }
+.k-cut__layer--1 .k-cut__edge--l { background: #8C9194; }
+
+/* tanking membrane, with banding tape at the joint and the corner */
+.k-cut__layer--2 { --th: var(--t2); --sep: var(--s2); --lift: calc(var(--gap) * var(--s2)); }
+.k-cut__layer--2 .k-cut__face {
+  background-color: var(--k-membrane);
+  background-image:
+    linear-gradient(90deg, transparent 46.5%, rgba(255,196,160,0.32) 46.5% 53.5%, transparent 53.5%),
+    linear-gradient(0deg, rgba(255,196,160,0.3) 0 6%, transparent 6%),
+    linear-gradient(90deg, rgba(255,196,160,0.3) 0 6%, transparent 6%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.85  0 0 0 0 0.75  0 0 0 0.1 0'/></filter><rect width='220' height='220' filter='url(%23f)'/></svg>"),
+    linear-gradient(150deg, rgba(255,255,255,0.1), rgba(0,0,0,0.22));
+}
+.k-cut__layer--2 .k-cut__edge--b { background: #B24E1E; }
+.k-cut__layer--2 .k-cut__edge--l { background: #9A4318; }
+
+/* adhesive bed, combed with a notched trowel */
+.k-cut__layer--3 { --th: var(--t3); --sep: var(--s3); --lift: calc(var(--gap) * var(--s3)); }
+.k-cut__layer--3 .k-cut__face {
+  background-color: #9DA2A2;
+  background-image:
+    repeating-linear-gradient(90deg, #B7BBBB 0 calc(var(--s) * 0.012), #7E8484 calc(var(--s) * 0.018), #A3A8A8 calc(var(--s) * 0.028), #B7BBBB calc(var(--s) * 0.034)),
+    linear-gradient(160deg, rgba(255,255,255,0.14), rgba(0,0,0,0.14));
+  background-blend-mode: normal, multiply;
+}
+.k-cut__layer--3 .k-cut__edge--b { background: repeating-linear-gradient(90deg, #7B8080 0 calc(var(--s) * 0.017), #8C9191 calc(var(--s) * 0.017) calc(var(--s) * 0.034)); }
+.k-cut__layer--3 .k-cut__edge--l { background: #6C7171; }
+
+/* tile, large-format, with fine grout joints */
+.k-cut__layer--4 { --th: var(--t4); --sep: var(--s4); --lift: calc(var(--gap) * var(--s4)); }
+.k-cut__layer--4 .k-cut__face {
+  background-color: #E6E3DC;
+  background-image:
+    linear-gradient(90deg, transparent calc(50% - 1px), rgba(120,118,112,0.55) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+    linear-gradient(0deg, transparent calc(50% - 1px), rgba(120,118,112,0.55) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+    linear-gradient(140deg, rgba(255,255,255,0.28), rgba(0,0,0,0.1) 70%),
+    var(--k-tex-tile, none);
+  /* The texture is sized to the tile module, not to the whole face: at `cover`
+     a 400px face shows one zoomed patch and the stone reads as flat colour. */
+  background-size: 100% 100%, 100% 100%, 100% 100%, 50% 50%;
+}
+.k-cut__layer--4 .k-cut__edge--b { background: linear-gradient(#D9D5CD, #BDB8AE); }
+.k-cut__layer--4 .k-cut__edge--l { background: linear-gradient(90deg, #C9C4BA, #A9A49A); }
+
+/* Leader lines and labels. Positioned by kroll.js from each layer's
+   projected corner; the list order is the real reading order. */
+.k-cut__lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; overflow: visible; }
+.k-cut__lines line { stroke: var(--k-line-strong); stroke-width: 1; }
+.k-cut__lines circle { fill: var(--k-paper); }
+.k-cut__labels { position: relative; z-index: 3; display: grid; gap: 0.75rem; }
+.k-cut__label { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.15rem 0.35rem; opacity: 0.35; transition: opacity 500ms var(--k-ease); }
+.k-cut__label.is-on { opacity: 1; }
+.k-cut__label > .k-cut__n { grid-column: 1; grid-row: 1 / span 2; font-family: var(--sc-font-display); color: var(--sc-accent); font-size: 1rem; line-height: 1.35; }
+.k-cut__label > b { grid-column: 2; grid-row: 1; font-weight: 500; color: var(--sc-ink); font-size: 0.9375rem; letter-spacing: 0.02em; line-height: 1.35; }
+.k-cut__label > span:last-child { grid-column: 2; grid-row: 2; font-size: 0.8125rem; line-height: 1.45; color: var(--sc-ink-soft); }
+.k-cut__label--membrane .k-cut__n { color: var(--k-membrane); }
+
+@media (min-width: 1000px) {
+  .js .k-cut__labels.is-placed { position: absolute; inset: 0; display: block; pointer-events: none; }
+  .js .k-cut__labels.is-placed .k-cut__label { position: absolute; width: 15rem; translate: 0 -0.7rem; opacity: 0; }
+  .js .k-cut__labels.is-placed .k-cut__label.is-on { opacity: 1; }
+}
+
+@media (max-width: 999px) {
+  .k-cut { --s: min(62vw, 34vh); }
+  /* Bottom padding clears the mobile quick-contact dock. */
+  .k-cut__stage { grid-template-rows: auto 1fr auto; padding: calc(var(--k-header-h) + 0.5rem) var(--sc-gutter) 6rem; gap: 0.75rem; }
+  .k-cut__copy { gap: 0.75rem; }
+  .k-cut__copy .k-display--lg { font-size: clamp(1.7rem, 1.2rem + 2.6vw, 2.6rem); }
+  .k-cut__copy .k-body, .k-cut__copy .k-link, .k-cut__copy .k-label { display: none; }
+  .k-cut__lines { display: none; }
+  .k-cut__labels { display: grid; }
+  .js .k-cut__labels { grid-template-areas: "only"; }
+  .js .k-cut__label { grid-area: only; opacity: 0; }
+  .js .k-cut__label.is-current { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .k-cut { height: auto !important; }
+  .k-cut__stage { position: relative !important; height: auto; min-height: 100svh; padding-block: calc(var(--k-header-h) + 2rem) 3rem; }
+  .k-cut__label { opacity: 1 !important; }
+  .k-cut__h { transition: none; }
+}
+html:not(.js) .k-cut { height: auto; }
+html:not(.js) .k-cut__stage { position: relative; height: auto; min-height: 100vh; padding-block: 8rem 4rem; }
+html:not(.js) .k-cut__label { opacity: 1; }

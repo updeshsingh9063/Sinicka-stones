@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kroll hero video diagnostic</title>
+<meta name="robots" content="noindex">
+<style>
+  body{margin:0;background:#12171A;color:#F7F5F1;
+       font:400 15px/1.6 ui-monospace,Menlo,Consolas,monospace;padding:28px}
+  h1{font:600 13px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;
+     color:#7DB0CA;margin:0 0 24px}
+  table{border-collapse:collapse;width:100%;max-width:900px;margin-bottom:28px}
+  td{padding:9px 12px;border-bottom:1px solid rgba(214,210,203,.16);vertical-align:top}
+  td:first-child{color:#98A2A8;white-space:nowrap;width:230px}
+  .ok{color:#6FBF95}.bad{color:#D68585}.warn{color:#E0B776}
+  #log{max-width:900px;border:1px solid rgba(214,210,203,.2);padding:14px;
+       min-height:120px;white-space:pre-wrap;font-size:13px;color:#D6D2CB}
+  video{width:100%;max-width:900px;display:block;margin:22px 0;border:1px solid rgba(214,210,203,.2)}
+  h2{font:600 12px/1 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;
+     color:#98A2A8;margin:32px 0 10px}
+</style>
+</head>
+<body>
+<h1>Kroll hero video diagnostic</h1>
+
+<table id="env"></table>
+
+<h2>Autoplay attempt (same code path as the site)</h2>
+<div id="log">running…</div>
+
+<h2>Control: plain video element with controls</h2>
+<p style="color:#98A2A8;font-size:13px;margin:0">If this one plays when you press play but the
+autoplay above fails, the file is fine and the problem is an autoplay policy.</p>
+<video id="control" controls muted playsinline preload="auto"
+       src="./assets/video/hero-loop-720.mp4"></video>
+
+<script>
+var rows = [];
+function row(k, v, cls) {
+  rows.push('<tr><td>' + k + '</td><td class="' + (cls || '') + '">' + v + '</td></tr>');
+}
+function log(msg, cls) {
+  var el = document.getElementById('log');
+  if (el.textContent === 'running…') el.textContent = '';
+  el.innerHTML += '<span class="' + (cls || '') + '">' + msg + '</span>\n';
+}
+
+var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var small = window.matchMedia('(max-width: 767px)').matches;
+var conn = navigator.connection || {};
+var slow = conn.saveData === true || /(^|-)2g$|(^|-)3g$/.test(conn.effectiveType || '');
+
+row('prefers-reduced-motion', rm ? 'REDUCE  (this alone blocks the film)' : 'no-preference',
+    rm ? 'bad' : 'ok');
+row('viewport width', window.innerWidth + 'px' + (small ? '  (under 768, film skipped)' : ''),
+    small ? 'bad' : 'ok');
+row('connection.effectiveType', conn.effectiveType || 'not reported',
+    slow ? 'bad' : 'ok');
+row('connection.saveData', conn.saveData === true ? 'ON  (film skipped)' : 'off',
+    conn.saveData === true ? 'bad' : 'ok');
+row('canPlayType h264', document.createElement('video')
+      .canPlayType('video/mp4; codecs="avc1.640028"') || 'NO',
+    'ok');
+row('page origin', location.protocol + '//' + location.host, 'ok');
+
+document.getElementById('env').innerHTML = rows.join('');
+
+if (rm)    log('SKIPPED: prefers-reduced-motion is set. Turn on "Show animations in Windows"\n         (Settings > Accessibility > Visual effects) and reload.', 'bad');
+if (small) log('SKIPPED: viewport under 768px.', 'bad');
+if (slow)  log('SKIPPED: save-data or slow connection reported.', 'bad');
+
+if (!rm && !small && !slow) {
+  var v = document.createElement('video');
+  v.muted = true; v.defaultMuted = true; v.loop = true;
+  v.playsInline = true; v.preload = 'auto';
+  v.setAttribute('muted',''); v.setAttribute('playsinline','');
+  v.style.cssText = 'width:100%;max-width:900px;display:block;margin-top:14px;' +
+                    'border:1px solid rgba(214,210,203,.2)';
+  v.src = './assets/video/hero-loop-720.mp4';
+
+  ['loadstart','loadedmetadata','loadeddata','canplay','playing','stalled','suspend','waiting']
+    .forEach(function (e) {
+      v.addEventListener(e, function () { log('event: ' + e, e === 'playing' ? 'ok' : ''); });
+    });
+
+  v.addEventListener('error', function () {
+    var codes = {1:'ABORTED',2:'NETWORK',3:'DECODE',4:'SRC_NOT_SUPPORTED / 404 / bad MIME'};
+    var c = v.error ? v.error.code : 0;
+    log('ERROR loading ' + v.src, 'bad');
+    log('  media error ' + c + ': ' + (codes[c] || 'unknown'), 'bad');
+    log('  Check the Network tab for this file: a 404 or a wrong Content-Type\n' +
+        '  means the dev server, not the site.', 'warn');
+  });
+
+  document.getElementById('log').after(v);
+
+  var p = v.play();
+  if (p && p.then) {
+    p.then(function () {
+      log('play() RESOLVED. Autoplay is allowed and the film is running.', 'ok');
+    }).catch(function (err) {
+      log('play() REJECTED: ' + (err && err.name) + ' - ' + (err && err.message), 'bad');
+      log('  This is an autoplay policy, not the file. The site now retries on\n' +
+          '  first click, so the hero will start as soon as you interact.', 'warn');
+    });
+  } else {
+    log('play() returned no promise (very old browser).', 'warn');
+  }
+}
+
+// Does the server support range requests? Video needs them for seeking.
+fetch('./assets/video/hero-loop-720.mp4', { headers: { Range: 'bytes=0-1023' } })
+  .then(function (r) {
+    log('\nHEAD/range check: status ' + r.status +
+        ' | Content-Type: ' + (r.headers.get('content-type') || 'none') +
+        ' | Accept-Ranges: ' + (r.headers.get('accept-ranges') || 'none'),
+        r.status === 206 || r.status === 200 ? 'ok' : 'bad');
+    if (r.status !== 206) {
+      log('  Server did not return 206 for a range request. Most browsers cope,\n' +
+          '  but some dev servers break video this way.', 'warn');
+    }
+  })
+  .catch(function (e) { log('\nrange check failed: ' + e.message, 'bad'); });
+</script>
+</body>
+</html>

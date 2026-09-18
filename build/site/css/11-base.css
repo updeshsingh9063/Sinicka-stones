@@ -1,0 +1,129 @@
+/* ==========================================================================
+   KROLL INTERIORS, BASE
+   Type, links, the no-JS floor and smooth-scroll plumbing.
+   ========================================================================== */
+
+html { background: var(--k-night); }
+body {
+  background: var(--k-night);
+  font-size: var(--k-t-body);
+  line-height: 1.66;
+  letter-spacing: 0.005em;
+  font-weight: 400;
+}
+/* Light text on a dark ground needs a touch more air than the same text on
+   paper, or it reads thin. */
+.k-ground--paper { line-height: 1.62; letter-spacing: 0; }
+
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+ul[class], ol[class] { list-style: none; padding: 0; }
+img, video { height: auto; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+strong { font-weight: 500; }
+
+/* ---- display type ------------------------------------------------------- */
+.k-display {
+  font-family: var(--sc-font-display);
+  font-weight: var(--k-display-weight);
+  font-optical-sizing: auto;
+  line-height: 0.98;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+.k-display em, .k-display i { font-style: italic; font-weight: 300; letter-spacing: -0.03em; }
+.k-display--hero { font-size: var(--k-t-hero); line-height: 0.9; letter-spacing: -0.035em; }
+.k-display--xl   { font-size: var(--k-t-xl);   line-height: 0.94; letter-spacing: -0.03em; }
+.k-display--lg   { font-size: var(--k-t-lg);   line-height: 1; }
+.k-display--md   { font-size: var(--k-t-md);   line-height: 1.06; letter-spacing: -0.016em; }
+.k-display--sm   { font-size: var(--k-t-sm);   line-height: 1.16; letter-spacing: -0.01em; }
+
+.k-lede {
+  font-size: var(--k-t-lede);
+  line-height: 1.5;
+  color: var(--sc-ink);
+  max-width: 44ch;
+  text-wrap: pretty;
+  font-weight: 400;
+}
+.k-body { color: var(--sc-ink-soft); max-width: 62ch; text-wrap: pretty; }
+.k-body--ink { color: var(--sc-ink); }
+.k-small { font-size: var(--k-t-small); color: var(--sc-ink-soft); line-height: 1.6; }
+
+/* A label is Jost set small and tracked: category and metadata, never a
+   decorative strip. Used sparingly, at most one heading in three carries one. */
+.k-label {
+  font-family: var(--sc-font-text);
+  font-size: var(--k-t-label);
+  font-weight: 500;
+  letter-spacing: var(--k-track-label);
+  text-transform: uppercase;
+  color: var(--sc-ink-soft);
+  line-height: 1.4;
+}
+.k-label--ink { color: var(--sc-ink); }
+
+.k-prose > * + * { margin-top: 1.1em; }
+.k-prose h2 { font-family: var(--sc-font-display); font-weight: var(--k-display-weight); font-size: var(--k-t-sm); line-height: 1.2; margin-top: 2.4em; letter-spacing: -0.01em; }
+.k-prose ul { padding-left: 1.1em; }
+.k-prose li + li { margin-top: 0.4em; }
+.k-prose a { color: var(--sc-ink); text-decoration-color: var(--k-line-strong); }
+.k-prose a:hover { text-decoration-color: currentColor; }
+
+.k-nums { font-variant-numeric: tabular-nums lining-nums; }
+
+/* ---- links ---------------------------------------------------------------- */
+a { color: inherit; }
+:focus-visible { outline: 1.5px solid var(--sc-accent); outline-offset: 4px; border-radius: var(--sc-r-sm); }
+
+/* ---- utilities ------------------------------------------------------------ */
+.k-vh {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.k-skip {
+  position: fixed; left: var(--sc-gutter); top: 0.75rem; z-index: 200;
+  padding: 0.7rem 1.1rem; background: var(--sc-ink); color: var(--k-night);
+  font-size: var(--k-t-small); text-decoration: none;
+  transform: translateY(-160%); transition: transform 180ms var(--k-ease);
+}
+.k-skip:focus { transform: none; }
+
+/* ---- grain ------------------------------------------------------------------
+   Sits above everything decorative and below the chrome. A flat black ground
+   bands on real displays; grain is the difference between a dark page and a
+   lit room. */
+.sc-grain { z-index: 90; opacity: 0.05; mix-blend-mode: overlay; }
+
+/* ---- the no-JS floor -------------------------------------------------------
+   The engine hides cues and entrance items until it can reveal them. Without
+   JS nothing would ever reveal them, so the hiding only applies once the
+   inline head script has marked the document. */
+html:not(.js) [data-sc-cue],
+html:not(.js) [data-sc-in],
+html:not(.js) [data-sc-stagger] > * { opacity: 1 !important; transform: none !important; }
+html:not(.js) [data-sc-reveal] { clip-path: none !important; }
+
+/* The engine also sizes and sticks every pinned stage. Without it a stage
+   holding absolutely positioned copy collapses to nothing and the next chapter
+   lands on top of it, so give stages their own floor and hand the rail back to
+   the reader as an ordinary scroll region. */
+html:not(.js) [data-sc-stage] { position: relative; min-height: 100svh; }
+html:not(.js) .k-rail { overflow-x: auto; padding-bottom: 1.5rem; }
+
+/* ---- smooth scroll (Lenis) -------------------------------------------------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+
+/* ---- cross-document page transitions ----------------------------------------
+   Native, no JS, no hijacked clicks. Browsers without support navigate as
+   normal. The outgoing page lifts and fades, the new one settles in. */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: k-vt-out 360ms var(--k-ease-cut) both; }
+::view-transition-new(root) { animation: k-vt-in 620ms var(--k-ease) 80ms both; }
+@keyframes k-vt-out { to { opacity: 0; transform: translateY(-2.5vh); } }
+@keyframes k-vt-in  { from { opacity: 0; transform: translateY(3vh); } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 1ms; }
+}
